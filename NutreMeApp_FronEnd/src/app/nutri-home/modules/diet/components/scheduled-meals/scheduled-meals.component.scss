@@ -1,0 +1,28 @@
+:host{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.meal-scheduled-container{
+    width: 100%; 
+    background-color: var(--elements-bg-primary);
+    border-radius: var(--global-border-radius);
+    padding: 1rem;
+}
+
+.meal-scheduled-title{
+    border-bottom: solid 1px var(--text-generic-color);
+    margin-bottom: 1rem;
+    padding-bottom: .25rem;
+}
+
+.schedule-meals-list{
+    padding-top: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem; 
+}
+
+
+

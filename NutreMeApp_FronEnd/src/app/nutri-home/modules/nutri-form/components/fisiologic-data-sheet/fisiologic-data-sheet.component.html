@@ -1,0 +1,61 @@
+<form class="form" [formGroup]="fisiologicForm" (ngSubmit)="processData()">
+    <div class="form__row">
+        <slider-input
+            [minValue]="100"
+            [maxValue]="220"
+            textLabel="Altura"
+            controlName="altura"
+            [form-group]="fisiologicForm"
+            [stepPrecision]="1"
+            units="cm"
+            >
+        </slider-input>
+    </div>
+
+    <div class="form__row">
+        <slider-input
+            [minValue]="30"
+            [maxValue]="150"
+            textLabel="Peso"
+            controlName="peso"
+            [form-group]="fisiologicForm"
+            [stepPrecision]="1"
+            units="kg"
+            >
+        </slider-input>
+    </div>
+
+    <div class="form__row">
+        <slider-input
+            [minValue]="18"
+            [maxValue]="110"
+            textLabel="Edad"
+            controlName="edad"
+            [form-group]="fisiologicForm"
+            [stepPrecision]="1"
+            units="años"
+            >
+        </slider-input>
+        
+    </div>
+
+    <div class="form__row">
+        <label class="selector-label" for="gemero">Genero</label>
+        <select name="genero" id="genero" formControlName="genero">
+            <option value="Hombre" name="genero">Hombre</option>
+            <option value="Mujer" name="genero">Mujer</option>
+        </select>
+    </div>
+
+    <div class="form__row">
+        <label for="actividad" class="selector-label">Actividad</label>
+        <select id="actividad" size="1" name="actividad" formControlName="nivel_actividad"> 
+            <option selected="true" value="1.2">Sedentario</option> 
+            <option value="1.375">Actividad ligera</option> 
+            <option value="1.55">Actividad moderada</option> 
+            <option value="1.725">Actividad intensa</option> 
+            <option value="1.9">Actividad muy intensa</option> 
+            </select>
+    </div> 
+    <button class="btn" type="submit">Hecho</button>
+</form>

@@ -1,0 +1,5 @@
+<form role="search">
+    <label for="search">Search for stuff</label>
+    <input #searchText id="search" type="text" placeholder="Search..." autofocus required (input)="inputClicked($event)" (keyup.enter)="inputClicked($event)"/>
+    <button type="button" (click)="inputClicked($event)">Go</button>    
+  </form>

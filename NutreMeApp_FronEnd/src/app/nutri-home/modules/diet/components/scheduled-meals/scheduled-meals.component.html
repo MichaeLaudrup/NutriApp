@@ -1,0 +1,10 @@
+
+<div class="meal-scheduled-container">
+    
+    <h2 class="meal-scheduled-title">{{mealName}}</h2>
+    <ul class="schedule-meals-list">
+        <ng-container *ngFor="let meal of mealList; let i = index">
+            <scheduled-meal-item [food]="meal" [index]="index + i"></scheduled-meal-item>
+        </ng-container>
+    </ul>
+</div>

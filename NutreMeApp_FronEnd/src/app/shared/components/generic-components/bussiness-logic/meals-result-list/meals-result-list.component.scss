@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    width: 100%;
+}
+.search-container{
+    padding: 1rem 1rem; 
+}
+
+.list-meals {
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: visible;
+    padding-top: 2rem; 
+    list-meal-item:not(:last-child){
+        margin-bottom: 1rem;
+    }
+}

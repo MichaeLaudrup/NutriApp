@@ -1,0 +1,67 @@
+<div class="dashboard-container">
+    <div class="dashboard__box box__water">
+        <div class="box__header">
+            <div class="box__header-title">
+                <h3>Agua díaria</h3>
+            </div>
+            <app-modal-info-activator></app-modal-info-activator> 
+        </div>
+        <div class="box__content box__water">
+            <span class="material-icons-outlined water-icon">
+                water_drop
+            </span>
+            <span>
+                {{fisiologicData.diaryWater | number:'1.2-2'}} Litros/Día 
+            </span>
+        </div>
+    </div>
+
+    <div class="dashboard__box box__imc">
+        <div class="box__header">
+            <div class="box__header-title">
+                <h3>IMC</h3>
+            </div>
+            <app-modal-info-activator></app-modal-info-activator> 
+        </div>
+        <div class="box__content">
+            <app-imc-chart [imc]="fisiologicData.imc "></app-imc-chart>
+        </div>
+    </div>
+
+    <div class="dashboard__box box__mba">
+        <div class="box__header">
+            <div class="box__header-title">
+                <h3>Metabolismo basal</h3>
+            </div>
+            <app-modal-info-activator></app-modal-info-activator> 
+        </div>
+        <div class="box__content">
+            <app-mba-chart [mba]="fisiologicData.mba" [mba-with-activity]="fisiologicData.mbaWithActivity" [mba-with-act-objetive]="fisiologicData.mbaWithActivityAndObjetive" [objetive]="objetive"></app-mba-chart>
+        </div>  
+    </div>
+    <div class="dashboard__box box__macro">
+        <div class="box__header">
+            <div class="box__header-title">
+                <h3>Distribución Macronutrientes</h3>
+            </div>
+            <app-modal-info-activator></app-modal-info-activator>
+        </div>
+        <div class="box__content">
+            <app-macronutrients-chart [carbo-hydrates]="fisiologicData.diaryCarbohydrates" [proteins]="fisiologicData.diaryProtein" [fats]="fisiologicData.diaryFats">
+            </app-macronutrients-chart>
+        </div>
+    </div>
+
+
+    <div class="dashboard__box kcal-history-box">
+        <div class="box__header">
+            <div class="box__header-title">
+                <h3>Historial de consumo calórico</h3>
+            </div>
+            <app-modal-info-activator></app-modal-info-activator>
+        </div>
+        <div class="box__content">
+            <app-basic-line-chart></app-basic-line-chart>
+        </div>
+    </div>
+</div>

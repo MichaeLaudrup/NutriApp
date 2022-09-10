@@ -1,0 +1,9 @@
+<div class="search-container">
+
+    <search-input (searchClicked)="searchMealsWithQuery($event)"></search-input>
+</div>
+<ul class="list-meals">
+    <ng-container *ngFor="let meal of meals; let i = index">
+        <list-meal-item [ngClass]="{'selected': actualItemSelected === i}"[meal]="meal"[index]="i" (listItemClicked)="actualItemSelected = $event"></list-meal-item>
+    </ng-container>
+</ul>

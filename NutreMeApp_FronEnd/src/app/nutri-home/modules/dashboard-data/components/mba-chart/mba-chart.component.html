@@ -1,0 +1,21 @@
+
+<highcharts-chart 
+    [Highcharts]="Highcharts" 
+    [options]="chartOptions"
+    style="width: 100%;display: block; "
+    [style.height.px]="(deviceMode === DeviceMode.ExtraSmall) ? 200 : 300">
+</highcharts-chart>
+<ul *ngIf="deviceMode === DeviceMode.ExtraSmall">
+    <li>
+        <span class="circle" style="background-color: var(--chart-color01)"></span>
+        Kcal diarías base sin deporte
+     </li>
+    <li>
+        <span class="circle" style="background-color: var(--chart-color02)"></span>
+        Kcal diarías base con deporte
+    </li>
+    <li>
+        <span class="circle" style="background-color: var(--chart-color03)"></span>
+        Kcal díarias con deporte y objetivo. 
+    </li>
+</ul>

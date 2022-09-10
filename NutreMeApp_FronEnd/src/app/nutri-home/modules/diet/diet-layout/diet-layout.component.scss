@@ -1,0 +1,24 @@
+:root{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.diet-container{
+    padding: 1rem;
+}
+
+.scheduled-meals-list{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
+    row-gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .scheduled-meals-list{
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1.5rem;
+
+    }
+}
