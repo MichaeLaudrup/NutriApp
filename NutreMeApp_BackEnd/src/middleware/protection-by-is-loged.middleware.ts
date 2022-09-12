@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { OperationalError } from "../shared/error.interface";
+import { OperationalError } from "../shared/classes/error.interface";
 import { promisify } from "util";
 import { UserModel } from "../models/user.model";
 const jwt = require('jsonwebtoken'); 

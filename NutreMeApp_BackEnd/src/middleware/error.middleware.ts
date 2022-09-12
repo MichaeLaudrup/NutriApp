@@ -1,5 +1,5 @@
 import { NextFunction, Response, Request } from "express";
-import { OperationalError } from "../shared/error.interface";
+import { OperationalError } from "../shared/classes/error.interface";
 
 export const errorMiddleware = ( err: any, req: Request, res: Response, next: NextFunction) => {
     if(process.env.NODE_ENV === 'dev'){

@@ -1,6 +1,6 @@
 import express from 'express'; 
 import * as AuthController from './../controllers/auth.controller';
-import accessRouteProtector from '../middleware/router-access.middleware'; 
+import accessRouteProtector from '../middleware/protection-by-is-loged.middleware'; 
 import * as UsersController from '../controllers/user.controller'; 
 import { routerProtectionByRole } from '../middleware/protection-by-role.middelware';
 const router = express.Router(); 

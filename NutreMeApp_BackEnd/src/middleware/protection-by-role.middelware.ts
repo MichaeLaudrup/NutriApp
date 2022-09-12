@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import { OperationalError } from "../shared/error.interface";
+import { OperationalError } from "../shared/classes/error.interface";
 
 
 export const routerProtectionByRole = (...roles: string[]) => {

@@ -1,6 +1,6 @@
 import express from 'express'; 
 import * as MealsController from './../controllers/meal.controller'; 
-import accessRouteProtector from '../middleware/router-access.middleware'; 
+import accessRouteProtector from '../middleware/protection-by-is-loged.middleware'; 
 import { routerProtectionByRole } from '../middleware/protection-by-role.middelware';
 
 const router = express.Router(); 

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { UserModel } from "../models/user.model";
-import { OperationalError } from "../shared/error.interface";
+import { OperationalError } from "../shared/classes/error.interface";
 const jwt = require('jsonwebtoken'); 
 
 const signToken = (userId:any) => {

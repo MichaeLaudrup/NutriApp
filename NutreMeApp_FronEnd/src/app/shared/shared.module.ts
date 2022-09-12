@@ -5,7 +5,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ConnectFormDirective } from './directives/connect-form.directive';
 import { GenericComponentsModule } from './components/generic-components/generic-components.module';
 import { NgRxSharedModule } from './store-modules/ngrx-shared/ngrx-shared.module';
-import { CreationOfSectionMealComponent } from './components/modals/create-update-modal/section-meal-form/section-meal-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MealSectionsFacade } from './store-modules/ngrx-meals-sections/+section_meals/section-meals.facade';
 import { ActionsBarComponent } from './components/actions-bar/actions-bar.component';

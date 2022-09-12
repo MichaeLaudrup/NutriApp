@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { UserModel } from "../models/user.model";
-import { OperationalError } from "../shared/error.interface";
+import { OperationalError } from "../shared/classes/error.interface";
 
 
 export const getAllUsers = async(req: Request, res:Response, next: NextFunction) => {

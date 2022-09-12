@@ -2,8 +2,9 @@ import express, { Application, NextFunction, Request, Response} from 'express';
 import { errorMiddleware } from './middleware/error.middleware';
 import mealsRouter from './routes/meals.routes'; 
 import userRouter from './routes/users.routes'; 
-import RulesEngine from './services/rules-engine/rules-engine';
-import { OperationalError } from './shared/error.interface';
+import userDataRouter from './routes/user-data.routes'; 
+import RulesEngine from './services/rules-engine/rules-engine.service';
+import { OperationalError } from './shared/classes/error.interface';
 require('./utils/error-handlers'); 
 const cors = require('cors'); 
 const dotenv = require('dotenv'); 
@@ -21,17 +22,13 @@ const server = app.listen(port, () => {
 }); 
 
 app.use('/api/v1/meals', mealsRouter ); 
-app.use('/api/v1/users', userRouter)
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/userData', userDataRouter); 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
     next(new OperationalError( `Can't find the url ${req.originalUrl} on this server!`, 404 )); 
 })
 
-app.use( errorMiddleware)
-
-const x = new RulesEngine(); 
-x.probeFact({
-    feedType:'VEGETARIANO'
-})
+app.use( errorMiddleware); 
 
 /* 
 

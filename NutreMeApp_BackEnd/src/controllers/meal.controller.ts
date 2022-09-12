@@ -1,6 +1,6 @@
 import { Console } from 'console';
 import { NextFunction, Request, Response} from 'express'; 
-import { OperationalError } from '../shared/error.interface';
+import { OperationalError } from '../shared/classes/error.interface';
 import { copyParamsAndDeleteEspecialOperations, processFilteredFields, processRequestPagination, processSortByFields, queryFieldsExistInModel, requestContainsParams } from '../utils/query-adaptation';
 import { fieldOfMealModel, MealModel} from './../models/meal.model'; 
 
@@ -66,10 +66,9 @@ export const getMealById = async (req: Request, res: Response, next: NextFunctio
 
 export const addNewMeal = async (req: Request, res:Response, next: NextFunction) => {
     try{
-        const alreadyExistWithThatName = false; 
         const meal = await MealModel.find({name: req.body.name}); 
         if(meal){
-            throw new OperationalError('No puede haber nombres duplicados', 400)
+            throw new OperationalError('No puede haber nombres de alimentos duplicados', 400)
         }
         const newMeal = await MealModel.create({
             ...req.body
