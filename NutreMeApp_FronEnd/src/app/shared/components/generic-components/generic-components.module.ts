@@ -16,9 +16,6 @@ import { ListMealItemComponent } from './bussiness-logic/list-meal-item/list-mea
 import { DaySelectorComponent } from './forms/day-selector/day-selector.component';
 import { CheckBoxComponent } from './forms/check-box/check-box.component';
 import { ScheduledMealItemComponent } from './bussiness-logic/scheduled-meal-item/scheduled-meal-item.component';
-import { ShortStringWithPipe } from '../../pipes/short-string-with.pipe';
-import { SharedModule } from '../../shared.module';
-
 
 const components = [
   DinamicSvgIconComponent,

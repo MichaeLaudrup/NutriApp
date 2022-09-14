@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NutritionTarget } from '@shared/enums';
-import { usersFacade } from '@shared/ngrx-shared';
-import { UserDataFacadeService } from 'src/app/shared/store-modules/ngrx-home';
+import { UserDataFacadeService } from 'src/app/store-modules/ngrx-home';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { Observable, Subject, take, takeUntil } from 'rxjs';
 import { UserInterfaceService } from '../core/services/user-interface.service';
 import { DeviceMode } from '@shared/enums';
 import { typeModalSpecialization } from '../shared/enums/type-modals.enum';
-import { sharedFacadeService } from '../shared/store-modules/ngrx-shared/+user-interface/user-interface.facade';
+import { sharedFacadeService } from '@ngrx/ngrx-shared';
 
 @Component({
   selector: 'app-nutri-home',

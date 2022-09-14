@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import {  FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 import { Aliment } from '@shared/models';
 import { Subject, takeUntil } from 'rxjs';
-import { MealSectionsFacade } from 'src/app/shared/store-modules/ngrx-meals-sections/+section_meals/section-meals.facade';
 import { ModalService } from '../../modal.service';
 
 

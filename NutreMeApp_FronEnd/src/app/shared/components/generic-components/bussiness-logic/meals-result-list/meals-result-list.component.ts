@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MealsFacade } from '@ngrx/ngrx-meals';
 import { Aliment } from '@shared/models';
-import { MealsFacade } from '@shared/ngrx-meals';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({

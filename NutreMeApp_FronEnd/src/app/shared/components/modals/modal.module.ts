@@ -6,7 +6,6 @@ import { MealFormComponent } from "./create-update-modal/meal-form/meal-form.com
 import { CreationOfSectionMealComponent } from "./create-update-modal/section-meal-form/section-meal-form.component";
 import { InfoModalComponent } from "./info-modal/info-modal.component";
 import { ModalComponent } from "./modal.component";
-import { ModalService } from "./modal.service";
 import { InfoActivatorComponent } from "./modalActivators/info-activator/info-activator.component";
 
 const components = [

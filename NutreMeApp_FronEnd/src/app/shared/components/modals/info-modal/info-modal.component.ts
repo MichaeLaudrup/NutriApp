@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InfoModalData } from '@shared/models';
 
-import { sharedFacadeService } from '@shared/ngrx-shared';
+import { sharedFacadeService } from '@ngrx/ngrx-shared';
 import { ModalComponent } from '../modal.component';
 
 @Component({

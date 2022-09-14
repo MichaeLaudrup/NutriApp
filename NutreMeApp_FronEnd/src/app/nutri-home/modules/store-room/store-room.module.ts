@@ -6,11 +6,11 @@ import { StoreLayoutComponent } from './store-layout/store-layout.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListMealsComponent } from './components/list-meals/list-meals.component';
 import { MealSectionsComponent } from './components/meal-sections/meal-sections.component';
-import {  NgrxMealsModule } from '@shared/ngrx-meals';
-import { NgRxMealsSectionModule } from 'src/app/shared/store-modules/ngrx-meals-sections/ngrx-meals-sections.module';
+import {  NgrxMealsModule } from '@ngrx/ngrx-meals';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { StoreRoomService } from './services/store-room.service';
+import { NgRxMealsSectionModule } from '@ngrx/ngrx-section-meals';
 
 
 @NgModule({

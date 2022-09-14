@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateUpdateModalData, deleteModalData, SectionMeal } from '@shared/models';
-import { sharedFacadeService } from '@shared/ngrx-shared';
+import { sharedFacadeService } from '@ngrx/ngrx-shared';
 import { Subject, takeUntil } from 'rxjs';
-import { MealSectionsFacade } from 'src/app/shared/store-modules/ngrx-meals-sections/+section_meals/section-meals.facade';
 import { typeModalSpecialization } from '@shared/enums';
 import { StoreRoomService } from '../../services/store-room.service';
+import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 @Component({
   selector: 'app-meal-sections',
   templateUrl: './meal-sections.component.html',

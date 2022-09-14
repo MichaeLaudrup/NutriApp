@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FisiologicData } from '@shared/models';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { UserDataFacadeService } from 'src/app/shared/store-modules/ngrx-home';
+import { UserDataFacadeService } from 'src/app/store-modules/ngrx-home';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({

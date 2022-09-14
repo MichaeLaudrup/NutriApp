@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {inputImgPaths } from '@shared/constants'; 
 import { Subject, takeUntil, timeout } from 'rxjs';
 import { SectionMeal } from '@shared/models';
-import { MealSectionsFacade } from 'src/app/shared/store-modules/ngrx-meals-sections/+section_meals/section-meals.facade';
 import { ModalService } from '../../modal.service';
+import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 @Component({
   selector: 'section-meal-form',
   templateUrl: './section-meal-form.component.html',

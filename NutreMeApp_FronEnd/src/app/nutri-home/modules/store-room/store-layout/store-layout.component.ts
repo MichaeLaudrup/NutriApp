@@ -1,8 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ChildrenOutletContexts, RouterOutlet } from '@angular/router';
-import { sharedFacadeService } from '@shared/ngrx-shared';
 import { Subject } from 'rxjs';
-import { StoreRouterAnimation } from '../animations';
 import { StoreRoomService } from '../services/store-room.service';
 
 

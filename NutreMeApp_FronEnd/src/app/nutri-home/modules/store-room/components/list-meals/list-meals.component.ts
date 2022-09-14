@@ -3,12 +3,12 @@ import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { typeModalSpecialization} from '@shared/enums';
 import { Aliment, createNewMealInSectionModalData, deleteModalData, ModalData, SectionMeal, updateMealInSectionModalData } from '@shared/models';
-import { sharedFacadeService } from '@shared/ngrx-shared';
+import { sharedFacadeService } from '@ngrx/ngrx-shared';
 import { Subject, takeUntil } from 'rxjs';
-import { MealSectionsFacade } from 'src/app/shared/store-modules/ngrx-meals-sections/+section_meals/section-meals.facade';
 import { StoreRoomService } from '../../services/store-room.service';
 
 import { getMealTag} from '@shared/enums';
+import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 @Component({
   selector: 'app-list-meals',
   templateUrl: './list-meals.component.html',

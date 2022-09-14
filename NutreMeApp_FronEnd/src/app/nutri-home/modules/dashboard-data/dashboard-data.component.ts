@@ -4,7 +4,7 @@ import { imcInfoData, kcalHistoryInfoData, mbaInfoData } from '@shared/data';
 import { Observable, Subject, takeUntil} from 'rxjs';
 import { NutritionTarget } from 'src/app/shared/enums/nutrition-target.enum';
 import { FisiologicData } from 'src/app/shared/models/fisiologicData.model';
-import { UserDataFacadeService } from 'src/app/shared/store-modules/ngrx-home';
+import { UserDataFacadeService } from 'src/app/store-modules/ngrx-home';
 
 
 

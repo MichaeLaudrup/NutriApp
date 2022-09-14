@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InfoModalData } from '@shared/models';
-import { sharedFacadeService } from '@shared/ngrx-shared';
+import { sharedFacadeService } from '@ngrx/ngrx-shared';
 @Component({
   selector: 'app-modal-info-activator',
   templateUrl: './info-activator.component.html',

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { usersFacade } from "@ngrx/ngrx-shared";
 import { map, Observable } from "rxjs";
-import { usersFacade } from "../../store-modules/ngrx-shared/+users/users.facade";
 import { environment } from "src/environments/environment";
 
 @Injectable()

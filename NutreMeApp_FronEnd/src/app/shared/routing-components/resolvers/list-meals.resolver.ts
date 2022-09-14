@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from "@angular/router";
+import { MealSectionsFacade } from "@ngrx/ngrx-section-meals";
 import { concatMap, Observable, take, of } from "rxjs";
 import { SectionMeal } from "../../models/section-meal.model";
-import { MealSectionsFacade } from "../../store-modules/ngrx-meals-sections/+section_meals/section-meals.facade";
 
 
 @Injectable()

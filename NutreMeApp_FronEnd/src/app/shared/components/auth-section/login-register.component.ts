@@ -5,7 +5,7 @@ import { UserInterfaceService } from '@core/services';
 import { Subject, take, takeUntil } from 'rxjs';
 import { DeviceMode } from '../../enums/device-mode.enum';
 import { User } from '../../models/user.model';
-import { usersFacade } from '@shared/ngrx-shared';
+import { usersFacade } from '@ngrx/ngrx-shared';
 import { messageAnimations } from './animations';
 
 @Component({

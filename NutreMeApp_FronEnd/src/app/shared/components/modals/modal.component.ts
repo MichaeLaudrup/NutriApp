@@ -1,14 +1,14 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
-import { sharedFacadeService } from "@shared/ngrx-shared";
 import { typeModalSpecialization } from "@shared/enums";
 import { createNewMealInSectionModalData, CreateUpdateModalData, deleteModalData, ModalDataTypes, updateMealInSectionModalData } from "../../models/modal.model";
 import { Subject, take, takeUntil } from "rxjs";
 import { enterAndLeaveModalAnimation, fromModalToFeedbackMood } from "./modal.animations";
 import { ModalService } from "./modal.service";
 import { SectionMeal } from "../../models/section-meal.model";
-import { MealSectionsFacade } from "../../store-modules/ngrx-meals-sections/+section_meals/section-meals.facade";
 import { Aliment } from "../../models/meal.model";
 import { UserInterfaceService } from "@core/services";
+import { sharedFacadeService } from "@ngrx/ngrx-shared";
+import { MealSectionsFacade } from "@ngrx/ngrx-section-meals";
 
 @Component({
     selector: 'modal',
