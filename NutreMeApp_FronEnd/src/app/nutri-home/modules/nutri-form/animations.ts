@@ -1,7 +1,7 @@
 import { query, transition, trigger, style, animate, group} from "@angular/animations";
 
 export const  sliderAnimations = [trigger('carrouselAnimation', [
-    transition('none => select-objective , none => fisiologic-data ,select-objective => fisiologic-data', [
+    transition('none => select-objective , none => fisiologic-data ,select-objective => fisiologic-data, fisiologic-data => feeding-type', [
         group([
             query(':enter', [
                 style({
@@ -31,7 +31,7 @@ export const  sliderAnimations = [trigger('carrouselAnimation', [
         ])
         
     ]),
-    transition('fisiologic-data => select-objective', [
+    transition('fisiologic-data => select-objective, feeding-type => fisiologic-data', [
         group([
             query(':enter', [
                 style({

@@ -46,7 +46,7 @@ export class FisiologicDataSheetComponent implements OnInit, OnDestroy{
   processData(): void {
     if(this.fisiologicForm.valid){
       this.userFacade.setFisiologicData( {...this.fisiologicForm.value});
-      this.router.navigate(['/nutriapp/nutri-data']); 
+      this.router.navigate(['/nutriapp/nutri-form/feeding-type']); 
     }
   }
 

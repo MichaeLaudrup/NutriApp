@@ -7,6 +7,7 @@ import { nutriFormLayout } from "./nutri-form-layout.component";
 import { formularioNutricionalRoutingModule } from "./nutri-form-routing.module";
 import { FisiologicDataSheetComponent } from './components/fisiologic-data-sheet/fisiologic-data-sheet.component';
 import { CarrouselService } from "./servicios/carrousel.service";
+import { SelectFeedingTypeComponent } from './components/select-feeding-type/select-feeding-type.component';
 
 const components = [ nutriFormLayout]; 
 
@@ -14,7 +15,8 @@ const components = [ nutriFormLayout];
     declarations: [
         components,
         FisiologicDataSheetComponent,
-        SelectObjectiveSheetComponent
+        SelectObjectiveSheetComponent,
+        SelectFeedingTypeComponent
     ],
     exports:[
         components

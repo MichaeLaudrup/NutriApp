@@ -8,7 +8,7 @@ import { UserDataFacadeService } from 'src/app/shared/store-modules/ngrx-home';
 @Component({
   selector: 'app-select-objective-sheet',
   templateUrl: './select-objective-sheet.component.html',
-  styleUrls: ['./select-objective-sheet.component.scss', '../../shared.style.scss'],
+  styleUrls: ['./../../shared/shared-nutri-form.styles.scss','./select-objective-sheet.component.scss', '../../shared.style.scss'],
 })
 export class SelectObjectiveSheetComponent implements OnInit, OnDestroy {
   NutritionTarget = NutritionTarget; 

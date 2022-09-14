@@ -17,7 +17,7 @@ type NewType = Subject<any>;
 })
 export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     actualPage = -1; 
-    routes = ['select-objective', 'fisiologic-data']; 
+    routes = ['select-objective', 'fisiologic-data', 'feeding-type']; 
     height = 0; 
     isInMobileMood = false; 
     private destroySuscriptions$: Subject<any> = new Subject<any>(); 
@@ -26,12 +26,7 @@ export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
         private carrouselService: CarrouselService,
         private changeDetector: ChangeDetectorRef,
         private router: Router,
-        private userInterfaceService: UserInterfaceService,
-        private activateRoute: ActivatedRoute,
-        private contexts: ChildrenOutletContexts){
-            
-        
-        
+        private userInterfaceService: UserInterfaceService){ 
     }
 
     ngOnInit(): void {

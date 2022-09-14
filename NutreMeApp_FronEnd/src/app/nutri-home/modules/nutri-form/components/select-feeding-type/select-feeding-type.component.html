@@ -1,0 +1,31 @@
+<div class="form">
+    <h2 class="objective-question">¿Qué tipo de alimentación llevas?</h2>
+    <button class="btn btn--objective" type="button" (click)="selectObjective(NutritionTarget.gainWeight)">
+        <span class="btn-icon">
+            <dinamic-svg-icon [svg-name]="'gain-weight'" svg-width="35px" svg-height="35px"></dinamic-svg-icon>
+        </span>
+        <div>
+            <span class="btn-title">Omnivoró</span>
+            <span class="btn-description">Consumes una dieta variada que incluye carnes</span>
+        </div>
+        
+    </button>
+    <button class="btn btn--objective" type="button" (click)="selectObjective(NutritionTarget.hypertrophy)">
+        <span class="btn-icon">
+            <dinamic-svg-icon [svg-name]="'muscle'" svg-width="35px" svg-height="35px"></dinamic-svg-icon>
+        </span>
+        <div>
+            <span class="btn-title">Vegatariano</span>
+            <span class="btn-description">Consumes una dieta que no incluye carnes</span>
+        </div>
+    </button>
+    <button class="btn btn--objective" type="button" (click)="selectObjective(NutritionTarget.maintainWeight)">
+        <span class="btn-icon">
+            <dinamic-svg-icon [svg-name]="'mantain-weight'" svg-width="35px" svg-height="35px"></dinamic-svg-icon>
+        </span>
+        <div>
+            <span class="btn-title">Vegano</span>
+            <span class="btn-description">No consumes ningún producto de origen animal</span>
+        </div>
+    </button>
+</div>
