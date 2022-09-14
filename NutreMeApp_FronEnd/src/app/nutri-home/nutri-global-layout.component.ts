@@ -1,5 +1,5 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, take, takeUntil } from 'rxjs';
+import { Component,OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { UserInterfaceService } from '../core/services/user-interface.service';
 import { DeviceMode } from '@shared/enums';
 import { typeModalSpecialization } from '../shared/enums/type-modals.enum';

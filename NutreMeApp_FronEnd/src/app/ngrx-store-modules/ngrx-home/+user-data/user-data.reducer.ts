@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { NutritionTarget } from 'src/app/shared/enums/nutrition-target.enum';
+import { FeedingType, NutritionTarget } from '@shared/enums';
 import { FisiologicData } from 'src/app/shared/models/fisiologicData.model';
 import * as SharedActions from './user-data.actions';
 
 export interface UserDataState {
     objetivo:NutritionTarget,
     datos_fisiologicos: FisiologicData,
+    feedingType: FeedingType
 }
 
 export const initialState: UserDataState = {
@@ -24,7 +25,8 @@ export const initialState: UserDataState = {
         diaryCarbohydrates: (1227.129 / 4),
         diaryFats: (787.436 / 9),
         diaryProtein: (419.98 / 4)
-    }
+    },
+    feedingType:  FeedingType.OMNIVORE
 
 }
 
@@ -50,7 +52,8 @@ export const userDataReducer = createReducer(initialState,
                 diaryCarbohydrates,
                 diaryProtein,
                 diaryFats}})
-    })
+    }),
+    on(SharedActions.postFeedingType, (state, {feedingType} ) => ({ ...state, feedingType}))
 );
 
 
@@ -68,7 +71,7 @@ const calcIMC = function ({altura, peso}: FisiologicData) : number {
     return ((peso) / (altura/100)**2); 
 }
 
-function calcMBAWithObjetive(mbaWithActivity: number, objetive: NutritionTarget) : number{
+function calcMBAWithObjetive(mbaWithActivity: number, objetive: NutritionTarget) : number {
     switch(objetive){
         case NutritionTarget.maintainWeight:
             return mbaWithActivity; 
@@ -83,10 +86,7 @@ function calcMBAWithObjetive(mbaWithActivity: number, objetive: NutritionTarget)
     }
 }
 
-function calcMacroNutriensDistribution(mbaWithActivityAndObjetive: number, objetivo: NutritionTarget): { diaryCarbohydrates: number; diaryProtein: number; diaryFats: number; } 
-{
-
-
+function calcMacroNutriensDistribution(mbaWithActivityAndObjetive: number, objetivo: NutritionTarget): { diaryCarbohydrates: number; diaryProtein: number; diaryFats: number; } {
     // 1.6 -2.5 gr de proteina por kg de peso
     // .5 - 1gr de grasa por kg de peso
     // El resto hidratos
@@ -94,7 +94,6 @@ function calcMacroNutriensDistribution(mbaWithActivityAndObjetive: number, objet
     /* let proteinsCal = (83*2)*4; 
     let fatCal = (83*1) * 9;
     let hidrates = mbaWithActivityAndObjetive - proteinsCal -fatCal;   */
-
     return {diaryCarbohydrates: (mbaWithActivityAndObjetive * .55) /4,
              diaryFats:  (mbaWithActivityAndObjetive * .25) / 9,
               diaryProtein: (mbaWithActivityAndObjetive * .20) / 4}; 

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserInterfaceService } from '@core/services';
+import { usersFacade } from '@ngrx/ngrx-shared';
 import { Subject, take, takeUntil } from 'rxjs';
 import { DeviceMode } from '../../enums/device-mode.enum';
 import { User } from '../../models/user.model';
-import { usersFacade } from '@ngrx/ngrx-shared';
 import { messageAnimations } from './animations';
 
 @Component({

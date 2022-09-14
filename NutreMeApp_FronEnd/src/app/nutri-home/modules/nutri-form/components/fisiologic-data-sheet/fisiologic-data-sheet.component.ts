@@ -3,13 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FisiologicData } from '@shared/models';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { UserDataFacadeService } from 'src/app/store-modules/ngrx-home';
+import { UserDataFacadeService } from '@ngrx/ngrx-home';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({
   selector: 'app-fisiologic-data-sheet',
   templateUrl: './fisiologic-data-sheet.component.html',
-  styleUrls: ['./fisiologic-data-sheet.component.scss', '../../shared.style.scss'],
+  styleUrls: ['./../../shared/shared-nutri-form.styles.scss','./fisiologic-data-sheet.component.scss', '../../shared.style.scss'],
 })
 export class FisiologicDataSheetComponent implements OnInit, OnDestroy{
   fisiologicForm: FormGroup;  

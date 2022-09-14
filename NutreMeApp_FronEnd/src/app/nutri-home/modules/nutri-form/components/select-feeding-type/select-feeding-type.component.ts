@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NutritionTarget } from '@shared/enums';
-import { UserDataFacadeService } from 'src/app/store-modules/ngrx-home';
+import { FeedingType} from '@shared/enums';
+import { UserDataFacadeService } from '@ngrx/ngrx-home';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({
@@ -10,18 +10,16 @@ import { CarrouselService } from '../../servicios/carrousel.service';
   styleUrls: ['./../../shared/shared-nutri-form.styles.scss','./select-feeding-type.component.scss']
 })
 export class SelectFeedingTypeComponent implements OnInit {
-  NutritionTarget = NutritionTarget;
+  FeedingType = FeedingType;
   constructor(
-    private carrouselService: CarrouselService, private userFacadeServices: UserDataFacadeService, private router: Router) {
+    private carrouselService: CarrouselService, private userDataFacadeServices: UserDataFacadeService, private router: Router) {
       setTimeout(() => this.carrouselService.setPage(2) , 0); 
     }
 
   ngOnInit(): void {
   }
-
-  selectObjective(target: NutritionTarget): void {
-    this.userFacadeServices.setObjective(target); 
-    this.router.navigate(['/nutriapp/nutri-form/fisiologic-data']); 
+  selectFeedingType(feedingType: FeedingType): void {
+    this.userDataFacadeServices.setFeedingType(feedingType)
+    this.router.navigate(['/nutriapp/nutri-data']); 
   }
-
 }

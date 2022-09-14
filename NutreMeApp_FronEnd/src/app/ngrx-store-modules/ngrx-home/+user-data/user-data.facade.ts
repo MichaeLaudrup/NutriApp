@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { UserDataState } from "./user-data.reducer";
 import * as USER_DATA_SELECTOR from './user-data.selectors'; 
 import * as USER_DATA_ACTIONS from './user-data.actions'; 
-import { NutritionTarget } from "@shared/enums";
+import { FeedingType, NutritionTarget } from "@shared/enums";
 @Injectable()
 export class UserDataFacadeService {
     constructor( private store: Store<UserDataState>) {
@@ -25,6 +25,10 @@ export class UserDataFacadeService {
 
     public setObjective(objetivo: NutritionTarget){
         this.store.dispatch(USER_DATA_ACTIONS.setTarget({objetivo})); 
+    }
+
+    public setFeedingType(feedingType: FeedingType){
+        this.store.dispatch(USER_DATA_ACTIONS.postFeedingType({feedingType})); 
     }
 
 

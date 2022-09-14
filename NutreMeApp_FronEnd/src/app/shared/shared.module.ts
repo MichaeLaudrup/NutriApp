@@ -13,9 +13,8 @@ import { AsideBarMenuComponent } from './components/asidebar-menu/asidebar-menu.
 import { RouterModule } from '@angular/router';
 import { GetRoutePipe } from './pipes/get-route.pipe';
 import { LoginRegisterComponent } from './components/auth-section/login-register.component';
-import { NgRxSharedModule } from '../store-modules/ngrx-shared/ngrx-shared.module';
-import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
-import { usersFacade } from '@ngrx/ngrx-shared';
+import { MealSectionsFacade } from '../ngrx-store-modules/ngrx-meals-sections';
+import { NgRxSharedModule, usersFacade } from '../ngrx-store-modules/ngrx-shared';
 
 
 const components = [
