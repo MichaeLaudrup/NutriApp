@@ -1,5 +1,5 @@
 import mongoose from "mongoose"; 
-import * as NutritionCalculatorService from "./../services/nutri-calculator.service";
+import * as NutritionCalculatorService from "../services/nutri-calculator.service";
 
 const schemaOptions = {
     toJSON: {

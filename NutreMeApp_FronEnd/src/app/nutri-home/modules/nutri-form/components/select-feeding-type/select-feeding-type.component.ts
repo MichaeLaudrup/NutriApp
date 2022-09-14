@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FeedingType} from '@shared/enums';
-import { UserDataFacadeService } from '@ngrx/ngrx-home';
+import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class SelectFeedingTypeComponent implements OnInit {
   ngOnInit(): void {
   }
   selectFeedingType(feedingType: FeedingType): void {
-    this.userDataFacadeServices.setFeedingType(feedingType)
+    this.userDataFacadeServices.setFeedingType(feedingType);
+    this.carrouselService.uploadDataToServerTrigger(); 
     this.router.navigate(['/nutriapp/nutri-data']); 
   }
 }

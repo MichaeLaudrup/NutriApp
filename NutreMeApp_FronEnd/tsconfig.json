@@ -14,7 +14,6 @@
       "@ngrx/ngrx-section-meals": ["src/app/ngrx-store-modules/ngrx-meals-sections"],
       "@ngrx/ngrx-shared": ["src/app/ngrx-store-modules/ngrx-shared"],
       "@ngrx/ngrx-user": ["src/app/ngrx-store-modules/ngrx-user"],
-      "@ngrx/ngrx-home": ["src/app/ngrx-store-modules/ngrx-home"],
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

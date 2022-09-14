@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import { NextFunction, Request, Response} from 'express'; 
 import { OperationalError } from '../shared/classes/error.interface';
 import { copyParamsAndDeleteEspecialOperations, processFilteredFields, processRequestPagination, processSortByFields, queryFieldsExistInModel, requestContainsParams } from '../utils/query-adaptation';
@@ -111,18 +110,7 @@ export const deleteMeal = async(req: Request, res:Response, next: NextFunction) 
 
 export const getMealStats = async(req: Request, res:Response, next: NextFunction) => {
     try{
-        const result = await MealModel.aggregate([
-            {"$group": {"_id": "$name", "count": {"$sum":"1"}}},
-            {"$match": {"_id" :{ "$ne" : null } , "count" : {"$gt": 1} } }, 
-    {"$project": {"name" : "$_id", "_id" : 0} }
-        ])
-        console.log(result)
-        result.forEach((item) => {
-            if(item.count === 1){
-                console.log(item._id)
-            }
-        })
-
+        const result = {}
         return res.status(204).json(result)
     }catch (err) {
         next(err); 

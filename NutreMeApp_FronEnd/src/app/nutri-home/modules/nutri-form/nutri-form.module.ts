@@ -8,6 +8,7 @@ import { formularioNutricionalRoutingModule } from "./nutri-form-routing.module"
 import { FisiologicDataSheetComponent } from './components/fisiologic-data-sheet/fisiologic-data-sheet.component';
 import { CarrouselService } from "./servicios/carrousel.service";
 import { SelectFeedingTypeComponent } from './components/select-feeding-type/select-feeding-type.component';
+import { UserDataFacadeService } from "@ngrx/ngrx-shared";
 
 const components = [ nutriFormLayout]; 
 
@@ -27,7 +28,7 @@ const components = [ nutriFormLayout];
         ReactiveFormsModule,
         SharedModule
     ],
-    providers: [ CarrouselService],
+    providers: [ CarrouselService, UserDataFacadeService],
 })
 export class FormularioNutricionalModule {
     

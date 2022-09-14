@@ -1,9 +1,9 @@
 import { AfterContentChecked, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FisiologicData } from '@shared/models';
+import { FisiologicData, UserData} from '@shared/models';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { UserDataFacadeService } from '@ngrx/ngrx-home';
+import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { CarrouselService } from '../../servicios/carrousel.service';
 })
 export class FisiologicDataSheetComponent implements OnInit, OnDestroy{
   fisiologicForm: FormGroup;  
-  fisiologicData$: Observable<FisiologicData>; 
+  fisiologicData$: Observable<UserData>; 
 
   private destroySuscriptions$: Subject<any> = new Subject(); 
 

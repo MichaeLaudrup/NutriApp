@@ -10,7 +10,6 @@ export class RulesEngine {
 
     probeFact( fact: any){
         this.engine.run(fact).then( (event:any) => {
-            console.log(event)
         })
     }
 }

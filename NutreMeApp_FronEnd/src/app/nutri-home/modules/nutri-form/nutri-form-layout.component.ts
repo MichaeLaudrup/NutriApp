@@ -1,7 +1,10 @@
 
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
-import {  NavigationEnd ,Router, Event, ActivatedRoute, NavigationStart, ChildrenOutletContexts, RouterOutlet } from "@angular/router";
+import {  Router, RouterOutlet } from "@angular/router";
+import { UserDataFacadeService, usersFacade } from "@ngrx/ngrx-shared";
 import { DeviceMode } from "@shared/enums";
+import { UserData } from "@shared/models";
+import { take } from "rxjs";
 import { Subject, takeUntil } from "rxjs";
 import { UserInterfaceService } from "src/app/core/services/user-interface.service";
 import { sliderAnimations } from "./animations";
@@ -22,17 +25,27 @@ export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     isInMobileMood = false; 
     private destroySuscriptions$: Subject<any> = new Subject<any>(); 
     currentRoute: string = 'none';
+    userData: UserData; 
     constructor(
         private carrouselService: CarrouselService,
         private changeDetector: ChangeDetectorRef,
         private router: Router,
-        private userInterfaceService: UserInterfaceService){ 
+        private userInterfaceService: UserInterfaceService,
+        private userProfileFacadeService: usersFacade,
+        private userDataFacadeService: UserDataFacadeService){ 
     }
 
     ngOnInit(): void {
         this.carrouselService.actualPage$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( (actualPage) => {
             this.actualPage = actualPage; 
-        });  
+        }); 
+        
+        this.carrouselService.uploadDataToServerListener$.pipe(takeUntil(this.destroySuscriptions$)).subscribe((mustUpload) => {
+            if(mustUpload){
+                this.carrouselService.resetUploadToServer(); 
+                this.uploadFormDataToServer(); 
+            }
+        })
         this.userInterfaceService.actualHeight$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( actualHeight => {
             this.height = actualHeight; 
         });
@@ -41,6 +54,10 @@ export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
             if(deviceMode === DeviceMode.Small){
                 this.isInMobileMood = true; 
             } 
+        });
+
+        this.userDataFacadeService.userData$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( userData => {
+            this.userData = userData; 
         })
     }
 
@@ -67,5 +84,11 @@ export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
 
     processOutlet(event: any, outlet: RouterOutlet){
         this.currentRoute = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']; 
+    }
+
+    uploadFormDataToServer(){
+        this.userProfileFacadeService.$user.pipe( take(1)).subscribe(user => {
+            this.userDataFacadeService.uploadToServerUserData('631b2304df093a140ac6730f', this.userData); 
+        })
     }
 }

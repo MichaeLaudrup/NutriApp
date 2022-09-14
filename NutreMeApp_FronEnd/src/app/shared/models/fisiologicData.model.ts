@@ -1,15 +1,24 @@
-export class FisiologicData {
-    constructor(public altura: number,
-                public peso: number,
-                public edad: number,
-                public genero: string, 
-                public nivel_actividad: number,
-                public mba?: number,
-                public mbaWithActivity?:number,
-                public imc?: number,
-                public mbaWithActivityAndObjetive?: number,
-                public diaryWater?: number,
-                public diaryCarbohydrates?: number,
-                public diaryProtein?: number,
-                public diaryFats?:number ){}
+import { FeedingType } from "../enums/feeding-type.enum";
+import { NutritionTarget } from "../enums/nutrition-target.enum";
+
+
+export interface FisiologicData {
+    height: number,
+    weight: number,
+    age: number,
+    gender: string, 
+    activityIntesity: number,
+    mba?: number,          
+    mbaWithActivity?:number,
+    imc?: number,
+    mbaWithActivityAndObjetive?: number,           
+    diaryWater?: number
 }
+
+export class UserData{
+    constructor(public fisiologicData: FisiologicData,
+                public nutritionalTarget: NutritionTarget,
+                public feedingType: FeedingType, 
+                 ){}
+}
+

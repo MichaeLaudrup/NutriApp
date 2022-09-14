@@ -10,6 +10,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { BasicLineChartComponent } from './components/basic-line-chart/basic-line-chart.component';
 import { MbaChartComponent } from './components/mba-chart/mba-chart.component';
 import { ImcChartComponent } from './components/imc-chart/imc-chart.component';
+import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 
 const components = [DashboardDataComponent,  MacronutrientsChartComponent, BasicLineChartComponent, MbaChartComponent, ImcChartComponent,]
 
@@ -25,7 +26,8 @@ const components = [DashboardDataComponent,  MacronutrientsChartComponent, Basic
     HighchartsChartModule
 
   ],
-  exports: [components]
+  exports: [components],
+  providers: [UserDataFacadeService]
 })
 export class DashboardDataModule { 
 

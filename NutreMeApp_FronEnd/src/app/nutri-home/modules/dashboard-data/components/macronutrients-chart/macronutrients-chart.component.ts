@@ -9,9 +9,9 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./macronutrients-chart.component.scss']
 })
 export class MacronutrientsChartComponent implements OnInit, OnDestroy {
-    @Input('carbo-hydrates') carbohydrates: number = 0; 
-    @Input('proteins') proteins: number = 0; 
-    @Input('fats') fats: number = 0; 
+    @Input('carbo-hydrates') carbohydrates: number = 100; 
+    @Input('proteins') proteins: number = 80; 
+    @Input('fats') fats: number = 20; 
     
     deviceMode: DeviceMode; 
     chartOptions = {}; 

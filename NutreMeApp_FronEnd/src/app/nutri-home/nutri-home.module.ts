@@ -8,7 +8,6 @@ import { NutriHomeRoutingModule } from './nutri-home-routing.module';
 import { NutriGlobalLayoutComponent } from './nutri-global-layout.component';
 import { userLogedGuard } from '../shared/routing-components/guards/auth.guard';
 import { sharedFacadeService } from '@ngrx/ngrx-shared';
-import { NgRxHomeModule } from '@ngrx/ngrx-home';
 
 
 
@@ -20,7 +19,6 @@ import { NgRxHomeModule } from '@ngrx/ngrx-home';
     CommonModule,
     SharedModule,
     NutriHomeRoutingModule,
-    NgRxHomeModule
   ],
   providers: [
     sharedFacadeService,

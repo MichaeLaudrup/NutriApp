@@ -29,7 +29,6 @@ const getAllMeals = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             /* Adaptacion de la consulta para casos en lo que se filtre con "mayor, mayor igual, menor o menor igual" */
             queryStr = JSON.stringify(req.query);
             queryStr = queryStr.replace(/\b(gte|gt|lte|lt|regex)\b/g, match => (match === 'regex') ? `$options":"i","$${match}` : `$${match}`);
-            console.log(queryStr);
         }
         let query = meal_model_1.MealModel.find((queryStr !== undefined) ? (Object.assign(Object.assign({}, JSON.parse(queryStr)), { $options: "i" })) : Object.assign({}, queryParams));
         /* En caso de que la query tenga ordenacion pues pa lante */

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const signToken = (userId:any) => {
     return jwt.sign({id:userId}, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN
+        expiresIn: process.env.JWT_EXPIRES_IN
 }); }
 
 
@@ -20,15 +20,15 @@ export const singup = async (req: Request, res: Response, next: NextFunction) =>
             passwordChangedAt: req.body.passwordChangedAt,
             role: req.body.role
         }); 
-
+        
         const token = signToken(newUser._id)
-
         res.status(201).json({
             status: 'success',
             data: {
                 user: {
                     name: newUser.name,
-                    email: newUser.email
+                    email: newUser.email,
+                    id: newUser.id
                 },
                 token
             }
@@ -59,7 +59,8 @@ export const logIn = async(req: Request, res:Response, next: NextFunction) => {
             data: {
                 user: {
                     name:user.name,
-                    email: user.email
+                    email: user.email,
+                    id: user._id
                 },
                 token
             }

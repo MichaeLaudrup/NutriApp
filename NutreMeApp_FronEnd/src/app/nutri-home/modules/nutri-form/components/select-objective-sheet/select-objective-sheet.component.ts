@@ -4,7 +4,7 @@ import { Subject} from 'rxjs';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 import { NutritionTarget } from '@shared/enums';
-import { UserDataFacadeService } from '@ngrx/ngrx-home';
+import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 @Component({
   selector: 'app-select-objective-sheet',
   templateUrl: './select-objective-sheet.component.html',
