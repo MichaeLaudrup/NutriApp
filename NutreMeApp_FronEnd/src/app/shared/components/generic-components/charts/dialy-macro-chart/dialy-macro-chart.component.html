@@ -1,0 +1,14 @@
+
+
+<div class="daily-macro-chart__container">
+    <h3 class="date-title">27 de febrero de 2022</h3>
+    <div class="radial-chart">
+        <radial-chart [value]="150" [limit]="300" [label]="'Calorías restantes'" [units]="' de 1500 Kcal'"></radial-chart>
+    </div>
+    <div class="macro-data">
+        <progress-bar label="Hidratos" [progressValue]="100" [maxValue]="250" [withLabel]="true" [units]="'de 250 gr'"></progress-bar>
+        <progress-bar [progressValue]="50" [maxValue]="100" [withLabel]="true" [units]="'de 100 gr'"></progress-bar>
+        <progress-bar label="Grasas"[progressValue]="30" [maxValue]="70" [withLabel]="true" [units]="'de 50 gr'"></progress-bar>
+    </div>
+</div>
+

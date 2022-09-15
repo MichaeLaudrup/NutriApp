@@ -18,6 +18,7 @@ import { CheckBoxComponent } from './forms/check-box/check-box.component';
 import { ScheduledMealItemComponent } from './bussiness-logic/scheduled-meal-item/scheduled-meal-item.component';
 import { ProgressBarComponent } from './charts/progress-bar/progress-bar.component';
 import { ChangeCssVariableValueDirective } from '../../directives/change-css-variable-value.directive';
+import { DialyMacroChartComponent } from './charts/dialy-macro-chart/dialy-macro-chart.component';
 
 const components = [
   DinamicSvgIconComponent,
@@ -36,7 +37,8 @@ const components = [
   CheckBoxComponent, 
   ScheduledMealItemComponent,
   ProgressBarComponent,
-  ChangeCssVariableValueDirective
+  ChangeCssVariableValueDirective,
+  DialyMacroChartComponent
 ]
 @NgModule({
   declarations: [...components],

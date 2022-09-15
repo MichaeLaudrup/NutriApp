@@ -2,6 +2,9 @@
 <div class="diet-container">
 
     <day-selector [form-group]="dailyNutritionalAnalisysForm" control-name="date"></day-selector>
+    <div class="daily-macro-container">
+        <dialy-macro-chart></dialy-macro-chart>
+    </div>
     <div class="scheduled-meals-list" >
         <scheduled-meals *ngFor="let scheduledMeal of scheduledMeals; let i = index" [scheduled-title]="scheduledMeal" [index]="i"></scheduled-meals>
     </div>

@@ -6,12 +6,20 @@
 
 .diet-container{
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+
+.daily-macro-container{
+    background-color: var(--elements-bg-primary);
+    border-radius: var(--global-border-radius);
+    padding: 1rem 0rem; 
 }
 
 .scheduled-meals-list{
     display: grid;
     grid-template-columns: 1fr;
-    padding-top: 2rem;
     row-gap: 1.5rem;
 }
 

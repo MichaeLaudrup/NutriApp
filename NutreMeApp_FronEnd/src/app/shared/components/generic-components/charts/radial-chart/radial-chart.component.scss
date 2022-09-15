@@ -14,18 +14,17 @@
     top: 0; 
     left: 0; 
     border-radius: 50%;
-    background-color: var(--elements-bg-secondary);
 }
 
 .inner-circle {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     position: absolute;
     top: calc( 50% ); 
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: var(--elements-bg-primary); 
+    background-color: var(--elements-bg-secondary); 
 }
 
 .data {
@@ -38,6 +37,7 @@
 
 .label{
     font-size:.6rem; 
+    
 }
 
 

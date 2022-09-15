@@ -10,17 +10,19 @@ export class RadialChartComponent implements OnInit, OnDestroy{
   @ViewChild('container', {static:true}) container: ElementRef<HTMLDivElement>; 
   height: number = 0;  
   @Input() value; 
+  @Input() limit = 75; 
   @Input() label = 'Carbohidratos'
   @Input() units = 'gr';
   @Input() firstColor = 'var(--c2)'; 
   @Input() secondColor = 'var(--c5)'; 
+  @Input() bcColor = 'var(--elements-bg-primary)'
   actualDegree = 50; 
   private destroySuscriptions$: Subject<any> = new Subject()
   
   constructor() { }
 
   ngOnInit(): void {
-    this.actualDegree= (+this.value * 360 / 75);
+    this.actualDegree= (+this.value * 360 / this.limit);
     this.height = this.container.nativeElement.offsetWidth; 
   }
   ngOnDestroy(): void {

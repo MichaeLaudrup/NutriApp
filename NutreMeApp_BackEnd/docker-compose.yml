@@ -21,8 +21,9 @@ services:
       - "27017:27017"
     volumes:
       - ./data:/data/db
+    command: mongod --quiet --logpath /dev/null 
     logging:
-      driver: none
+      driver: "none"
 
   #mongo-express:
     #container_name: mongo-express

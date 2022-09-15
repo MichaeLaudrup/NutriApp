@@ -6,9 +6,10 @@
   position: relative;
   .progress-label{
     display: flex;
-    padding: .5rem; 
-    justify-content: flex-end;
+    padding: .25rem; 
+    justify-content: space-between;
     position: relative;
+    font-size: .75rem;
   }
 }
 
@@ -53,7 +54,6 @@
   animation: progressAnimation 1s 1s;
   animation-fill-mode: backwards;
 }
-
 
 
   

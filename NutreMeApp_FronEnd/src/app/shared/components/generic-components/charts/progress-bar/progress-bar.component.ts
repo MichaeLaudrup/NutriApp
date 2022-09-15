@@ -9,6 +9,8 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   @Input() progressValue = 50;
   @Input() maxValue = 100;  
   @Input() withLabel = false; 
+  @Input() label = 'Proteinas';
+  @Input() units = '%'
 
   displayValue: number; 
   @HostBinding('style.--actual-value') actualValue = '60%'; 
