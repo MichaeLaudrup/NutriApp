@@ -6,7 +6,7 @@ import { FisiologicData, UserData} from 'src/app/shared/models/fisiologicData.mo
 /* Se crea la accion de insertar un objetivo a traves del formulario al estado global */
 export const setTarget = createAction(
   '[Shared] Introducir objetivo',
-  props<{ objetivo: NutritionTarget }>()
+  props<{ nutritionalTarget: NutritionTarget }>()
 );
 
 export const putFisiologicData= createAction(

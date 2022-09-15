@@ -27,8 +27,8 @@ export class UserDataFacadeService {
         this.store.dispatch(USER_DATA_ACTIONS.putFisiologicData({fisiologicData: newFisiologicData})); 
     }
 
-    public setObjective(objetivo: NutritionTarget){
-        this.store.dispatch(USER_DATA_ACTIONS.setTarget({objetivo})); 
+    public setObjective(nutritionalTarget: NutritionTarget){
+        this.store.dispatch(USER_DATA_ACTIONS.setTarget({nutritionalTarget})); 
     }
 
     public setFeedingType(feedingType: FeedingType){

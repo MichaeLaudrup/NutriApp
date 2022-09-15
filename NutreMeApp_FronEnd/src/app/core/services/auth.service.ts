@@ -20,5 +20,10 @@ export class authService  {
         return this.http.post<Jsend>(`${environment.apiUrlBase}/users/login`, {...newUser}).pipe( map( signUpResponde => signUpResponde.data.user))
     }
 
+    public getUser() : Observable<User>{
+        return this.http.get<{ status: string, data: {user: User}}>(`${environment.apiUrlBase}/users/get-user`).pipe(map( jsendResponse => jsendResponse.data.user))
+    }
+
+
 
 }

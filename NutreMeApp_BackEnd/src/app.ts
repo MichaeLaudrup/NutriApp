@@ -3,7 +3,6 @@ import { errorMiddleware } from './middleware/error.middleware';
 import mealsRouter from './routes/meals.routes'; 
 import userRouter from './routes/users.routes'; 
 import userDataRouter from './routes/user-data.routes'; 
-import RulesEngine from './services/rules-engine/rules-engine.service';
 import { OperationalError } from './shared/classes/error.interface';
 require('./utils/error-handlers'); 
 const cors = require('cors'); 
@@ -13,7 +12,14 @@ require('./database');
 
 
 const app : Application = express();
-app.use(cors()); 
+
+const whiteList = [
+    'http://localhost:4200',
+]; 
+app.use(cors({
+    origin: whiteList
+})); 
+
 const port = process.env.SERVER_PORT_NUMBER || 5000; 
 
 app.use(express.json()); 

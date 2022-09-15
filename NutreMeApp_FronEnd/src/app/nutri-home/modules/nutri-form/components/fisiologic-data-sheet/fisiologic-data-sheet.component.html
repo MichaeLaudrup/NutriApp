@@ -4,7 +4,7 @@
             [minValue]="100"
             [maxValue]="220"
             textLabel="Altura"
-            controlName="altura"
+            controlName="height"
             [form-group]="fisiologicForm"
             [stepPrecision]="1"
             units="cm"
@@ -17,7 +17,7 @@
             [minValue]="30"
             [maxValue]="150"
             textLabel="Peso"
-            controlName="peso"
+            controlName="weight"
             [form-group]="fisiologicForm"
             [stepPrecision]="1"
             units="kg"
@@ -30,7 +30,7 @@
             [minValue]="18"
             [maxValue]="110"
             textLabel="Edad"
-            controlName="edad"
+            controlName="age"
             [form-group]="fisiologicForm"
             [stepPrecision]="1"
             units="años"
@@ -41,7 +41,7 @@
 
     <div class="form__row">
         <label class="selector-label" for="gemero">Genero</label>
-        <select name="genero" id="genero" formControlName="genero">
+        <select name="genero" id="genero" formControlName="gender">
             <option value="Hombre" name="genero">Hombre</option>
             <option value="Mujer" name="genero">Mujer</option>
         </select>
@@ -49,7 +49,7 @@
 
     <div class="form__row">
         <label for="actividad" class="selector-label">Actividad</label>
-        <select id="actividad" size="1" name="actividad" formControlName="nivel_actividad"> 
+        <select id="actividad" size="1" name="actividad" formControlName="activityIntesity"> 
             <option selected="true" value="1.2">Sedentario</option> 
             <option value="1.375">Actividad ligera</option> 
             <option value="1.55">Actividad moderada</option> 

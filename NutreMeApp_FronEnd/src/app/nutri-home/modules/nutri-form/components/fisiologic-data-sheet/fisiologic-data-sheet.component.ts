@@ -23,11 +23,11 @@ export class FisiologicDataSheetComponent implements OnInit, OnDestroy{
       private router: Router) {
 
     this.fisiologicForm = new FormGroup({
-      altura: new FormControl(150, Validators.required),
-      peso: new FormControl(60, Validators.required),
-      edad: new FormControl(25, Validators.required),
-      genero: new FormControl('Hombre', Validators.required),
-      nivel_actividad: new FormControl(1.2 ,Validators.required)
+      height: new FormControl(150, Validators.required),
+      weight: new FormControl(60, Validators.required),
+      age: new FormControl(25, Validators.required),
+      gender: new FormControl('Hombre', Validators.required),
+      activityIntesity: new FormControl(1.2 ,Validators.required)
     })
   }
 

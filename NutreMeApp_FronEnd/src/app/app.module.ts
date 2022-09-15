@@ -12,7 +12,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JWTInterceptor } from './shared/routing-components/interceptors/jwt.interceptor';
-import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent
@@ -37,8 +36,7 @@ import { CookieService } from 'ngx-cookie-service';
       provide: HTTP_INTERCEPTORS, 
       useClass: JWTInterceptor, 
       multi: true,
-    },
-    CookieService
+    }
   ],
   bootstrap: [AppComponent]
 })

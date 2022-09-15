@@ -1,20 +1,17 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { CookieService } from "ngx-cookie-service";
 import { Observable, tap } from "rxjs";
 
 @Injectable()
 export class JWTInterceptor implements HttpInterceptor {
-    constructor(private cookieService: CookieService){
+    constructor(){
 
     }
-
-
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-        if(this.cookieService.get('JWTtoken')){
+        if(sessionStorage.getItem('JWTtoken') ){
             req = req.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${this.cookieService.get('JWTtoken')}`
+                    Authorization: `Bearer ${sessionStorage.getItem('JWTtoken')}`
                 }
             })
         }
@@ -22,7 +19,7 @@ export class JWTInterceptor implements HttpInterceptor {
             if(evt instanceof HttpResponse){
                 if(evt.body && evt.body['status'] && evt.body['status'] === 'success'){
                     if(evt.body.data.token){
-                        this.cookieService.set('JWTtoken', evt.body.data['token'])
+                        sessionStorage.setItem('JWTtoken', evt.body.data['token'])
                     }
                 }
             }

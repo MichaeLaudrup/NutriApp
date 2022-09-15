@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-imc-chart',
+  selector: 'imc-chart',
   templateUrl: './imc-chart.component.html',
   styleUrls: ['./imc-chart.component.scss']
 })

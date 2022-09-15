@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User, UserData } from "@shared/models";
 import { map, Observable } from "rxjs";
+import { userDataFromBackToFront } from "src/app/shared/utils/back-to-front-convertions.utils";
 import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root'})
@@ -13,9 +14,9 @@ export class UserDataService {
      * @param userData Informacion fisiologica del usuario
      */
     postUserData( userId: string, userData: UserData): Observable<UserData>{
-        return this.http.post<{status: string, data: {newUserData: any}}>(`${environment.apiUrlBase}/user-data`, { userId, userData})
+        return this.http.post<{status: string, data: {userData: any}}>(`${environment.apiUrlBase}/user-data`, { userId, userData})
             .pipe( map(jsendResponse => { 
-                const data = jsendResponse.data.newUserData; 
+                const data = jsendResponse.data.userData; 
                 const userDataParse: UserData = {
                     feedingType : data.feedingType,
                     nutritionalTarget: data.nutritionalTarget,
@@ -38,5 +39,11 @@ export class UserDataService {
 
     updateUserData(userId: string, userDataUpdate: UserData){
 
+    }
+
+    getUserData(): Observable<UserData>{
+        return this.http.get<{status:string, data: {userData: any}}>(`${environment.apiUrlBase}/user-data`).pipe( map( jsendResponse => {
+            return userDataFromBackToFront(jsendResponse.data.userData); 
+        }))
     }
 }

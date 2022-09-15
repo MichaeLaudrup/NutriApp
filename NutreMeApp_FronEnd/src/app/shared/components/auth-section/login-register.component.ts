@@ -40,7 +40,7 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.clear();
+    sessionStorage.clear(); 
     this.uiService.deviceMode$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( (device: DeviceMode) => {
       this.smallMode = device === DeviceMode.Small || device === DeviceMode.ExtraSmall || device === DeviceMode.NoSupport; 
     })

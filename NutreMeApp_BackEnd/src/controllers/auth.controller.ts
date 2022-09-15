@@ -73,6 +73,23 @@ export const logIn = async(req: Request, res:Response, next: NextFunction) => {
     }
 }
 
+export const getUser = async(req: Request, res:Response, next: NextFunction) => {
+    try{
+        res.status(201).json({
+            status: 'success',
+            data: {
+                user: {
+                    id: req.body.user.id,
+                    name: req.body.user.name,
+                    email: req.body.user.email
+                }
+            }
+        })
+    }catch (err) {
+        next(err)
+    }
+}
+
 export const forgotPassword = async(req: Request, res:Response, next: NextFunction) => {
     try{
         const user : any = await UserModel.findOne({ email: req.body.email})

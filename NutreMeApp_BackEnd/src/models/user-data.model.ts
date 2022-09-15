@@ -8,6 +8,12 @@ const schemaOptions = {
 }
 
 const UserDataSchema = new mongoose.Schema({
+    userProfile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        require: [true, 'Los datos de usuario deben pertenecer a algun usuario creado previamente'],
+        unique: true
+    },
     nutritionalTarget: {
         type: String,
         enum: ['SUBIR_PESO', 'BAJAR_PESO', 'MANTENER_PESO', 'DEFINIR', 'GANAR_MASA_MUSCULAR'],

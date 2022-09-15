@@ -6,28 +6,61 @@ import { OperationalError } from "../shared/classes/error.interface";
 
 export const newUserData = async(req: Request, res:Response, next: NextFunction) => {
     try{
-        const userProfile = await UserModel.find({_id:req.body.userId});
+        const userId = req.body.user.id; 
+        const userProfile = await UserModel.find({_id:userId});
         if(userProfile){
-            const userData = req.body.userData; 
-            const newUserData = await UserDataModel.create({
-                nutritionalTarget: userData.nutritionalTarget,
-                age: userData.fisiologicData.age,
-                weight: userData.fisiologicData.weight,
-                height: userData.fisiologicData.height,
-                feedingType: userData.feedingType,
-                gender: userData.fisiologicData.gender, 
-                activityIntesity: userData.fisiologicData.activityIntesity,
-            });
+            const userDataFromFront = req.body.userData; 
+            const userDataExistOnMongo = await UserDataModel.findOne({ userProfile: userId})
+            let userData; 
+            if(!userDataExistOnMongo){
+                userData = await UserDataModel.create({
+                    userProfile: userId,
+                    nutritionalTarget: userDataFromFront.nutritionalTarget,
+                    age: userDataFromFront.fisiologicData.age,
+                    weight: userDataFromFront.fisiologicData.weight,
+                    height: userDataFromFront.fisiologicData.height,
+                    feedingType: userDataFromFront.feedingType,
+                    gender: userDataFromFront.fisiologicData.gender, 
+                    activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
+                });
+            }else{
+                userData = await UserDataModel.findByIdAndUpdate(userDataExistOnMongo._id, {
+                    nutritionalTarget: userDataFromFront.nutritionalTarget,
+                    age: userDataFromFront.fisiologicData.age,
+                    weight: userDataFromFront.fisiologicData.weight,
+                    height: userDataFromFront.fisiologicData.height,
+                    feedingType: userDataFromFront.feedingType,
+                    gender: userDataFromFront.fisiologicData.gender, 
+                    activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
+                },{ 
+                    new: true, //return de "new" document
+                    runValidators: true,
+                })
+            }
             res.status(201).json({
                 status: 'success',
                 data: {
-                    newUserData
+                    userData
                 }
             })
         }else{
             throw new OperationalError('El identificador de usuario proporcionado no existe')
         }
         
+    }catch (err) {
+        next(err)
+    }
+}
+
+export const getUserData = async(req: Request, res:Response, next: NextFunction) => {
+    try{
+        const userData = await UserDataModel.findOne(req.body.user._id);
+        res.status(201).json({
+            status: 'success',
+            data: {
+                userData
+            }
+        })
     }catch (err) {
         next(err)
     }

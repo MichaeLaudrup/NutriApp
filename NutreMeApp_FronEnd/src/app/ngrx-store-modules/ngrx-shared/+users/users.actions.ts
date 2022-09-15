@@ -9,6 +9,7 @@ export const signUpSuccess = createAction(
     props<{user:User}>())
 export const signUpFailure = createAction('[Shared/users] SignUp User Failure', );
 
+export const setUser = createAction('[Shared/users] Setting a User', props<{user: User}>())
 export const logIn = createAction('[Shared/users] Login User', props<{user:User}>())
 export const logInSuccess = createAction('[Shared/users] login User success', props<{user:User}>())
 export const logInFailure= createAction('[Shared/users] login User failure');

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-gauge',
@@ -11,7 +11,6 @@ export class GaugeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
     this.rotation = `rotate(${(this.imc / 55) / 2}turn)`
   }
 

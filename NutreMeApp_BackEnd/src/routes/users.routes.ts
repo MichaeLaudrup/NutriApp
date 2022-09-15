@@ -9,6 +9,7 @@ router.post('/signup', AuthController.singup);
 router.post('/login', AuthController.logIn); 
 router.post('/forgotPassword', AuthController.forgotPassword); 
 router.post('/resetPassword', AuthController.resetPassword); 
+router.get('/get-user', accessRouteProtector, AuthController.getUser)
 
 
 router.get('/', accessRouteProtector, routerProtectionByRole('superadmin', 'admin'), UsersController.getAllUsers);

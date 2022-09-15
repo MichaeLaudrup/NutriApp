@@ -8,22 +8,17 @@ export interface UserDataState {
 }
 
 export const initialState: UserDataState = {
-    userData:  {
-        nutritionalTarget: NutritionTarget.hypertrophy,
-        fisiologicData: {
-            height: 178,
-            weight: 83,
-            age: 28,
-            gender: 'Hombre',
-            activityIntesity: 1.375,
-        },
-        feedingType: FeedingType.OMNIVORE
-    }
+    userData:  undefined
 }
 
 export const userDataReducer = createReducer(initialState,
-    on(SharedActions.setTarget, (state, {objetivo}) => ({ ...state, objetivo})),
-
+    on(SharedActions.setTarget, (state, {nutritionalTarget}) => ({
+        ...state,
+        userData: {
+            ...state.userData,
+             nutritionalTarget
+        }
+    })),
 
     on(SharedActions.putFisiologicData, (state, {fisiologicData}) => ({
         ...state,

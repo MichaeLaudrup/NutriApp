@@ -18,6 +18,11 @@ export class usersFacade {
         this.store.dispatch(UserActions.logIn( {user}))
     }
 
+    public setUser(user:User){
+        this.store.dispatch(UserActions.setUser({user}))
+
+    }
+
     public get $user(){
         return this.store.pipe(select(UserSelector.getUserStatus));
     }
