@@ -20,6 +20,7 @@ type NewType = Subject<any>;
 })
 export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     actualPage = -1; 
+    progressValue = 0; 
     routes = ['select-objective', 'fisiologic-data', 'feeding-type']; 
     height = 0; 
     isInMobileMood = false; 
@@ -38,6 +39,7 @@ export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit(): void {
         this.carrouselService.actualPage$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( (actualPage) => {
             this.actualPage = actualPage; 
+            this.progressValue = (this.actualPage * 100) /(this.routes.length -1 );
         }); 
         
         this.carrouselService.uploadDataToServerListener$.pipe(takeUntil(this.destroySuscriptions$)).subscribe((mustUpload) => {

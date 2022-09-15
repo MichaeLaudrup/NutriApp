@@ -45,6 +45,14 @@
                             </span>
                     </a>
                 </li>
+
+                <li class="navigation__item" routerLinkActive="activeItem">
+                    <a routerLink="/login" class="navigation__link" (click)="isMenuOpened = !isMenuOpened">
+                        <span class="navigation__icon material-icons-outlined">
+                            logout
+                        </span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="content">
