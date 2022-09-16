@@ -23,7 +23,10 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
     this.dailyMealsRegisterFacade.requestDailyMealsRegister(new Date());
     this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( dailyMealsRegister => {
       this.dailyMealsRegister = dailyMealsRegister; 
-      dailyMealsRegister.scheduledMeals
+      if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
+        this. dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals)
+      }
+
     })
     this.dailyNutritionalAnalisysForm = new FormGroup({
       date: new FormControl(toDateInputValue.bind(this)(), Validators.required)

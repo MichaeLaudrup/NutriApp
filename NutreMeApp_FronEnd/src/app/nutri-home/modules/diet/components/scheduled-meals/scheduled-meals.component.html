@@ -2,8 +2,26 @@
 <div class="meal-scheduled-container">
     
     <h2 class="meal-scheduled-title">{{mealName}}</h2>
+    <div class="sum-data">
+        <div class="nutri-data-box">
+            <dinamic-svg-icon svg-name="carbohydrates" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
+            <span>{{nutriAccounts.carbo | number: '2.2-2'}} <span>/150 <span class="units">gr</span></span></span>
+        </div>
+        <div class="nutri-data-box">
+            <dinamic-svg-icon svg-name="protein" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
+            <span>{{nutriAccounts.proteins | number: '2.2-2'}}<span>/90 <span class="units">gr</span></span></span>
+        </div>
+        <div class="nutri-data-box">
+            <dinamic-svg-icon svg-name="fats" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
+            <span>{{nutriAccounts.fats | number: '2.2-2'}} <span>/50 <span class="units">gr</span></span></span>
+        </div>
+        <div class="nutri-data-box">
+            <span class="material-icons-outlined energy">electric_bolt</span>
+            <span>{{nutriAccounts.kcal| number: '2.2-2' }} <span>/150 <span class="units">gr</span></span></span>
+        </div>
+    </div>
     <ul class="schedule-meals-list">
-        <ng-container *ngFor="let meal of mealList; let i = index">
+        <ng-container *ngFor="let meal of mealsScheduled.aliments; let i = index">
             <scheduled-meal-item [food]="meal" [index]="index + i"></scheduled-meal-item>
         </ng-container>
     </ul>
