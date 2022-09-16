@@ -126,8 +126,8 @@ export class ListMealsComponent implements OnInit, OnDestroy {
 
   activeDeleteMode(){
     const newModal: deleteModalData = {
-      id: this.aliments[this.activeListItem].id +'',
-      funtionOnDelete: this.deleteItem.bind(this, this.sectionId, this.aliments[this.activeListItem].id),
+      id: this.aliments[this.activeListItem]._id +'',
+      funtionOnDelete: this.deleteItem.bind(this, this.sectionId, this.aliments[this.activeListItem]._id),
       typeOfModalSpecialization: typeModalSpecialization.Delete,
       title: `Desea eliminar ${this.aliments[this.activeListItem].name}`
     }

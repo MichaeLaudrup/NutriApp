@@ -10,7 +10,7 @@ export const addNewDailyMealsRegister = async(req: Request, res:Response, next: 
             userId: req.body.user._id
         })
         res.status(201).json({
-                dailyMealsRegister: newDailyMealsRegister
+            dailyMealsRegister: newDailyMealsRegister
         })
     }catch (err) {
         next(err)
@@ -19,13 +19,12 @@ export const addNewDailyMealsRegister = async(req: Request, res:Response, next: 
 
 export const getAllMyDailyMealsRegister = async(req: Request, res: Response, next: NextFunction) => {
     try{
-        const MyDailyRegisters = await dailyMealsRegisterModel.find().populate('scheduledMeals.aliments'); 
+        console.log(req.body.date)
+        const MyDailyRegisters = await dailyMealsRegisterModel.findOne().populate('scheduledMeals.aliments');
         res.status(201).json({
             status: 'success',
             data:{
-                dailyMealsRegister: [
-                    ...MyDailyRegisters
-                ]
+                dailyRegister: MyDailyRegisters
             }
         })
     }catch(err){

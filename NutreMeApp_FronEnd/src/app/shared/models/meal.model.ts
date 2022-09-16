@@ -1,7 +1,7 @@
 import { mealTag } from "../enums/tag.enum"
 
 export interface Aliment {
-    id?: string, 
+    _id?: string, 
     name: string,
     tags: mealTag[],
     description?: string, 
@@ -11,6 +11,4 @@ export interface Aliment {
     carboHydrates: number,
     fats: number,
     srcImg?: string,
-    portionQuantitie?: number,
-    portionName?: string
 }; 

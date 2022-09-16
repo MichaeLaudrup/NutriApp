@@ -52,8 +52,6 @@ export class MealFormComponent implements OnInit, OnDestroy {
       carboHydrates: new FormControl(this.meal.carboHydrates),
       fats: new FormControl(this.meal.fats),
       srcImg: new FormControl(this.meal.srcImg),
-      portionName: new FormControl(this.meal.portionName), 
-      portionQuantitie: new FormControl(!!this.meal.portionQuantitie ? this.meal.portionQuantitie : 0),
       tags: new FormArray([], Validators.required)
     })
 
@@ -83,7 +81,7 @@ export class MealFormComponent implements OnInit, OnDestroy {
 
   editMeal() {
     const mealUpdated : Aliment = {
-      id: this.meal.id, 
+      _id: this.meal._id, 
       ...this.mealForm.value
     }
     this.sectionMealsFacade.editMealInSection(this.sectionId, mealUpdated); 

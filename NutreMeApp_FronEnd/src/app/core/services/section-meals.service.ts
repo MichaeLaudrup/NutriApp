@@ -1,16 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Aliment, SectionMeal } from "@shared/models";
 import { delay, Observable, of } from "rxjs";
-import { mealSections } from "@shared/data";
 import { deepCopiesUtils } from "src/app/shared/utils/deep-copies.utils";
 @Injectable({
         providedIn:'root'
 })
 export class sectionMealsService {
-    private sectionMeals = mealSections;  
+    private sectionMeals = [];  
 
     public getMealsFromServer(): Observable<SectionMeal[]> {
-        return of(this.sectionMeals).pipe( delay(1000)); 
+        return of([]); 
     }
 
     public addSectionMealToServer( newSectionMeal: SectionMeal): Observable<SectionMeal> {
