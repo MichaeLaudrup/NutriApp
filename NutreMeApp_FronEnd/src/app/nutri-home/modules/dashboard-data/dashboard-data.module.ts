@@ -11,6 +11,7 @@ import { BasicLineChartComponent } from './components/basic-line-chart/basic-lin
 import { MbaChartComponent } from './components/mba-chart/mba-chart.component';
 import { ImcChartComponent } from './components/imc-chart/imc-chart.component';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
+import { UserDataResolver } from 'src/app/shared/routing-components/resolvers/user-data.resolver';
 
 const components = [DashboardDataComponent,  MacronutrientsChartComponent, BasicLineChartComponent, MbaChartComponent, ImcChartComponent,]
 
@@ -27,7 +28,7 @@ const components = [DashboardDataComponent,  MacronutrientsChartComponent, Basic
 
   ],
   exports: [components],
-  providers: [UserDataFacadeService]
+  providers: [UserDataFacadeService, UserDataResolver]
 })
 export class DashboardDataModule { 
 

@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
 import { mealTag } from '@shared/enums';
 import { Aliment, ScheduledMeals } from '@shared/models';
+import { expandedAnimation } from 'src/app/shared/animations/animation';
 
 @Component({
   selector: 'scheduled-meals',
   templateUrl: './scheduled-meals.component.html',
-  styleUrls: ['./scheduled-meals.component.scss']
+  styleUrls: ['./scheduled-meals.component.scss'],
+  animations: [expandedAnimation]
 })
 export class ScheduledMealsComponent implements OnInit {
+  @HostBinding('@expandedAnimation')
   @Input('scheduled-title') mealName: string = 'Desayuno';
   @Input('index') index: number;  
   @Input() mealsScheduled : ScheduledMeals;

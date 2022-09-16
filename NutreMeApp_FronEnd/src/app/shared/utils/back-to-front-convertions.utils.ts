@@ -15,6 +15,8 @@ export const userDataFromBackToFront = (userDataFromBackEnd: any): UserData => {
             diaryWater: userDataFromBackEnd.diaryWater,
             mbaWithActivity: userDataFromBackEnd.mbaWithActivity,
             mbaWithActivityAndObjetive: userDataFromBackEnd.mbaWithActivityAndObjetive,
+            macrosInRepose: userDataFromBackEnd.macrosInRepose,
+            macrosWithActivity: userDataFromBackEnd.macrosWithActivity
         }
     }
     return userDataCasted; 

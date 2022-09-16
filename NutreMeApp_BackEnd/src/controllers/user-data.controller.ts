@@ -65,3 +65,19 @@ export const getUserData = async(req: Request, res:Response, next: NextFunction)
         next(err)
     }
 }
+
+export const geDailyMacronutriens = async(req: Request, res:Response, next: NextFunction) => {
+    try{
+        const wantReposeData = req.query.repose ?? false; 
+        const date = req.query.date ?? new Date().toISOString().slice(0,10); 
+        
+
+        console.log(wantReposeData, date)
+
+        res.status(201).json({
+            x: 1
+        })
+    }catch (err) {
+        next(err)
+    }
+}

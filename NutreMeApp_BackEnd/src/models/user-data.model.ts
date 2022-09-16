@@ -77,6 +77,7 @@ UserDataSchema.virtual('mbaWithActivity').get( function(){
     return mbaBase * this.activityIntesity; 
 })
 
+
 UserDataSchema.virtual('mbaWithActivityAndObjetive').get( function() {
     const mbaBase = NutritionCalculatorService.calcMBA(this.height, this.weight, this.age, this.gender); 
     const mbaWithActivity = mbaBase * this.activityIntesity; 
@@ -85,6 +86,15 @@ UserDataSchema.virtual('mbaWithActivityAndObjetive').get( function() {
 
 UserDataSchema.virtual('rulesEngineLastResult', function() {
     return {noMeat: true}; 
+})
+
+UserDataSchema.virtual('macrosInRepose').get(function(this:any){
+    return NutritionCalculatorService.calcMacroNutriensDistribution( this['mba'] ,this['nutritionalTarget'])
+
+})
+
+UserDataSchema.virtual('macrosWithActivity').get(function(this:any){
+    return NutritionCalculatorService.calcMacroNutriensDistribution( this['mbaWithActivity'] ,this['nutritionalTarget'])
 })
 
 export const UserDataModel = mongoose.model('UserData', UserDataSchema, 'usersData')

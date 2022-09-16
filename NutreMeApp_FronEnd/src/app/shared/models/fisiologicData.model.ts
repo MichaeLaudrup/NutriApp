@@ -1,5 +1,6 @@
 import { FeedingType } from "../enums/feeding-type.enum";
 import { NutritionTarget } from "../enums/nutrition-target.enum";
+import { Macronutrients } from "./macronutrients.model";
 
 
 export interface FisiologicData {
@@ -12,7 +13,9 @@ export interface FisiologicData {
     mbaWithActivity?:number,
     imc?: number,
     mbaWithActivityAndObjetive?: number,           
-    diaryWater?: number
+    diaryWater?: number,
+    macrosInRepose?: Macronutrients,
+    macrosWithActivity?: Macronutrients
 }
 
 export class UserData{

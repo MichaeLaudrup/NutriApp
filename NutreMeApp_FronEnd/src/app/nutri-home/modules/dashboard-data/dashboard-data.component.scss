@@ -16,7 +16,8 @@
 }
 
 .dashboard__box {
-    animation: expandFromCenter .8s ease-in-out; 
+    animation: expandFromCenter .8s .3s ease-in-out; 
+    animation-fill-mode: backwards;
     background-color: var(--elements-bg-secondary);  
     box-shadow: var(--generic-shadow);
     border-radius: var(--global-border-radius); 
@@ -127,12 +128,14 @@
 
 @keyframes expandFromCenter {
     0% {
+        opacity: 0;
         transform: scale(.2);
     }
-    90% {
-        transform: scale(1.05);
+    80% {
+        transform: scale(1.10);
     }
     100% {
+        opacity: 1;
         transform: scale(1);
     }
 }

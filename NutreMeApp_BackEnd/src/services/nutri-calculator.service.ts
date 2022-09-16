@@ -33,7 +33,7 @@ export function calcMBAWithActivityAndObjective(nutritionalTarget: string, mbaWi
     }
 }
 
-export const calcMacroNutriensDistribution = (mba: number, nutritionTarget: string): { diaryCarbohydrates: number; diaryProtein: number; diaryFats: number; }  =>
+export const calcMacroNutriensDistribution = (mba: number, nutritionTarget: string): { carbohydrates: number; proteins: number; fats: number; }  =>
 {
     // 1.6 -2.5 gr de proteina por kg de peso
     // .5 - 1gr de grasa por kg de peso
@@ -42,7 +42,9 @@ export const calcMacroNutriensDistribution = (mba: number, nutritionTarget: stri
     /* let proteinsCal = (83*2)*4; 
     let fatCal = (83*1) * 9;
     let hidrates = mbaWithActivityAndObjetive - proteinsCal -fatCal;   */
-    return {diaryCarbohydrates: (mba * .55) /4,
-             diaryFats:  (mba * .25) / 9,
-              diaryProtein: (mba * .20) / 4}; 
+    return {
+        carbohydrates: +((mba * .55) /4).toFixed(2),
+        fats:  +((mba * .25) / 9).toFixed(2),
+        proteins: +((mba * .20) / 4).toFixed(2)
+    }; 
 }

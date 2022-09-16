@@ -26,7 +26,12 @@ const dailyMealsRegisterSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref:'User'
     }
+},{
+    toJSON: {
+        virtuals:true
+    }
 });
+
 
 
 

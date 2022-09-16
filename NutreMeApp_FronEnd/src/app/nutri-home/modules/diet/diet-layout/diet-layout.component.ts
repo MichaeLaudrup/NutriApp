@@ -17,6 +17,7 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
   scheduledMeals : string[] = ['Desayuno', 'Almuerzo']
   private destroySuscriptions$: Subject<any> = new Subject()
   dailyMealsRegister: DailyMealsRegister; 
+
   constructor(private dailyMealsRegisterFacade: DailyMealsRegisterFacade) { }
 
   ngOnInit(): void {

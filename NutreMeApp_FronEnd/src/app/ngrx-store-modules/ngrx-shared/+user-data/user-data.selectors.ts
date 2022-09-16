@@ -14,3 +14,8 @@ export const getDatosFisio = createSelector(
 export const getUserData = createSelector(
     getSharedSelector, (state: SharedAppState) => state['userData'].userData
 ); 
+
+export const getUserDataMacro = ( isRepose?: boolean) => { 
+    return createSelector(getSharedSelector, 
+        (state: SharedAppState) => isRepose ? state.userData.userData.fisiologicData.macrosInRepose : state.userData.userData.fisiologicData.macrosWithActivity)
+}

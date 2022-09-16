@@ -6,6 +6,7 @@ import { UserDataState } from "./user-data.reducer";
 import * as USER_DATA_SELECTOR from './user-data.selectors'; 
 import * as USER_DATA_ACTIONS from './user-data.actions'; 
 import { FeedingType, NutritionTarget } from "@shared/enums";
+import { Macronutrients } from "src/app/shared/models/macronutrients.model";
 @Injectable()
 export class UserDataFacadeService {
     constructor( private store: Store<UserDataState>) {
@@ -23,6 +24,10 @@ export class UserDataFacadeService {
         return this.store.pipe( select(USER_DATA_SELECTOR.getUserData))
     }
 
+    public userMacronutriensData$(inReposeMacro: boolean) : Observable<Macronutrients> {
+        return this.store.pipe( select(USER_DATA_SELECTOR.getUserDataMacro(inReposeMacro)))
+    }
+
     public setFisiologicData( newFisiologicData: FisiologicData){
         this.store.dispatch(USER_DATA_ACTIONS.putFisiologicData({fisiologicData: newFisiologicData})); 
     }
@@ -38,6 +43,7 @@ export class UserDataFacadeService {
     public uploadToServerUserData( userId: string, userData: UserData){
         this.store.dispatch(USER_DATA_ACTIONS.uploadUserDataToServer({userId, userData})); 
     }
+
 
 
 }

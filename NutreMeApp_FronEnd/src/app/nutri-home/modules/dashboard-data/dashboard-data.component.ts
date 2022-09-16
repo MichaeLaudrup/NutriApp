@@ -1,4 +1,4 @@
-import { Component,  OnDestroy,  OnInit } from '@angular/core';
+import { Component,  HostBinding,  OnDestroy,  OnInit } from '@angular/core';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { imcInfoData, kcalHistoryInfoData, mbaInfoData } from '@shared/data';
 import {  Subject, takeUntil} from 'rxjs';
@@ -10,7 +10,7 @@ import { FisiologicData, UserData} from 'src/app/shared/models/fisiologicData.mo
 @Component({
   selector: 'app-dashboard-data',
   templateUrl: './dashboard-data.component.html',
-  styleUrls: ['./dashboard-data.component.scss']
+  styleUrls: ['./dashboard-data.component.scss'],
 })
 export class DashboardDataComponent implements OnInit, OnDestroy {
   fisiologicData: FisiologicData; 
