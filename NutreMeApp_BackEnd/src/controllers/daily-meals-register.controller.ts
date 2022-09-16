@@ -19,8 +19,8 @@ export const addNewDailyMealsRegister = async(req: Request, res:Response, next: 
 
 export const getAllMyDailyMealsRegister = async(req: Request, res: Response, next: NextFunction) => {
     try{
-        console.log(req.body.date)
-        const MyDailyRegisters = await dailyMealsRegisterModel.findOne().populate('scheduledMeals.aliments');
+        console.log(req.query.date)
+        const MyDailyRegisters = await dailyMealsRegisterModel.findOne({date:req.query.date}).populate('scheduledMeals.aliments');
         res.status(201).json({
             status: 'success',
             data:{

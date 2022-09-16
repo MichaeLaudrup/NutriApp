@@ -15,7 +15,7 @@ export class DailyMealsRegisterEffects {
     loadDailyMealsRegister$ = createEffect(
         () => this.actions$.pipe(
                 ofType( DailyMealsRegisterActions.requestDailyMealsRegister.type),
-                mergeMap( (date) => this.dailyMealsRegisterService.getMyDailyRegisterMeals(date).pipe(
+                mergeMap( ({date}) => this.dailyMealsRegisterService.getMyDailyRegisterMeals(date).pipe(
                     map( dailyMealsRegister => ( { type: DailyMealsRegisterActions.requestDailyMealsRegisterSuccess.type, dailyMealsRegister})),
                     catchError( () => EMPTY)))
                 )) 

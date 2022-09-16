@@ -6,7 +6,7 @@
         <dialy-macro-chart></dialy-macro-chart>
     </div>
     <div class="scheduled-meals-list" >
-        <scheduled-meals *ngFor="let scheduledMeal of scheduledMeals; let i = index" [scheduled-title]="scheduledMeal" [index]="i"></scheduled-meals>
+        <scheduled-meals *ngFor="let scheduledMeal of dailyMealsRegister.scheduledMeals; let i = index" [scheduled-title]="scheduledMeal.name" [index]="i" [mealList]="scheduledMeal.aliments"></scheduled-meals>
     </div>
 
 </div>
