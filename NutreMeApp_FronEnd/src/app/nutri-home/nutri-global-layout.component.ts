@@ -53,7 +53,7 @@ export class NutriGlobalLayoutComponent implements OnInit, OnDestroy, AfterViewI
   }
   processOutlet(event: any, outlet: RouterOutlet){
     this.actualRute = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-    console.log(this.actualRute)
+
   }
 
 

@@ -11,21 +11,15 @@ export const expandedAnimation = trigger('expandedAnimation', [
 
 export const delayDesaparition = trigger('delayDesaparition', [
     transition('* <=> *',[
-        query(':enter', style({ opacity: 0}), {optional:true}),
-        query(':leave', style({ opacity: 1}), {optional:true}),
-    
-    
-    
         group([
             query(':enter', [
-                style({ opacity: 0, }),
-                animate('.6s ease-in-out', style({opacity: 1}))
+                style({ opacity: 0 }),
+                animate('.7s ease-in-out', style({opacity: 1}))
             ], {optional:true}),
             query(':leave', [
-                style({ opacity: 1, }),
-                animate('.6s ease-in-out', style({opacity: 0}))
+                style({ opacity: 1}),
+                animate('.7s ease-in-out', style({opacity: 0}))
             ], {optional:true})
-
         ])])
 ])
 

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
 import { mealTag } from '@shared/enums';
 import { Aliment, ScheduledMeals } from '@shared/models';
@@ -17,10 +17,27 @@ export class ScheduledMealsComponent implements OnInit {
   @Input() mealsScheduled : ScheduledMeals;
   @Input() nutriAccounts: Macronutrients; 
   @Input() totalKcal : number; 
+  @Output() alimentFromDoneToUndone: EventEmitter<{ meal: Aliment, numPosition: number}> = new EventEmitter(); 
+  @Output() alimentFromUndoneToDone: EventEmitter<{ meal: Aliment, numPosition: number}> = new EventEmitter(); 
+  recomendations: Aliment[] = []
   constructor() { }
 
   ngOnInit(): void {
     this.nutriAccounts = this.mealsScheduled.totalMacronutrients;
+    this.totalKcal = this.mealsScheduled.totalKcal; 
   }
+
+  processMarkedAsDone(meal: Aliment, numPosition: number){
+    this.recomendations.splice(numPosition, 1)
+    this.alimentFromUndoneToDone.emit({meal, numPosition})
+  }
+
+  processMarkedAsUndone(meal: Aliment, numPosition: number){
+    this.recomendations.push(meal)
+    this.alimentFromDoneToUndone.emit({meal, numPosition })
+  }
+
+
+  
 
 }

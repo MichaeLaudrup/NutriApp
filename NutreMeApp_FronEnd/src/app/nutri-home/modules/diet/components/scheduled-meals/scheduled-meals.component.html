@@ -5,24 +5,60 @@
     <div class="sum-data">
         <div class="nutri-data-box">
             <dinamic-svg-icon svg-name="carbohydrates" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
-            <span>{{nutriAccounts.carbohydrates | number: '2.2-2'}} <span>/150 <span class="units">gr</span></span></span>
+            <span>{{nutriAccounts.carbohydrates | number: '2.0-1'}} <span>/150 <span class="units">gr</span></span></span>
         </div>
         <div class="nutri-data-box">
             <dinamic-svg-icon svg-name="protein" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
-            <span>{{nutriAccounts.proteins | number: '2.2-2'}}<span>/90 <span class="units">gr</span></span></span>
+            <span>{{nutriAccounts.proteins | number: '2.0-1'}}<span>/90 <span class="units">gr</span></span></span>
         </div>
         <div class="nutri-data-box">
             <dinamic-svg-icon svg-name="fats" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
-            <span>{{nutriAccounts.fats | number: '2.2-2'}} <span>/50 <span class="units">gr</span></span></span>
+            <span>{{nutriAccounts.fats | number: '2.0-1'}} <span>/50 <span class="units">gr</span></span></span>
         </div>
         <div class="nutri-data-box">
             <span class="material-icons-outlined energy">electric_bolt</span>
-            <span>{{totalKcal| number: '2.2-2' }} <span>/150 <span class="units">kcal</span></span></span>
+            <span>{{totalKcal| number: '2.0-1' }} <span>/150 <span class="units">kcal</span></span></span>
+        </div>
+    </div>
+
+
+    <div class="list-header">
+        <h3 class="list-header-title">Recomendaciones</h3>
+        <div class="list-header-actions">
+            <span class="material-icons-outlined small-btn">
+                restart_alt
+                </span>
+        </div>
+    </div>
+    <ul class="schedule-meals-list">
+        <ng-container *ngFor="let meal of recomendations; let i = index">
+            <scheduled-meal-item 
+                [food]="meal"
+                [index]="index + i"
+                [done]="false"
+                (alimentMarkedAsDone)="processMarkedAsDone(meal, i)"
+                (alimentMarkedAsUndone)="processMarkedAsUndone(meal,i)"
+            ></scheduled-meal-item>
+        </ng-container>
+    </ul>
+
+
+    <div class="list-header">
+        <h3>Hecho</h3>
+        <div class="list-header-actions">
+
         </div>
     </div>
     <ul class="schedule-meals-list">
         <ng-container *ngFor="let meal of mealsScheduled.aliments; let i = index">
-            <scheduled-meal-item [food]="meal" [index]="index + i"></scheduled-meal-item>
+            <scheduled-meal-item 
+                [food]="meal"
+                [index]="index + i"
+                [done]="true"
+                (alimentMarkedAsDone)="processMarkedAsDone(meal, i)"
+                (alimentMarkedAsUndone)="processMarkedAsUndone(meal,i)"
+            ></scheduled-meal-item>
         </ng-container>
     </ul>
+
 </div>

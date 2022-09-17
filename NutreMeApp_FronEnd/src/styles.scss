@@ -86,7 +86,28 @@ ul {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    color: var(--text-title-color)
+    color: var(--text-title-color);
+    font-variant: small-caps;
+    letter-spacing: 1px; 
+}
+
+span.small-btn {
+    cursor: pointer;
+    display: inline-block; 
+    padding: .2rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: var(--global-border-radius);
+    background-color: var(--c9);
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    transition: all .7s ease-in-out;
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+    &:active {
+        transform: translateY(2px);
+        transition: all .1s ease-in-out;
+    }
 }
 
 

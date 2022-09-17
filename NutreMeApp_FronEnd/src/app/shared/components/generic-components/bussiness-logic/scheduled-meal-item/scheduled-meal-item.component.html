@@ -1,7 +1,7 @@
 <li class="food-item-container" [ngClass]="{'expanded':expanded}" >
     <div class="food-item" [ngClass]="{'done': done}">
         <div class="food-item__checkbox" style="height:25px">
-            <check-box (check-clicked)="done = $event" [initial-value]="done" [idName]="'check-' + index + '-' + food.name"></check-box> 
+            <check-box (check-clicked)="processCheckClicked($event)" [initial-value]="done" [idName]="'check-' + index + '-' + food.name" [initial-value]="done"></check-box> 
         </div>
         <div class="food-item__data">
             <span class="food-item__data-name">
@@ -10,7 +10,7 @@
             <div class="food-item__data-nutri">
                 <span class="food-item__data-kcal">
                     <span class="material-icons-outlined energy">electric_bolt</span>
-                    <span >{{ food.kcal}}<span class="units">Kcal</span></span> 
+                    <span >{{ food.kcal}} <span class="units">Kcal</span></span> 
                 </span>
                 <span class="material-icons-outlined toggle" (click)="expanded = !expanded" [ngClass]="{'rotate': expanded}">
                     chevron_right

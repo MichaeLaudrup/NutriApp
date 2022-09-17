@@ -3,7 +3,7 @@
 <div class="daily-macro-chart__container">
     <h3 class="date-title">27 de febrero de 2022</h3>
     <div class="radial-chart">
-        <radial-chart [value]="150" [limit]="300" [label]="'Calorías restantes'" [units]="' de 1500 Kcal'"></radial-chart>
+        <radial-chart [value]="dailyMealsRegister.totalKcal" [limit]="totalKcal" [label]="'Calorías restantes'" [units]="' de ' + (totalKcal | number:'1.0-0')+ ' Kcal'"></radial-chart>
     </div>
     <div class="macro-data">
         <progress-bar label="Hidratos" [progressValue]="macroNutrientsFacts.carbohydrates" [maxValue]="macroNutrientsLimits.carbohydrates" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.carbohydrates+' gr'"></progress-bar>

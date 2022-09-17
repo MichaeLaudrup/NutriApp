@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   templateUrl: './radial-chart.component.html',
   styleUrls: ['./radial-chart.component.scss']
 })
-export class RadialChartComponent implements OnInit, OnDestroy{
+export class RadialChartComponent implements OnInit, OnDestroy, OnChanges{
   @ViewChild('container', {static:true}) container: ElementRef<HTMLDivElement>; 
   height: number = 0;  
   @Input() value; 
@@ -31,6 +31,9 @@ export class RadialChartComponent implements OnInit, OnDestroy{
   }
   updateHeight(){
     this.height = this.container.nativeElement.offsetWidth;
+  }
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    this.actualDegree = (+this.value * 360 / this.limit)
   }
 
 

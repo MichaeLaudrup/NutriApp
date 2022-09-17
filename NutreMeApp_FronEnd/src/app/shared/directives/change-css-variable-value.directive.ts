@@ -10,7 +10,6 @@ export class ChangeCssVariableValueDirective {
 
   }
   ngOnInit(){
-    console.log(this.cssVariableName, this.cssVariableValue)
     this.renderer.setStyle(
       this.elementRef.nativeElement,
       this.cssVariableName,

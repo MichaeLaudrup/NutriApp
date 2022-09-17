@@ -2,7 +2,7 @@ import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
-import { DailyMealsRegister } from '@shared/models';
+import { Aliment, DailyMealsRegister } from '@shared/models';
 import { takeUntil } from 'rxjs';
 import { Subject } from 'rxjs';
 import { toDateInputValue } from 'src/app/shared/utils/convertions.utils';
@@ -37,6 +37,18 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroySuscriptions$.next({})
     this.destroySuscriptions$.unsubscribe()
-}
+  }
+
+  moveFoodToDone($event: {meal: Aliment, numPosition: number}, scheduledPos: number){
+    this.dailyMealsRegister.scheduledMeals[scheduledPos].aliments.push($event.meal);
+    this.dailyMealsRegister.scheduledMeals[scheduledPos].calculateMacronutrients(); 
+    this.dailyMealsRegister.calculateTotalMacroAndKcal(); 
+  }
+
+
+  modeFoodToRecomendations($event: { meal: Aliment, numPosition: number}, scheduledPos: number){
+    this.dailyMealsRegister.scheduledMeals[scheduledPos].deleteOneAliment($event.numPosition); 
+    this.dailyMealsRegister.calculateTotalMacroAndKcal(); 
+  }
 
 }

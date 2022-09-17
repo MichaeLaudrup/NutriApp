@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
-import { DailyMealsRegister } from '@shared/models';
+import { DailyMealsRegister, FisiologicData } from '@shared/models';
 import { Subject, takeUntil } from 'rxjs';
 import { expandedAnimation } from 'src/app/shared/animations/animation';
 import { Macronutrients } from 'src/app/shared/models/macronutrients.model';
@@ -12,7 +12,7 @@ import { Macronutrients } from 'src/app/shared/models/macronutrients.model';
   styleUrls: ['./dialy-macro-chart.component.scss'],
   animations: [expandedAnimation]
 })
-export class DialyMacroChartComponent implements OnInit, OnDestroy {
+export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
   private repose: boolean = false; 
   public macroNutrientsLimits : Macronutrients = {
     carbohydrates: 0,
@@ -20,36 +20,49 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy {
     fats: 0
   }; 
   public macroNutrientsFacts: Macronutrients = {
-    carbohydrates: 250,
-    proteins: 110,
-    fats: 10
+    carbohydrates: 0,
+    proteins: 0,
+    fats: 0
   }; 
-
-  dailyMealsRegister: DailyMealsRegister; 
+  totalKcal: number = 0; 
+  doneKcal: number = 0; 
+  @Input() bindedToNgrx = true;
+  @Input() dailyMealsRegister: DailyMealsRegister; 
   constructor( 
     private userDataFacadeService: UserDataFacadeService,
     private dailyMealsRegisterFacade: DailyMealsRegisterFacade) { }
-  private destroySuscriptions$: Subject<any> = new Subject()
+    private destroySuscriptions$: Subject<any> = new Subject()
 
 
   ngOnInit(): void {
-    this.userDataFacadeService.userMacronutriensData$(this.repose).pipe(takeUntil(this.destroySuscriptions$)).subscribe( (macronutriens: Macronutrients) => {
-      if(macronutriens){
-        this.macroNutrientsLimits = macronutriens; 
+    this.userDataFacadeService.fisiologicData$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( (fisiologicData: FisiologicData) => {
+      if(fisiologicData.macrosWithActivity){
+        this.macroNutrientsLimits = fisiologicData.macrosWithActivity;
+        this.totalKcal = fisiologicData.mbaWithActivityAndObjetive; 
       }
     })
-
-    this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(takeUntil(this.destroySuscriptions$)).subscribe((dailyMealsRegister: DailyMealsRegister) => {
-      this.dailyMealsRegister = dailyMealsRegister; 
-      if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
-          this. dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals)
-      }
-    })
+    if(this.bindedToNgrx){
+      this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(takeUntil(this.destroySuscriptions$)).subscribe((dailyMealsRegister: DailyMealsRegister) => {
+        this.dailyMealsRegister = dailyMealsRegister; 
+        if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
+            this.dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
+            this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
+            this.doneKcal = this.dailyMealsRegister.totalKcal
+        }
+      })
+    }else{
+      this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
+      this.doneKcal = this.dailyMealsRegister.totalKcal
+    }
   }
 
   ngOnDestroy(): void {
     this.destroySuscriptions$.next({})
      this.destroySuscriptions$.unsubscribe()
-}
+  }
+
+  ngOnChanges(): void {
+    console.log('algo ha cambiado')
+  }
 
 }

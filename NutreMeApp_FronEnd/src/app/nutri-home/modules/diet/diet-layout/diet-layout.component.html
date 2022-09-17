@@ -3,14 +3,16 @@
 
     <day-selector [form-group]="dailyNutritionalAnalisysForm" control-name="date"></day-selector>
     <div class="daily-macro-container">
-        <dialy-macro-chart></dialy-macro-chart>
+        <dialy-macro-chart [bindedToNgrx]="false" [dailyMealsRegister]="dailyMealsRegister"></dialy-macro-chart>
     </div>
     <div class="scheduled-meals-list" >
         <scheduled-meals 
             *ngFor="let scheduledMeal of dailyMealsRegister.scheduledMeals; let i = index"
             [scheduled-title]="scheduledMeal.name"
             [index]="i"
-            [mealsScheduled]="scheduledMeal">
+            [mealsScheduled]="scheduledMeal"
+            (alimentFromDoneToUndone)="modeFoodToRecomendations($event, i)"
+            (alimentFromUndoneToDone)="moveFoodToDone($event, i)">
         </scheduled-meals>
     </div>
 

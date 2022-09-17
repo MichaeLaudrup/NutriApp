@@ -8,6 +8,7 @@
 }
 
 .outer-circle, .outer-circle-fill {
+    transition: all .7s ease-in-out;
     width: 100%;  
     height: 100%;
     position: absolute; 

@@ -28,5 +28,10 @@ export class DailyMealsRegister {
                 kcal: acc.kcal + scheduledMeal.totalKcal,
             }
         }, {carbohydrates: 0, proteins: 0, fats: 0, kcal: 0})
+        this.totalMacro.carbohydrates = nutriData.carbohydrates
+        this.totalMacro.proteins = nutriData.proteins
+        this.totalMacro.fats = nutriData.fats
+        this.totalKcal = nutriData.kcal
+
     }
 }
