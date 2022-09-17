@@ -1,15 +1,19 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Aliment, SectionMeal } from "@shared/models";
-import { delay, Observable, of } from "rxjs";
+import { delay, map, Observable, of } from "rxjs";
 import { deepCopiesUtils } from "src/app/shared/utils/deep-copies.utils";
+import { environment } from "src/environments/environment";
 @Injectable({
         providedIn:'root'
 })
 export class sectionMealsService {
     private sectionMeals = [];  
+    constructor(private http: HttpClient){}
 
     public getMealsFromServer(): Observable<SectionMeal[]> {
-        return of([]); 
+        return this.http.get<{status: string, data: {sections: SectionMeal[]}}>(`${environment.apiUrlBase}/section-meals`)
+            .pipe(map( jsend => jsend.data.sections))
     }
 
     public addSectionMealToServer( newSectionMeal: SectionMeal): Observable<SectionMeal> {

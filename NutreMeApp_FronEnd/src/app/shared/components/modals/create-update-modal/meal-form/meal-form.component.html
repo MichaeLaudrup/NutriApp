@@ -10,7 +10,7 @@
     <slider-input [form-group]="mealForm" controlName="carboHydrates" textLabel="Carbohidratos"></slider-input>
     <slider-input [form-group]="mealForm" controlName="proteins" textLabel="Proteinas"></slider-input>
     <slider-input [form-group]="mealForm" controlName="fats" textLabel="Grasas"></slider-input>
-    <button type="button" class="btn btn--success" (click)="!editMode ? createMeal() : editMeal()">
+    <button type="button" class="btn" (click)="!editMode ? createMeal() : editMeal()">
         {{(editMode) ? 'Editar alimento' : 'Añadir alimento'}}
     </button>
 </form>

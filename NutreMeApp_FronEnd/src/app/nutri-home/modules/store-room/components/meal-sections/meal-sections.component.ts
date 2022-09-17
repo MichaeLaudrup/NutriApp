@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateUpdateModalData, deleteModalData, SectionMeal } from '@shared/models';
 import { sharedFacadeService } from '@ngrx/ngrx-shared';
@@ -6,27 +6,32 @@ import { Subject, takeUntil } from 'rxjs';
 import { typeModalSpecialization } from '@shared/enums';
 import { StoreRoomService } from '../../services/store-room.service';
 import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
+import { environment } from 'src/environments/environment';
+import { animate, query, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'app-meal-sections',
   templateUrl: './meal-sections.component.html',
   styleUrls: ['./meal-sections.component.scss'],
-  /* animations: [ trigger('MealsSectionAnimation',[
+  animations: [ trigger('MealsSectionAnimation',[
     transition(':leave', [
       query('.empty__section, .img-target', [
+        style({transform: 'scale(1)'}),
         animate('.5s ease-in-out',
         style({
           transform: 'scale(0)'
         }))
-      ])
+      ], {optional: true})
     ])
-  ])] */
+  ])] 
 })
 export class MealSectionsComponent implements OnInit, OnDestroy{
 
-  /* @HostBinding('@MealsSectionAnimation') animation = false;  */
+  @HostBinding('@MealsSectionAnimation') animation = false;  
   mealSections: SectionMeal[] = []; 
   editMood = false; 
   destroy$: Subject<any> = new Subject<any>();
+
+  urlSectionsImages = environment.staticSectionsImagesURL; 
   constructor(
       private router:Router,
       private mealSectionsFacade: MealSectionsFacade,
@@ -42,6 +47,7 @@ export class MealSectionsComponent implements OnInit, OnDestroy{
         this.mealSections = sections; 
         this.mealSectionsFacade.resetLoaded(); 
       }
+      
     }); 
     
 

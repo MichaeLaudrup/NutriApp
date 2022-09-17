@@ -2,13 +2,13 @@
     <div class="store-layout__food-galery">
         <ng-container *ngFor="let mealSection of mealSections; let i = index">
             <image-target class="img-target"
-             [title]="mealSection.name" 
-             [imgSrc]="mealSection.imgPath" 
+             [title]="mealSection.name"
              (elementClicked)="navigateToListMeals(mealSection.id)"
              (editModeClicked)="enableEditMode(mealSection)"
              (deleteModeClicked)="enableDeleteMode($event)"
              [withEditMode]="editMood"
              [item-id]="mealSection.id"
+             [imgSrc]="urlSectionsImages + mealSection.imgPath"
              #img>
             </image-target>
         </ng-container>

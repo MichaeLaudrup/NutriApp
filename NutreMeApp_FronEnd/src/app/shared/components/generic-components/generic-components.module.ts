@@ -19,6 +19,7 @@ import { ScheduledMealItemComponent } from './bussiness-logic/scheduled-meal-ite
 import { ProgressBarComponent } from './charts/progress-bar/progress-bar.component';
 import { ChangeCssVariableValueDirective } from '../../directives/change-css-variable-value.directive';
 import { DialyMacroChartComponent } from './charts/dialy-macro-chart/dialy-macro-chart.component';
+import { InputFileComponent } from './forms/input-file/input-file.component';
 
 const components = [
   DinamicSvgIconComponent,
@@ -38,7 +39,8 @@ const components = [
   ScheduledMealItemComponent,
   ProgressBarComponent,
   ChangeCssVariableValueDirective,
-  DialyMacroChartComponent
+  DialyMacroChartComponent,
+  InputFileComponent
 ]
 @NgModule({
   declarations: [...components],

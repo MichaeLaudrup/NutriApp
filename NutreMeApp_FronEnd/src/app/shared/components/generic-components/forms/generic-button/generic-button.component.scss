@@ -1,16 +1,3 @@
-.generic-buttom{
-    padding: .75rem 3rem;
-    border-radius: var(--globar-border-radius); 
-    background-color: var(--text-generic-color);
-    font-size: var(--font-size-md);
-    font-family: inherit;
-    transition: all .5s ease-in-out;
-    &:hover {
-        transform: translateY(-20%);
-    }
-
-    &:active{
-        transform: translateY(20%);
-    }
+.btn{
+    padding: .5rem 4rem;
 }
-

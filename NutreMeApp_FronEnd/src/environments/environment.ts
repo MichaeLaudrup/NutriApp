@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrlBase: 'http://127.0.0.1:8000/api/v1',
-  allGuardsDesactivated: true
+  allGuardsDesactivated: true,
+  staticSectionsImagesURL: 'http://127.0.0.1:8000/static/sections-images/'
 };
 
 /*
