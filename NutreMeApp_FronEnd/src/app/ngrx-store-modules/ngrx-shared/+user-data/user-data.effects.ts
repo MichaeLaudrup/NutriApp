@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { authService } from "@core/services";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, EMPTY, map, mergeMap, tap } from "rxjs";
 import { UserDataService } from "src/app/core/services/user-data.service";

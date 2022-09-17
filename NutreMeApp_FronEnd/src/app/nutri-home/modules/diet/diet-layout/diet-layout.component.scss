@@ -15,6 +15,8 @@
     background-color: var(--elements-bg-primary);
     border-radius: var(--global-border-radius);
     padding: 1rem 0rem; 
+    animation: .7s .5s ease-in-out expandFromCenter; 
+    animation-fill-mode: backwards;
 }
 
 .scheduled-meals-list{
@@ -28,5 +30,19 @@
         grid-template-columns: 1fr 1fr;
         column-gap: 1.5rem;
 
+    }
+}
+
+@keyframes expandFromCenter {
+    0% {
+        opacity: 0;
+        transform: scale(.2);
+    }
+    80% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

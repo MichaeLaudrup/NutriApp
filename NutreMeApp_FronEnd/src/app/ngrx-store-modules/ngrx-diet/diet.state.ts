@@ -1,4 +1,4 @@
-import { DailyMealsRegister } from '@shared/models';
+import {DailyMealRegisterState} from './+daily-meals-registers/daily-meals-register.reducer'
 export interface DietAppState {
-    dailyMealsRegister: DailyMealsRegister
+    dailyMealsRegister: DailyMealRegisterState
 }

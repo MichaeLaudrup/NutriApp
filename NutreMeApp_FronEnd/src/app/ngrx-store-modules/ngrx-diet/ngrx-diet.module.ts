@@ -23,7 +23,7 @@ export class NgrxDietModule {
     return {
       ngModule: NgrxDietModule,
       providers: [
-        DailyMealsRegisterFacade
+        DailyMealsRegisterFacade,
       ]
     }
   }

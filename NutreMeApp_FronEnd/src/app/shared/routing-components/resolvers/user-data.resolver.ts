@@ -17,7 +17,7 @@ export class UserDataResolver implements Resolve<UserData>{
          private userProfileFacada: usersFacade){}
 
         resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): UserData | Observable<UserData> | Promise<UserData> {
-            return this.userDataFacade.userData$.pipe(take(1), mergeMap( userData => {
+            return this.userDataFacade.userData$.pipe(take(1), concatMap( userData => {
                 if(userData && userData.feedingType && userData.fisiologicData && userData.nutritionalTarget){
                     return of(userData); 
                 }else{

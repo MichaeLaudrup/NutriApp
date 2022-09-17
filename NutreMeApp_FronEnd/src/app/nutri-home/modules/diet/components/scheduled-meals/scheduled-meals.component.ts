@@ -3,6 +3,7 @@ import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
 import { mealTag } from '@shared/enums';
 import { Aliment, ScheduledMeals } from '@shared/models';
 import { expandedAnimation } from 'src/app/shared/animations/animation';
+import { Macronutrients } from 'src/app/shared/models/macronutrients.model';
 
 @Component({
   selector: 'scheduled-meals',
@@ -11,21 +12,15 @@ import { expandedAnimation } from 'src/app/shared/animations/animation';
   animations: [expandedAnimation]
 })
 export class ScheduledMealsComponent implements OnInit {
-  @HostBinding('@expandedAnimation')
   @Input('scheduled-title') mealName: string = 'Desayuno';
   @Input('index') index: number;  
   @Input() mealsScheduled : ScheduledMeals;
-  @Input() nutriAccounts: {
-    carbo: number;
-    proteins: number;
-    fats: number;
-    kcal: number;
-  }
+  @Input() nutriAccounts: Macronutrients; 
+  @Input() totalKcal : number; 
   constructor() { }
 
   ngOnInit(): void {
-    this.nutriAccounts = this.mealsScheduled.getMacronutrients;
-    
+    this.nutriAccounts = this.mealsScheduled.totalMacronutrients;
   }
 
 }

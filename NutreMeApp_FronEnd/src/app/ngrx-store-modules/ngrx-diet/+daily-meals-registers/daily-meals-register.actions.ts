@@ -8,3 +8,8 @@ export const requestDailyMealsRegister = createAction(
 export const requestDailyMealsRegisterSuccess = createAction(
     '[ngrx-diet/daily-meals-register] Request to serve a Daily Meal Register Success',
     props<{ dailyMealsRegister: DailyMealsRegister}>())
+
+export const setDailyMealsRegister= createAction(
+    '[ngrx-diet/daily-meals-register] Set daily meals register',
+    props<{ dailyMealsRegister: DailyMealsRegister}>())
+    

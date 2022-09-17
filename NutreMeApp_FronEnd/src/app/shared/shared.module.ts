@@ -50,7 +50,7 @@ const components = [
 
   providers: [
     MealSectionsFacade,
-    usersFacade
+    usersFacade,
   ]
 })
 export class SharedModule {

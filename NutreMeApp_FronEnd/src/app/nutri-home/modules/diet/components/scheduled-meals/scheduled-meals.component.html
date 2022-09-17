@@ -5,7 +5,7 @@
     <div class="sum-data">
         <div class="nutri-data-box">
             <dinamic-svg-icon svg-name="carbohydrates" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
-            <span>{{nutriAccounts.carbo | number: '2.2-2'}} <span>/150 <span class="units">gr</span></span></span>
+            <span>{{nutriAccounts.carbohydrates | number: '2.2-2'}} <span>/150 <span class="units">gr</span></span></span>
         </div>
         <div class="nutri-data-box">
             <dinamic-svg-icon svg-name="protein" svg-width="20px" svg-height="20px"></dinamic-svg-icon>
@@ -17,7 +17,7 @@
         </div>
         <div class="nutri-data-box">
             <span class="material-icons-outlined energy">electric_bolt</span>
-            <span>{{nutriAccounts.kcal| number: '2.2-2' }} <span>/150 <span class="units">kcal</span></span></span>
+            <span>{{totalKcal| number: '2.2-2' }} <span>/150 <span class="units">kcal</span></span></span>
         </div>
     </div>
     <ul class="schedule-meals-list">

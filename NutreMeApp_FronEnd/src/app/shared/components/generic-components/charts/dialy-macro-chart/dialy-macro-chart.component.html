@@ -6,9 +6,9 @@
         <radial-chart [value]="150" [limit]="300" [label]="'Calorías restantes'" [units]="' de 1500 Kcal'"></radial-chart>
     </div>
     <div class="macro-data">
-        <progress-bar label="Hidratos" [progressValue]="100" [maxValue]="250" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.carbohydrates+' gr'"></progress-bar>
-        <progress-bar [progressValue]="50" [maxValue]="100" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.proteins+' gr'"></progress-bar>
-        <progress-bar label="Grasas"[progressValue]="30" [maxValue]="70" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.fats+' gr'"></progress-bar>
+        <progress-bar label="Hidratos" [progressValue]="macroNutrientsFacts.carbohydrates" [maxValue]="macroNutrientsLimits.carbohydrates" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.carbohydrates+' gr'"></progress-bar>
+        <progress-bar [progressValue]="macroNutrientsFacts.proteins" [maxValue]="macroNutrientsLimits.proteins" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.proteins+' gr'"></progress-bar>
+        <progress-bar label="Grasas"[progressValue]="macroNutrientsFacts.fats" [maxValue]="macroNutrientsLimits.fats" [withLabel]="true" [units]="'de ' + macroNutrientsLimits.fats+' gr'"></progress-bar>
     </div>
 </div>
 

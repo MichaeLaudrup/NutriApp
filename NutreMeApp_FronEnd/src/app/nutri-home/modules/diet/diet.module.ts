@@ -6,6 +6,7 @@ import { DietLayoutComponent } from './diet-layout/diet-layout.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ScheduledMealsComponent } from './components/scheduled-meals/scheduled-meals.component';
 import { NgrxDietModule } from '@ngrx/ngrx-diet';
+import { dailyMealsRegisterResolver } from 'src/app/shared/routing-components/resolvers/daily-register-resolver';
 
 
 @NgModule({
@@ -18,6 +19,9 @@ import { NgrxDietModule } from '@ngrx/ngrx-diet';
     DietRoutingModule,
     SharedModule,
     NgrxDietModule.forRoot()
+  ],
+  providers: [
+    dailyMealsRegisterResolver
   ]
 })
 export class DietModule { }

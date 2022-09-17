@@ -1,13 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User, UserData } from "@shared/models";
-import { map, Observable } from "rxjs";
+import { catchError, EMPTY, map, Observable } from "rxjs";
 import { userDataFromBackToFront } from "src/app/shared/utils/back-to-front-convertions.utils";
 import { environment } from "src/environments/environment";
+import { CentralErrorManager } from "./central-errors-manager.service";
 
 @Injectable({ providedIn: 'root'})
 export class UserDataService {
-    constructor( private http: HttpClient){}
+    constructor( private http: HttpClient, private centralErrorManager: CentralErrorManager){}
     /**
      * Este metodo introduce por primera vez los datos de usuario
      * @param userId Identificador de usuario
@@ -31,9 +32,14 @@ export class UserDataService {
                         mbaWithActivityAndObjetive: data.mbaWithActivityAndObjetive,
                         diaryWater: data.diaryWater,
                         imc: data.imc,
+                        macrosInRepose: data.macrosInRepose,
+                        macrosWithActivity: data.macrosWithActivity
                     }
                 }
                 return userDataParse
+            }), catchError( err => {
+                this.centralErrorManager.analizeError(err)
+                return EMPTY; 
             }))
     }
 
