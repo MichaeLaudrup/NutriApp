@@ -5,5 +5,5 @@ const router = express.Router();
 
 
 router.route('/').get(accessByLogginProtection, UserDataController.getUserData).post(accessByLogginProtection, UserDataController.newUserData)
-router.route('/daily-macros').get( accessByLogginProtection, UserDataController.geDailyMacronutriens); 
+router.route('/daily-macros').get( accessByLogginProtection, UserDataController.getDailyMacronutriens); 
 export default router; 

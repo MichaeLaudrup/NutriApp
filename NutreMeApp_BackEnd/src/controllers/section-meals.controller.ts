@@ -13,7 +13,7 @@ export const addSectionMeals = async(req: any, res:Response, next: NextFunction)
         res.status(201).json({
             status: 'success',
             data: {
-
+                section
             }
         })
     }catch (err) {
@@ -37,11 +37,16 @@ export const getMySectionMeals = async(req: Request, res:Response, next: NextFun
 
 export const attachPhotoToSection = async(req: any, res:Response, next: NextFunction) => {
     try{
-        console.log(req.file.filename)
+        const section = await SectionMealModel.findByIdAndUpdate(req.params['id'], {
+            imgPath: req.file.filename
+        },{ 
+            new: true, //return de "new" document
+            runValidators: true,
+        }); 
         res.status(200).json({
             status: 'success',
             data: {
-
+                section
             }
         })
     }catch (err) {

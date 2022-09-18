@@ -16,6 +16,7 @@ export class CreationOfSectionMealComponent implements OnInit {
   @Input() editMode: boolean = false;
   @Input() actualSection : SectionMeal; 
   @Input() sectionToEdit: SectionMeal; 
+  file: File; 
   @Output() showSpinner: EventEmitter<boolean> = new EventEmitter<boolean>(); 
   @Output() showFeedBack: EventEmitter<string> = new EventEmitter<string>(); 
 
@@ -59,14 +60,23 @@ export class CreationOfSectionMealComponent implements OnInit {
       name: this.sectionMealForm.get('sectionName').value,
       imgPath: this.sectionMealForm.get('sectionPath').value,
       meals: (this.editMode) ? [...this.sectionToEdit.meals] : [],
-      id: (this.editMode) ? this.sectionToEdit.id : ''
+      _id: (this.editMode) ? this.sectionToEdit._id : ''
     }; 
     if(this.editMode){
-      this.mealsSectionFacade.editSectionMeal(this.sectionToEdit.id, newSectionMeal); 
+      this.mealsSectionFacade.editSectionMeal(this.sectionToEdit._id, newSectionMeal); 
 
     }else{
-      this.mealsSectionFacade.addNewSection(newSectionMeal);
+      let formData = undefined; 
+      if(this.file){
+        formData = new FormData(); 
+        formData.append('photo', this.file)
+      }
+      this.mealsSectionFacade.addNewSection(newSectionMeal, formData);
     }
+  }
+
+  updateFileToUpload(file: File){
+    this.file = file; 
   }
 
 }

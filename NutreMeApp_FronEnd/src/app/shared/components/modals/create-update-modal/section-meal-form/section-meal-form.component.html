@@ -1,6 +1,6 @@
 <form class="section-meal-form__container" [formGroup]="sectionMealForm">
     <text-input [controlName]="'sectionName'" [form-group]="sectionMealForm" labelText="Introduce nombre de sección"></text-input>
-    <input-file></input-file>
+    <input-file (fileLoaded)="updateFileToUpload($event)"></input-file>
     <generic-button
         (clicked)="processForm()"
         [button-text]="editMode ? 'Editar' : 'Añadir'">

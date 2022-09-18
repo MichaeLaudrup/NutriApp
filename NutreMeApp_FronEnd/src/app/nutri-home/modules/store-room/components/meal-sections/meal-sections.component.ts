@@ -12,21 +12,8 @@ import { animate, query, style, transition, trigger } from '@angular/animations'
   selector: 'app-meal-sections',
   templateUrl: './meal-sections.component.html',
   styleUrls: ['./meal-sections.component.scss'],
-  animations: [ trigger('MealsSectionAnimation',[
-    transition(':leave', [
-      query('.empty__section, .img-target', [
-        style({transform: 'scale(1)'}),
-        animate('.5s ease-in-out',
-        style({
-          transform: 'scale(0)'
-        }))
-      ], {optional: true})
-    ])
-  ])] 
 })
 export class MealSectionsComponent implements OnInit, OnDestroy{
-
-  @HostBinding('@MealsSectionAnimation') animation = false;  
   mealSections: SectionMeal[] = []; 
   editMood = false; 
   destroy$: Subject<any> = new Subject<any>();
@@ -90,7 +77,7 @@ export class MealSectionsComponent implements OnInit, OnDestroy{
     const modalData: CreateUpdateModalData = {
       title: 'Editar sección',
       typeOfModalSpecialization: typeModalSpecialization.UpdateMealSection,
-      sectionToEdit: {...mealSection, id:mealSection.id}
+      sectionToEdit: {...mealSection, _id:mealSection._id}
     }
     this.sharedFacade.displayModal(typeModalSpecialization.UpdateMealSection, modalData)
   }

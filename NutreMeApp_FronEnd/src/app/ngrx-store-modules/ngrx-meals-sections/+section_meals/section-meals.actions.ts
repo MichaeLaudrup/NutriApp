@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { Aliment, SectionMeal } from '@shared/models';
 
 /* CREATE */
-export const addSection = createAction('[Section Meals] Add Section Meal', props<{newSection: SectionMeal}>());
+export const addSection = createAction('[Section Meals] Add Section Meal', props<{newSection: SectionMeal, photo?: FormData}>());
 export const addSectionSuccess = createAction('[Section Meals] Add Section Meal sucess', props<{mealAdded: SectionMeal}>());
 export const addSectionFailure = createAction('[Section Meals] Add section meal failure', props <{payload: any}>());
 

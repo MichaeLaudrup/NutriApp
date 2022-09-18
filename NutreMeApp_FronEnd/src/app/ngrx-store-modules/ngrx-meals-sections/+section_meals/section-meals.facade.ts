@@ -21,11 +21,11 @@ export class MealSectionsFacade {
         this.store.dispatch( SectionMealsActions.getMeals()); 
     }
 
-    public addNewSection( newSection: SectionMeal) {
-        this.store.dispatch(SectionMealsActions.addSection({ newSection}))
+    public addNewSection( newSection: SectionMeal, photo?: FormData) {
+        this.store.dispatch(SectionMealsActions.addSection({ newSection, photo}))
     }
 
-    public editSectionMeal( id: string , section: SectionMeal){
+    public editSectionMeal( id: string , section: SectionMeal, photo?: FormData){
         this.store.dispatch(SectionMealsActions.editSection({id, section}))
     }
 

@@ -1,13 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Aliment, SectionMeal } from "@shared/models";
-import { delay, map, Observable, of } from "rxjs";
+import { delay, EmptyError, map, Observable, of } from "rxjs";
 import { deepCopiesUtils } from "src/app/shared/utils/deep-copies.utils";
 import { environment } from "src/environments/environment";
 @Injectable({
         providedIn:'root'
 })
 export class sectionMealsService {
+    attachPhotoToSection(sectionId: string, photo: FormData) {
+        return this.http.post<{status: string, data: {section: SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${sectionId}`, photo)
+    }
     private sectionMeals = [];  
     constructor(private http: HttpClient){}
 
@@ -17,17 +20,8 @@ export class sectionMealsService {
     }
 
     public addSectionMealToServer( newSectionMeal: SectionMeal): Observable<SectionMeal> {
-        const id = Math.ceil(Math.random()*100) + '';
-        newSectionMeal = {
-            ...newSectionMeal,
-            id
-        }
-        const sectionMealWithId: SectionMeal = {
-            id,
-            ...newSectionMeal
-        }
-        this.sectionMeals = [ ...this.sectionMeals, sectionMealWithId]; 
-        return of(sectionMealWithId).pipe( delay(1000)); 
+        return this.http.post<{status:string, data: {section: SectionMeal}}>( `${environment.apiUrlBase}/section-meals`, {...newSectionMeal})
+            .pipe( map( jsend => jsend.data.section)) 
     }
 
     public editSectionMealInServer( id: string, sectionUpdated: SectionMeal): Observable<SectionMeal[]>{

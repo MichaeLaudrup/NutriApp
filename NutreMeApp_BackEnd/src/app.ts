@@ -16,6 +16,7 @@ dotenv.config({path: `${__dirname}/../config.env`});
 require('./database');
 
 
+
 const app : Application = express();
 
 const whiteList = [
@@ -24,6 +25,10 @@ const whiteList = [
 app.use(cors({
     origin: whiteList
 })); 
+
+
+const path = require('path').join(__dirname, 'public')
+app.use('/static', express.static(path))
 
 const port = process.env.SERVER_PORT_NUMBER || 5000; 
 

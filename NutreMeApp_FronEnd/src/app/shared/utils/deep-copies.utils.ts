@@ -14,8 +14,8 @@ export class deepCopiesUtils {
     static copySectionsWithOneMealDeleted(sections: SectionMeal[], idSection: string, idMeal: string): SectionMeal[]{
         return sections.map(section => ({
             ...section,
-            id: section.id, 
-            meals: (idSection !== section.id) ? [...section.meals] : [...section.meals.filter(meal => meal._id !== idMeal)]
+            _id: section._id, 
+            meals: (idSection !== section._id) ? [...section.meals] : [...section.meals.filter(meal => meal._id !== idMeal)]
         }))
     }
 
@@ -23,8 +23,8 @@ export class deepCopiesUtils {
         const x = sections.map(section => { 
             return {
                 ...section,
-                id: section.id,
-                meals: (section.id !== sectionId) ? [...section.meals] : [...section.meals.map((meal) => {
+                id: section._id,
+                meals: (section._id !== sectionId) ? [...section.meals] : [...section.meals.map((meal) => {
                     return (meal._id === mealUpdated._id) ? {...mealUpdated} : meal })], 
 
             }

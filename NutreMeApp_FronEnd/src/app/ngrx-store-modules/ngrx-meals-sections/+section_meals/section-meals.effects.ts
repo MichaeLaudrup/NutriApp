@@ -23,8 +23,20 @@ export class SectionMealsEffects {
     createNewSectionMeal$ = createEffect(
         () => this.actions$.pipe(
             ofType(SectionMealsActions.addSection.type),
-            mergeMap( ( {newSection}) => this.sectionMealsService.addSectionMealToServer( newSection).pipe(
-                map( newSectionWithId => ({type: SectionMealsActions.addSectionSuccess.type, mealAdded: newSectionWithId}))
+            concatMap( ( {newSection, photo}) => this.sectionMealsService.addSectionMealToServer( newSection).pipe(
+                concatMap( 
+                    newSectionWithId => {
+                        console.log(photo)
+                        if (photo) {
+                            return this.sectionMealsService.attachPhotoToSection(newSectionWithId._id, photo)
+                                .pipe( map(section => {
+                                    return ({type: SectionMealsActions.addMealToSectionSuccess.type, newSectionWithId})
+                                }))
+                        } else {
+                            return of({type: SectionMealsActions.addMealToSectionSuccess.type, newSectionWithId})
+                        }
+                    }
+                )
             ))
         )
     );

@@ -3,11 +3,11 @@
         <ng-container *ngFor="let mealSection of mealSections; let i = index">
             <image-target class="img-target"
              [title]="mealSection.name"
-             (elementClicked)="navigateToListMeals(mealSection.id)"
+             (elementClicked)="navigateToListMeals(mealSection._id)"
              (editModeClicked)="enableEditMode(mealSection)"
              (deleteModeClicked)="enableDeleteMode($event)"
              [withEditMode]="editMood"
-             [item-id]="mealSection.id"
+             [item-id]="mealSection._id"
              [imgSrc]="urlSectionsImages + mealSection.imgPath"
              #img>
             </image-target>

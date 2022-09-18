@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'input-file',
@@ -9,6 +9,7 @@ export class InputFileComponent implements OnInit {
   isActive: boolean = false; 
   imagePreviewUrl: string = undefined;
   fileToUpload: File; 
+  @Output() fileLoaded: EventEmitter<File> = new EventEmitter(); 
   constructor() { }
 
   ngOnInit(): void {
@@ -37,6 +38,7 @@ export class InputFileComponent implements OnInit {
         this.imagePreviewUrl = fileURL; 
       }
       fileReader.readAsDataURL(this.fileToUpload);
+      this.fileLoaded.emit(this.fileToUpload); 
     }else{
       alert("This is not an Image File!");
       this.isActive = false; 

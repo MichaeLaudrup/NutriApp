@@ -13,7 +13,7 @@ export const sectionsAndLoaded = createSelector(
 ); 
 
 export const getSectionById = (id: string)  => createSelector(
-    getSharedAppSelector, (state: SectionMealsReducer.SectionMealState) => ( state.sections.find( (section) => section.id === id ))
+    getSharedAppSelector, (state: SectionMealsReducer.SectionMealState) => ( state.sections.find( (section) => section._id === id ))
 )
 
 export const getIsLoading = createSelector(
