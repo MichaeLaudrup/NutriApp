@@ -1,5 +1,5 @@
 const {Engine} = require('json-rules-engine'); 
-import { rules } from "./rules/basic-rules";
+import { rules } from "./rules/feedingType-rules";
 export class RulesEngine {
     engine = new Engine(); 
     constructor(){ 
@@ -8,9 +8,10 @@ export class RulesEngine {
         })
     }
 
-    probeFact( fact: any){
-        this.engine.run(fact).then( (event:any) => {
-        })
+    async probeFact( fact: any){
+        let result = await this.engine.run(fact); 
+        result.events.map( (x:any) => console.log(x))
+
     }
 }
 

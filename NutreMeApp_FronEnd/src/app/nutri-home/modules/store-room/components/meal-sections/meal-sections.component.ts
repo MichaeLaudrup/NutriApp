@@ -78,7 +78,7 @@ export class MealSectionsComponent implements OnInit, OnDestroy{
       title: 'Editar sección',
       typeOfModalSpecialization: typeModalSpecialization.UpdateMealSection,
       sectionToEdit: {...mealSection, _id:mealSection._id}
-    }
+    };
     this.sharedFacade.displayModal(typeModalSpecialization.UpdateMealSection, modalData)
   }
 

@@ -44,6 +44,12 @@ const mealSchema: mongoose.Schema = new mongoose.Schema({
         message: '{VALUE} is a Tag not supported'
       }
     },
+    recomendedMeals: {
+      type: [String],
+      enum : {
+        values: ['DESAYUNO','MEDIO_DIA', 'ALMUERZO', 'MERIENDA', 'PRE_ENTRENO', 'POST_ENTRENO','CENA', 'GENERICO']
+      }
+    },
     srcImg: String,
     createAt: {
       type:Date,

@@ -2,12 +2,12 @@
 const dontEatMeat = {
     conditions: {
         any: [{
-                fact:'feedType',
+                fact:'feedingType',
                 operator: 'equal',
                 value: 'VEGETARIANO'
             },
             {
-                fact:'feedType',
+                fact:'feedingType',
                 operator: 'equal',
                 value: 'VEGANO'
             },

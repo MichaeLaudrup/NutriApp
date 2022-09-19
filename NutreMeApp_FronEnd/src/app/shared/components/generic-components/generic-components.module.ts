@@ -20,6 +20,7 @@ import { ProgressBarComponent } from './charts/progress-bar/progress-bar.compone
 import { ChangeCssVariableValueDirective } from '../../directives/change-css-variable-value.directive';
 import { DialyMacroChartComponent } from './charts/dialy-macro-chart/dialy-macro-chart.component';
 import { InputFileComponent } from './forms/input-file/input-file.component';
+import { UserResumeComponent } from './user-resume/user-resume.component';
 
 const components = [
   DinamicSvgIconComponent,
@@ -40,7 +41,8 @@ const components = [
   ProgressBarComponent,
   ChangeCssVariableValueDirective,
   DialyMacroChartComponent,
-  InputFileComponent
+  InputFileComponent, 
+  UserResumeComponent
 ]
 @NgModule({
   declarations: [...components],

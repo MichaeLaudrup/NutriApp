@@ -81,9 +81,8 @@ export const sectionMealsReducer = createReducer<SectionMealState, Action> (init
     }),
 
     on(MealSectionsActions.deleteSection, (state) => ({...state, loading: true, loaded: false})), 
-    on(MealSectionsActions.deleteSectionSuccess, (state, {sectionsUpdated}) => ({ 
+    on(MealSectionsActions.deleteSectionSuccess, (state) => ({ 
         ...state, 
-        sections: sectionsUpdated,
         loaded: true,
         loading: false,
         feedBack: {

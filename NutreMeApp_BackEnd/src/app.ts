@@ -7,6 +7,7 @@ import userRouter from './routes/users.routes';
 import userDataRouter from './routes/user-data.routes'; 
 import dailyMealsRegisterRouter from './routes/daily-meals-register.routes'; 
 import sectionMealRouter from './routes/section-meals.routes'
+import recomendationsEngineRouter from './routes/recomendations-engine.routes'; 
 /* END-ROUTERS */
 import { OperationalError } from './shared/classes/error.interface';
 require('./utils/error-handlers'); 
@@ -45,6 +46,7 @@ app.use(`${baseRoute}/users`, userRouter);
 app.use(`${baseRoute}/user-data`, userDataRouter); 
 app.use(`${baseRoute}/daily-meals-registers`, dailyMealsRegisterRouter); 
 app.use(`${baseRoute}/section-meals`, sectionMealRouter); 
+app.use(`${baseRoute}/recommendations-engine`, recomendationsEngineRouter)
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
     next(new OperationalError( `Can't find the url ${req.originalUrl} on this server!`, 404 )); 
 })

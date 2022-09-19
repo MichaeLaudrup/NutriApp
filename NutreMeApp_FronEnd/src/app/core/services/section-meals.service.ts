@@ -24,16 +24,13 @@ export class sectionMealsService {
             .pipe( map( jsend => jsend.data.section)) 
     }
 
-    public editSectionMealInServer( id: string, sectionUpdated: SectionMeal): Observable<SectionMeal[]>{
-        const index = this.sectionMeals.findIndex( item => item.id === id);
-        this.sectionMeals = [...this.sectionMeals.slice(0,index), sectionUpdated, ...this.sectionMeals.slice(index+1, this.sectionMeals.length)]
-        return of(this.sectionMeals).pipe(delay(1000)); 
+    public editSectionMealInServer( id: string, sectionUpdated: SectionMeal): Observable<SectionMeal>{
+        return this.http.patch<{status:string, data: {section: SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${id}`, {...sectionUpdated})
+            .pipe( map( jsend => jsend.data.section)); 
     }
 
-    public deleteSection(id: string): Observable<SectionMeal[]> {
-        const index = this.sectionMeals.findIndex( item => item.id === id); 
-        this.sectionMeals = [...this.sectionMeals.slice(0,index), ...this.sectionMeals.slice(index+1, this.sectionMeals.length)];
-        return of(this.sectionMeals).pipe(delay(1000)); 
+    public deleteSection(id: string): Observable<any> {
+        return this.http.delete(`${environment.apiUrlBase}/section-meals/${id}`)
     }
 
     public addMealToServer(sectionId: string, newMeal: Aliment): Observable<Aliment> {

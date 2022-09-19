@@ -5,6 +5,7 @@ import { Subject, takeUntil, timeout } from 'rxjs';
 import { SectionMeal } from '@shared/models';
 import { ModalService } from '../../modal.service';
 import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'section-meal-form',
   templateUrl: './section-meal-form.component.html',
@@ -13,10 +14,10 @@ import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 export class CreationOfSectionMealComponent implements OnInit {
   inputImgOptions = inputImgPaths; 
   sectionMealForm: FormGroup; 
+  basicStaticRoute = environment.staticSectionsImagesURL;
   @Input() editMode: boolean = false;
-  @Input() actualSection : SectionMeal; 
   @Input() sectionToEdit: SectionMeal; 
-  file: File; 
+  file: File = undefined; 
   @Output() showSpinner: EventEmitter<boolean> = new EventEmitter<boolean>(); 
   @Output() showFeedBack: EventEmitter<string> = new EventEmitter<string>(); 
 
@@ -26,10 +27,7 @@ export class CreationOfSectionMealComponent implements OnInit {
     private mealsSectionFacade: MealSectionsFacade,
     private modalService: ModalService
   ) {
-    this.sectionMealForm = new FormGroup({
-      sectionName: new FormControl((this.editMode) ? this.actualSection.name : '', Validators.required),
-      sectionPath: new FormControl((this.editMode) ? this.actualSection.imgPath : '')
-    }); 
+
    }
 
   ngOnInit(): void {
@@ -48,6 +46,11 @@ export class CreationOfSectionMealComponent implements OnInit {
         this.modalService.showLoadingSpinner(true); 
       }
     })
+
+    this.sectionMealForm = new FormGroup({
+      sectionName: new FormControl((this.editMode) ? this.sectionToEdit.name : '', Validators.required),
+      sectionPath: new FormControl(null)
+    }); 
   }
 
   ngOnDestroy(): void {

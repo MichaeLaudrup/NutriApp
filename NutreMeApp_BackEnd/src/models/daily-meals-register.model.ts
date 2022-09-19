@@ -32,7 +32,4 @@ const dailyMealsRegisterSchema = new mongoose.Schema({
     }
 });
 
-
-
-
 export const dailyMealsRegisterModel = mongoose.model('DailyMealsRegister', dailyMealsRegisterSchema, 'DailyMealsRegister')

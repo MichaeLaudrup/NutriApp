@@ -5,6 +5,12 @@ import { uploadUserPhotoMiddleware } from '../middleware/upload-image.middleware
 
 const router = express.Router(); 
 
-router.route('/').get(accessByLogginProtection, SectionMealController.getMySectionMeals).post( accessByLogginProtection, SectionMealController.addSectionMeals); 
-router.route('/:id').post( accessByLogginProtection,uploadUserPhotoMiddleware, SectionMealController.attachPhotoToSection); 
+router.route('/')
+    .get(accessByLogginProtection, SectionMealController.getMySectionMeals)
+    .post( accessByLogginProtection, SectionMealController.addSectionMeals); 
+
+router.route('/:id')
+    .post( accessByLogginProtection,uploadUserPhotoMiddleware, SectionMealController.attachPhotoToSection)
+    .delete(accessByLogginProtection, SectionMealController.deleteSectionMeal)
+    .patch(accessByLogginProtection, SectionMealController.updateSecionMeal); 
 export default router; 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'input-file',
@@ -9,6 +9,7 @@ export class InputFileComponent implements OnInit {
   isActive: boolean = false; 
   imagePreviewUrl: string = undefined;
   fileToUpload: File; 
+  @Input() label: string = ''
   @Output() fileLoaded: EventEmitter<File> = new EventEmitter(); 
   constructor() { }
 

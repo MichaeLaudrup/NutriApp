@@ -80,6 +80,7 @@ export class ListMealsComponent implements OnInit, OnDestroy {
         private storeRoomService: StoreRoomService) { }
 
   ngOnInit(): void {
+    this.storeRoomService.setClickedCreate(false); 
     this.sectionId = this.route.snapshot.params['id']; 
     this.sectionMealsFacade.requestSectionMeals(); 
     this.sectionMealsFacade.sectionMealById$(this.sectionId).pipe(takeUntil( this.destroySucriptions$)).subscribe( ( sectionMeal: SectionMeal) => {
