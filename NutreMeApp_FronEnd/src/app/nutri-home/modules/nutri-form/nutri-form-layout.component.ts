@@ -21,7 +21,7 @@ type NewType = Subject<any>;
 export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     actualPage = -1; 
     progressValue = 0; 
-    routes = ['select-objective', 'fisiologic-data', 'feeding-type']; 
+    routes = ['select-objective', 'fisiologic-data', 'feeding-type', 'select-alergens', 'select-forbidden-food' ]; 
     height = 0; 
     isInMobileMood = false; 
     private destroySuscriptions$: Subject<any> = new Subject<any>(); 

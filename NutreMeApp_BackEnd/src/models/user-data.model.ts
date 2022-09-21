@@ -56,6 +56,13 @@ const UserDataSchema = new mongoose.Schema({
         type: Number,
         default: 1 // Si no se provee actividad fisica se pone a uno para que no tenga efecto en los calculos matemáticos
     },
+    allergens: {
+        type:[String],
+        enum: {
+            values: ['HUEVO','FRUTOS_SECOS','GLUTEN','SOJA', 'LACTOSA', 'MARISCO', 'FRUCTOSA', 'PESCADO' ],
+            message: ''
+        } 
+    },
     photo: String
 }, schemaOptions); 
 

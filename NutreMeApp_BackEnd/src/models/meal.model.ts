@@ -40,7 +40,7 @@ const mealSchema: mongoose.Schema = new mongoose.Schema({
     tags: {
       type: [String],
       enum: {
-        values: ['CARNE', 'VERDURA', 'GLUTEN', 'VEGANO', 'LACTEO', 'CEREALES', 'FRUTA', 'FRUTOSSECOS', 'LEGUMBRES', 'VEGETALES', 'MARISCO', 'PESCADO'],
+        values: ['CARNE', 'VERDURA', 'GLUTEN', 'VEGANO', 'LACTEO', 'CEREALES', 'FRUTA', 'FRUTOSSECOS', 'LEGUMBRES', 'VEGETALES', 'MARISCO', 'PESCADO', 'ORIGEN_ANIMAL'],
         message: '{VALUE} is a Tag not supported'
       }
     },

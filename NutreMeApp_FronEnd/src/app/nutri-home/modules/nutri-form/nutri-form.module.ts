@@ -9,6 +9,8 @@ import { FisiologicDataSheetComponent } from './components/fisiologic-data-sheet
 import { CarrouselService } from "./servicios/carrousel.service";
 import { SelectFeedingTypeComponent } from './components/select-feeding-type/select-feeding-type.component';
 import { UserDataFacadeService } from "@ngrx/ngrx-shared";
+import { SelectAlergensComponent } from './components/select-alergens/select-alergens.component';
+import { SelectForbiddenFoodComponent } from './components/select-forbidden-food/select-forbidden-food.component';
 
 const components = [ nutriFormLayout]; 
 
@@ -17,7 +19,9 @@ const components = [ nutriFormLayout];
         components,
         FisiologicDataSheetComponent,
         SelectObjectiveSheetComponent,
-        SelectFeedingTypeComponent
+        SelectFeedingTypeComponent,
+        SelectAlergensComponent,
+        SelectForbiddenFoodComponent
     ],
     exports:[
         components

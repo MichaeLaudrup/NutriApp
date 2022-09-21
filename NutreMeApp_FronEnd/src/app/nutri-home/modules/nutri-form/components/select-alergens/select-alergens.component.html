@@ -1,0 +1,10 @@
+<h2>¿Tienes alguna alergia? </h2>
+<div class="alergens-box">
+    <ng-container *ngFor="let alergen of alergens; let i = index">
+        <div class="alergens-box-item">
+            <dinamic-svg-icon [svg-name]="alergen | fromAlergenToSvgIcon" svg-width="30px" svg-height="30px"></dinamic-svg-icon>
+            {{ alergensNames[i]}}
+        </div>
+    </ng-container>
+</div>
+<button class="btn">Hecho</button>

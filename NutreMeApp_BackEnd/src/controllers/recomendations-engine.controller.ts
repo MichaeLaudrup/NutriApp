@@ -6,16 +6,13 @@ import RulesEngine from "../services/rules-engine/rules-engine.service"
 export const runEngine = async(req: Request, res:Response, next: NextFunction) => {
     try{
         const engine = new RulesEngine(); 
-        await engine.probeFact({feedingType: 'VEGETARIANO'});
-        const aliments = await MealModel.find({
-            $and:[
-                { tags: {$ne: 'CARNE'}},
-                { tags: {$ne: 'LACTEO'}}
-            ]
-        })
+        const complexQuery = await engine.probeFact({feedingType: 'VEGETARIANO', allergens: ['GLUTEN', 'HUEVO']});
+        console.log(complexQuery)
+        const aliments = await MealModel.find({...complexQuery})
         const userData = await UserDataModel.findOne({userId: req.body.user._id}); 
         res.status(200).json({
             status: 'success',
+            longitud: aliments.length,
             aliments
         })
     }catch (err) {

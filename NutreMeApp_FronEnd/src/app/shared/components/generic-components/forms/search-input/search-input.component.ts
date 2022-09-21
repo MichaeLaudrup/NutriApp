@@ -8,7 +8,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 })
 export class SearchInputComponent implements OnInit {
   @ViewChild('searchText') input: ElementRef; 
-  @Output('searchClicked')inputEmitterEvent: EventEmitter<string> = new EventEmitter<string>(); 
+  @Output('updatedInput')inputEmitterEvent: EventEmitter<string> = new EventEmitter<string>(); 
   constructor() { }
 
   ngOnInit(): void {

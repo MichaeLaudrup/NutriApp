@@ -1,17 +1,61 @@
 :host {
     display: block;
     width: 100%;
+    padding: 1rem 0rem; 
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.search-container{
-    padding: 1rem 1rem; 
+.container{
+    position: relative; 
+}
+.search-results{
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top:0; 
+    left: 0; 
+    right: 0; 
+    width: 100%;
+    z-index: 1;
+    background-color: var(--elements-bg-secondary);
+
+    .search-result-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .5rem; 
+        border-bottom: 1px solid var(--text-generic-color);
+        transition: all .7s ease-in-out;
+        &:hover {
+            background-color: var(--elements-bg-primary);
+        }
+
+        &.meal-selected {
+            background-color: var(--text-generic-color);
+            color: var(--elements-bg-secondary);
+            border-bottom:1px solid var(--elements-bg-secondary) ;
+        
+        }
+    }
 }
 
-.list-meals {
-    height: 400px;
-    overflow-y: scroll;
-    overflow-x: visible;
-    padding-top: 2rem; 
-    list-meal-item:not(:last-child){
+.list-meals{
+    padding: 1rem 0rem; 
+    max-height: 270px;
+    overflow: auto; 
+    list-meal-item{
         margin-bottom: 1rem;
     }
 }
+
+.btn {
+    animation: expandFromCenter .7s ease-in-out backwards;
+}
+
+
+
+
+

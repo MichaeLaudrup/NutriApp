@@ -19,7 +19,7 @@ export const getAllMeals = async (req: Request, res: Response, next: NextFunctio
             }
             /* Adaptacion de la consulta para casos en lo que se filtre con "mayor, mayor igual, menor o menor igual" */
             queryStr = JSON.stringify(req.query);
-            queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne| regex)\b/g, match => (match === 'regex') ? `$options":"i","$${match}` : `$${match}` ); 
+            queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne|regex)\b/g, match => (match === 'regex') ? `$options":"i","$${match}` : `$${match}` ); 
         }
         let query = MealModel.find((queryStr !== undefined) ? ({...JSON.parse(queryStr ), $options:"i"}) :{ ...queryParams}); 
 

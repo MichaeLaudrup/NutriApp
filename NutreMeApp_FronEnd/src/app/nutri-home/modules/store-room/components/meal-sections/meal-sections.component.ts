@@ -7,7 +7,6 @@ import { typeModalSpecialization } from '@shared/enums';
 import { StoreRoomService } from '../../services/store-room.service';
 import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 import { environment } from 'src/environments/environment';
-import { animate, query, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'app-meal-sections',
   templateUrl: './meal-sections.component.html',
