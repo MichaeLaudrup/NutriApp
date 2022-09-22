@@ -5,6 +5,10 @@
     justify-content: space-between;
 }
 
+h2{
+    text-align: center;
+}
+
 .alergens-box{
     display: flex;
     flex-wrap: wrap;
@@ -23,10 +27,23 @@
         transition: all .7s ease-in-out;
         &:hover {
             transform: translateY(-10px);
+            background-color: var(--text-generic-color);
+            color: var(--elements-bg-primary); 
+        }
+
+        &:active {
+            transition: all .1s ease-in-out;
+            transform: translateY(5px);
+
+            &.selected {
+                background-color: transparent;
+                color: var(--text-generic-color)
+            }
         }
 
         &.selected {
-            
+            background-color: var(--text-generic-color);
+            color: var(--elements-bg-primary);
         }
     }
 }

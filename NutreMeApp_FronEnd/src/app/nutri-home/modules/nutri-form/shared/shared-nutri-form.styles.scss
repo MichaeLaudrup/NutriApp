@@ -14,6 +14,10 @@
     padding: 2rem; 
 }
 
+h2 {
+    text-align: center;
+}
+
 .btn {
     color: var(--text-generic-color);
     box-shadow: rgb(0, 0, 0) 0px 5px 15px;
@@ -36,6 +40,7 @@
         transform: translateY(-4px);
         --svg-generic-color: black;
     }
+
     &:active {
         transition: transform .1s;
         transform: translateY(0px);

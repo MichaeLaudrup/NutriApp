@@ -20,13 +20,13 @@
     </div>
     
     <h3>Alimentos seleccionados: </h3>
-    <ul class="list-meals" >
+    <ul class="list-meals" [style.maxHeight.px]="maxHeight" >
         <ng-container *ngFor="let mealSelected of mealsSelected; let i = index">
             <list-meal-item [ngClass]="{'selected': actualItemSelected === i}"[meal]="mealSelected"[index]="i" (listItemClicked)="actualItemSelected = $event"></list-meal-item>
         </ng-container>
     </ul>
 </div>
 
-<button class="btn" *ngIf="mealsSelected.length > 0">
+<button class="btn" *ngIf="mealsSelected.length > 0" (click)="sendUpSelectedMeals()">
     Insertar {{ (mealsSelected.length > 1) ? 'alimentos' : 'alimento'}}
 </button>

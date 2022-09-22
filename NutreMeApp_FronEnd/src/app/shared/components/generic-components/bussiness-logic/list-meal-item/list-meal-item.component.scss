@@ -8,7 +8,8 @@
     transform: skewX(-20deg) scale(1);
     overflow: hidden;
     &:hover {
-        transform: skewX(-20deg) scale(0.9);
+        background-color: var(--text-generic-color);
+        color: var(--elements-bg-secondary); 
     }
 }
 

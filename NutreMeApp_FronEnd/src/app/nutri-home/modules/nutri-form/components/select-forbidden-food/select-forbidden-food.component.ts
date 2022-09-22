@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserInterfaceService } from '@core/services';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
@@ -14,10 +15,17 @@ export class SelectForbiddenFoodComponent implements OnInit {
   constructor(
     private carrouselService: CarrouselService, 
     private userDataFacadeServices: UserDataFacadeService,
+    private userInterfaceService: UserInterfaceService ,
     private router: Router) {
       setTimeout(() => this.carrouselService.setPage(4) , 0); 
     }
   
-    ngOnInit(): void {
+    ngOnInit( ): void {
+      
+    }
+
+    processForbiddenMeals(events){
+      console.log(events)
+      this.router.navigate(['/nutriapp/nutri-data'])
     }
   }

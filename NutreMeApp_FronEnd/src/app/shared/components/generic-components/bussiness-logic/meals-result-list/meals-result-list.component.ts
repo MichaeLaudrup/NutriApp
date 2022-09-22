@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter,HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MealsFacade } from '@ngrx/ngrx-meals';
 import { Aliment } from '@shared/models';
 import { Subject, takeUntil } from 'rxjs';
@@ -23,6 +23,10 @@ export class MealsResultListComponent implements OnInit, OnDestroy {
   mealsSelected: Aliment[] = []; 
   mealsSelectedIds: String[] = []; 
   actualItemSelected: number = -1; 
+  @Input() maxHeight: number = 270; 
+  @Output() selectedMealsUpdated : EventEmitter<Aliment[]> = new EventEmitter(); 
+
+
   constructor(private mealsFacadeService: MealsFacade) { }
 
   ngOnInit(): void {
@@ -53,7 +57,10 @@ export class MealsResultListComponent implements OnInit, OnDestroy {
       this.mealsSelectedIds.push(meal._id);
       this.mealsSelected.push(meal); 
     }
-    console.log(this.mealsSelected)
+  }
+
+  sendUpSelectedMeals(){
+    this.selectedMealsUpdated.emit(this.mealsSelected); 
   }
 
 }

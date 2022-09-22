@@ -11,6 +11,7 @@ import { SelectFeedingTypeComponent } from './components/select-feeding-type/sel
 import { UserDataFacadeService } from "@ngrx/ngrx-shared";
 import { SelectAlergensComponent } from './components/select-alergens/select-alergens.component';
 import { SelectForbiddenFoodComponent } from './components/select-forbidden-food/select-forbidden-food.component';
+import { NgrxMealsModule } from "@ngrx/ngrx-meals";
 
 const components = [ nutriFormLayout]; 
 
@@ -30,7 +31,8 @@ const components = [ nutriFormLayout];
         CommonModule,
         formularioNutricionalRoutingModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        NgrxMealsModule
     ],
     providers: [ CarrouselService, UserDataFacadeService],
 })
