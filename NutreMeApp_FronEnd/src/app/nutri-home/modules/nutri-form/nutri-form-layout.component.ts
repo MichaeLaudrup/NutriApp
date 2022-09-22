@@ -10,8 +10,6 @@ import { UserInterfaceService } from "src/app/core/services/user-interface.servi
 import { sliderAnimations } from "./animations";
 import { CarrouselService } from "./servicios/carrousel.service";
 
-type NewType = Subject<any>;
-
 @Component({
     selector: 'nutri-form-layout',
     templateUrl: './nutri-form-layout.component.html',
@@ -21,7 +19,7 @@ type NewType = Subject<any>;
 export class nutriFormLayout implements OnInit, AfterViewInit, OnDestroy {
     actualPage = -1; 
     progressValue = 0; 
-    routes = ['select-objective', 'fisiologic-data', 'feeding-type', 'select-alergens', 'select-forbidden-food' ]; 
+    routes = ['select-objective', 'fisiologic-data', 'feeding-type', 'select-allergens', 'select-forbidden-food' ]; 
     height = 0; 
     isInMobileMood = false; 
     private destroySuscriptions$: Subject<any> = new Subject<any>(); 

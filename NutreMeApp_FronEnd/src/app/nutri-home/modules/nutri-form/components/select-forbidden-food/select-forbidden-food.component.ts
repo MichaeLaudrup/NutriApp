@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInterfaceService } from '@core/services';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
+import { Aliment } from '@shared/models';
 import { CarrouselService } from '../../servicios/carrousel.service';
 
 @Component({
@@ -24,8 +25,10 @@ export class SelectForbiddenFoodComponent implements OnInit {
       
     }
 
-    processForbiddenMeals(events){
-      console.log(events)
+    processForbiddenMeals(events: Aliment[]){
+      const filterIds: string[] = events.map( meal => meal._id); 
+      this.userDataFacadeServices.setForbiddenAliments(filterIds)
+      this.carrouselService.uploadDataToServerTrigger(); 
       this.router.navigate(['/nutriapp/nutri-data'])
     }
   }

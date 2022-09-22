@@ -9,12 +9,12 @@ h2{
     text-align: center;
 }
 
-.alergens-box{
+.allergens-box{
     display: flex;
     flex-wrap: wrap;
     gap: 1rem; 
     justify-content: center;
-    .alergens-box-item{
+    .allergens-box-item{
         min-width: 46%; 
         box-shadow: var(--generic-shadow);
         display: flex;

@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { FeedingType } from '@shared/enums';
+import { Allergens } from 'src/app/shared/enums/allergens.enum';
 import { NutritionTarget } from 'src/app/shared/enums/nutrition-target.enum';
 import { FisiologicData, UserData} from 'src/app/shared/models/fisiologicData.model';
 
@@ -31,4 +32,14 @@ export const uploadUserDataToServerSuccess = createAction(
 export const uploadUserDataToServerFailure = createAction(
   '[User-data] Fallo al subir a servidor datos del usuario',
   props<{ errorPayload: string}>()
+)
+
+export const setAllergens = createAction(
+  '[User-data] Esblecer alergenos',
+  props<{allergens: Allergens[]}>()
+)
+
+export const setForbiddenAliments = createAction(
+  '[User-data] Establecer alimentos prohibidos',
+  props<{forbiddenAliments: string[]}>()
 )

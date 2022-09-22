@@ -7,6 +7,7 @@ import * as USER_DATA_SELECTOR from './user-data.selectors';
 import * as USER_DATA_ACTIONS from './user-data.actions'; 
 import { FeedingType, NutritionTarget } from "@shared/enums";
 import { Macronutrients } from "src/app/shared/models/macronutrients.model";
+import { Allergens } from "src/app/shared/enums/allergens.enum";
 @Injectable()
 export class UserDataFacadeService {
     constructor( private store: Store<UserDataState>) {
@@ -42,6 +43,14 @@ export class UserDataFacadeService {
 
     public uploadToServerUserData( userId: string, userData: UserData){
         this.store.dispatch(USER_DATA_ACTIONS.uploadUserDataToServer({userId, userData})); 
+    }
+
+    public setAllergens(allergens: Allergens[]){
+        this.store.dispatch(USER_DATA_ACTIONS.setAllergens({allergens}))
+    }
+
+    public setForbiddenAliments(forbiddenAliments: string[]){
+        this.store.dispatch(USER_DATA_ACTIONS.setForbiddenAliments({forbiddenAliments}))
     }
 
 

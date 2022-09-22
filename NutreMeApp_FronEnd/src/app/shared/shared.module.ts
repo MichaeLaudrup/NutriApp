@@ -15,7 +15,8 @@ import { GetRoutePipe } from './pipes/get-route.pipe';
 import { LoginRegisterComponent } from './components/auth-section/login-register.component';
 import { MealSectionsFacade } from '../ngrx-store-modules/ngrx-meals-sections';
 import { NgRxSharedModule, usersFacade } from '../ngrx-store-modules/ngrx-shared';
-import { toSvgAlergenIcon } from './pipes/alergens.pipe copy';
+import { toSvgAlergenIcon } from './pipes/allergens.pipe';
+
 
 
 const components = [

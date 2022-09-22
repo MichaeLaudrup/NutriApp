@@ -20,7 +20,6 @@ export class SelectFeedingTypeComponent implements OnInit {
   }
   selectFeedingType(feedingType: FeedingType): void {
     this.userDataFacadeServices.setFeedingType(feedingType);
-    this.carrouselService.uploadDataToServerTrigger(); 
-    this.router.navigate(['/nutriapp/nutri-form/select-alergens']); 
+    this.router.navigate(['/nutriapp/nutri-form/select-allergens']); 
   }
 }

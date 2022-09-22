@@ -16,7 +16,6 @@ export class SelectObjectiveSheetComponent implements OnInit, OnDestroy {
  
   constructor( 
     private carrouselService: CarrouselService,
-    private changeDetector: ChangeDetectorRef,
     private router: Router,
     private userFacadeServices: UserDataFacadeService) { }
 

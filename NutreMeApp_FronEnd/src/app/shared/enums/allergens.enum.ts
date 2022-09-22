@@ -1,4 +1,4 @@
-export enum Alergens {
+export enum Allergens {
     Egg = 'HUEVO',
     Nuts = 'FRUTOS_SECOS',
     Gluten = 'GLUTEN',

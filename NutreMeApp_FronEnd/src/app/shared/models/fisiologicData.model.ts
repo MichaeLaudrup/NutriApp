@@ -22,6 +22,8 @@ export class UserData{
     constructor(public fisiologicData: FisiologicData,
                 public nutritionalTarget: NutritionTarget,
                 public feedingType: FeedingType, 
+                public forbiddenAliments?: string[],
+                public allergens?: string[]
                  ){}
 }
 

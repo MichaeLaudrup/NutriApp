@@ -10,6 +10,7 @@ export const newUserData = async(req: Request, res:Response, next: NextFunction)
         const userProfile = await UserModel.find({_id:userId});
         if(userProfile){
             const userDataFromFront = req.body.userData; 
+            console.log(userDataFromFront)
             const userDataExistOnMongo = await UserDataModel.findOne({ userProfile: userId})
             let userData; 
             if(!userDataExistOnMongo){
@@ -22,6 +23,8 @@ export const newUserData = async(req: Request, res:Response, next: NextFunction)
                     feedingType: userDataFromFront.feedingType,
                     gender: userDataFromFront.fisiologicData.gender, 
                     activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
+                    allergens: userDataFromFront.allergens,
+                    forbiddenAliments: userDataFromFront.forbiddenAliments
                 });
             }else{
                 userData = await UserDataModel.findByIdAndUpdate(userDataExistOnMongo._id, {
@@ -32,6 +35,8 @@ export const newUserData = async(req: Request, res:Response, next: NextFunction)
                     feedingType: userDataFromFront.feedingType,
                     gender: userDataFromFront.fisiologicData.gender, 
                     activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
+                    allergens: userDataFromFront.allergens,
+                    forbiddenAliments: userDataFromFront.forbiddenAliments
                 },{ 
                     new: true, //return de "new" document
                     runValidators: true,

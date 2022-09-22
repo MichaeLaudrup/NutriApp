@@ -1,25 +1,24 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { Alergens } from "../enums/alergens.enum";
+import { Allergens } from "../enums/allergens.enum";
 
 
-const getSvgIconName = ( mealTagType:Alergens) => {
+const getSvgIconName = ( mealTagType:Allergens) => {
     switch(mealTagType){
-        case Alergens.Egg: 
+        case Allergens.Egg: 
             return 'egg';
-            
-        case Alergens.Fish: 
+        case Allergens.Fish: 
             return 'fish'; 
-        case Alergens.Fructose: 
+        case Allergens.Fructose: 
             return 'fructose'; 
-        case Alergens.Gluten: 
+        case Allergens.Gluten: 
             return 'gluten'; 
-        case Alergens.Lactose: 
+        case Allergens.Lactose: 
             return 'lactose'; 
-        case Alergens.Nuts: 
+        case Allergens.Nuts: 
             return 'nuts';
-        case Alergens.SeaFood: 
+        case Allergens.SeaFood: 
             return 'seafood'; 
-        case Alergens.Soy: 
+        case Allergens.Soy: 
             return 'soy'; 
         default: 
             return 'generic_icon';  
@@ -30,7 +29,7 @@ const getSvgIconName = ( mealTagType:Alergens) => {
     name: 'fromAlergenToSvgIcon'
 })
 export class toSvgAlergenIcon implements PipeTransform {
-    transform(tag: Alergens) {
+    transform(tag: Allergens) {
         return getSvgIconName(tag); 
     }
 }
