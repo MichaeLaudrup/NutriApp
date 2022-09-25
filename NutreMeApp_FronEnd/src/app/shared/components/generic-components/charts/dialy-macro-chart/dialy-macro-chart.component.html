@@ -1,7 +1,7 @@
 
 
 <div class="daily-macro-chart__container">
-    <h3 class="date-title">27 de febrero de 2022</h3>
+    <h3 class="date-title">{{ dailyMealsRegister.date | date}}</h3>
     <div class="radial-chart">
         <radial-chart [value]="dailyMealsRegister.totalKcal" [limit]="totalKcal" [label]="'Calorías restantes'" [units]="' de ' + (totalKcal | number:'1.0-0')+ ' Kcal'"></radial-chart>
     </div>

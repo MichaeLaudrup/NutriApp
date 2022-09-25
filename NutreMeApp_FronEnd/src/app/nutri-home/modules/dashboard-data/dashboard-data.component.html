@@ -1,7 +1,11 @@
 <div class="dashboard-container">
 
     <div class="user-box" *ngIf="deviceMode ===  DEVICE_MODE.Tablet">
-        <user-resume></user-resume>
+        <user-resume class="on-dashboard-data"></user-resume>
+    </div>
+    <div class="data-user-box" *ngIf="deviceMode ===  DEVICE_MODE.Tablet">
+        <user-data-resume class="on-dashboard-data">
+        </user-data-resume>
     </div>
     <div class="dashboard__box box__daily-macro" >
         <div class="box__header">
@@ -11,7 +15,7 @@
             <app-modal-info-activator></app-modal-info-activator> 
         </div>
         <div class="box__content">
-            <dialy-macro-chart></dialy-macro-chart>
+            <dialy-macro-chart class="on-dashboard-data"></dialy-macro-chart>
         </div>
     </div>
 

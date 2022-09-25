@@ -25,3 +25,15 @@ li{
     border-radius: 50%;
     background-color: red;
 }
+
+@media screen and (max-width: 420px) {
+    highcharts-chart{
+        height: 235px;
+    }   
+}
+
+@media screen and (max-width: 776px) {
+    highcharts-chart{
+        height: 300px;
+    }   
+}

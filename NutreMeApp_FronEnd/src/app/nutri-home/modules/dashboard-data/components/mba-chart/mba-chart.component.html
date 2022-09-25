@@ -2,8 +2,7 @@
 <highcharts-chart 
     [Highcharts]="Highcharts" 
     [options]="chartOptions"
-    style="width: 100%;display: block;"
-    [style.maxHeight]="(deviceMode === DeviceMode.ExtraSmall) ? 200 : 400">
+    style="width: 100%;display: block;">
 </highcharts-chart>
 <ul *ngIf="deviceMode === DeviceMode.ExtraSmall">
     <li>

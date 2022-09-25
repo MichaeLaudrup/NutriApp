@@ -8,25 +8,18 @@ import { Subject, takeUntil } from "rxjs";
 	templateUrl: "./basic-line-chart.component.html",
 	styleUrls: ["./basic-line-chart.component.scss"]
 })
-export class BasicLineChartComponent implements OnInit, OnDestroy {
+export class BasicLineChartComponent implements OnInit {
 	chartOptions = { };
 	Highcharts = HighCharts;  
 	deviceMode: DeviceMode; 
 	DeviceMode = DeviceMode; 
-	private destroySuscriptions$: Subject<any> = new Subject()
-
-	constructor( private userInterfaceService: UserInterfaceService) {
+	constructor() {
 	}
 
-	ngOnDestroy(): void {
-		this.destroySuscriptions$.next({})
-		 this.destroySuscriptions$.unsubscribe()
-	}
+
 	ngOnInit(){
 		this.calcChart(); 
-		this.userInterfaceService.deviceMode$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( deviceMode => {
-			this.deviceMode = deviceMode; 
-		})
+
 	}
 
 	calcChart() {

@@ -7,6 +7,12 @@
     box-shadow: var(--generic-shadow);
 }
 
+:host(.on-dashboard-data){
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+        grid-template-columns: 1fr;
+    }
+}
+
 .profile-info{
     h2 {
         margin-bottom: .5rem;
