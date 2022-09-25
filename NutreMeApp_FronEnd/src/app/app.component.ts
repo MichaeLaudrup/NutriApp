@@ -24,6 +24,8 @@ export class AppComponent implements OnInit, OnDestroy{
       this.userInterfaceService.setDeviceMode(DeviceMode.Tablet); 
     }else if(windowWidth > 767 && windowWidth <= 1024){
       this.userInterfaceService.setDeviceMode(DeviceMode.Laptop); 
+    }else if(windowWidth > 1024 ){
+      this.userInterfaceService.setDeviceMode(DeviceMode.BigLaptop); 
     }
   }
 

@@ -2,23 +2,37 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { UserInterfaceService } from "@core/services";
 import { DeviceMode } from "@shared/enums";
 import * as HighCharts from 'highcharts'
-import { Subject, takeUntil } from "rxjs";
+import { Subject, take, takeUntil } from "rxjs";
 @Component({
 	selector: "app-basic-line-chart",
 	templateUrl: "./basic-line-chart.component.html",
 	styleUrls: ["./basic-line-chart.component.scss"]
 })
-export class BasicLineChartComponent implements OnInit {
+export class BasicLineChartComponent implements OnInit, OnDestroy {
 	chartOptions = { };
 	Highcharts = HighCharts;  
 	deviceMode: DeviceMode; 
 	DeviceMode = DeviceMode; 
-	constructor() {
+	showExtraInfo = false; 
+	private destroySuscriptions$: Subject<any> = new Subject()
+	ngOnDestroy(): void {
+		this.destroySuscriptions$.next({})
+		 this.destroySuscriptions$.unsubscribe()
+	}
+	constructor( private userInterfaceService: UserInterfaceService) {
 	}
 
 
 	ngOnInit(){
-		this.calcChart(); 
+		this.userInterfaceService.deviceMode$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( (deviceMode) => {
+			if(deviceMode === DeviceMode.Laptop || deviceMode === DeviceMode.BigLaptop) {
+				this.showExtraInfo = true;
+				
+			}else{
+				this.showExtraInfo = false; 
+			}
+			this.calcChart();  
+		}); 
 
 	}
 
@@ -36,9 +50,9 @@ export class BasicLineChartComponent implements OnInit {
 			},
 
 			yAxis: {
-				min: 2500,
+				min: 0,
 				title: {
-					text: "",
+					text: (this.showExtraInfo) ? "Calorías díarias" : "",
 					style: {
 						color: 'var(--text-generic-color)'
 					}
@@ -53,7 +67,7 @@ export class BasicLineChartComponent implements OnInit {
 
 			xAxis: {
 				lineColor: '#96f2d7',
-				categories: ['Mon','Thu','Wed','Tue','Fri','Sat','Sun'],
+				categories: ['Mon','Thu','Wed','Tue','Fri','Sat','Sun', 'Mon', 'Thu', 'Wed', 'Tue', 'Fri', 'Sat'],
 				gridLineWidth: 0,
 
 				labels: {
@@ -67,8 +81,9 @@ export class BasicLineChartComponent implements OnInit {
 			},
 
 			legend: {
-				align: "center",
-				verticalAlign: "bottom",
+				layout: "vertical",
+				align: "right",
+				verticalAlign: "center",
 				x:0,
 				y:0,
 				itemStyle: {
@@ -81,11 +96,11 @@ export class BasicLineChartComponent implements OnInit {
 
 			series: [{
 				name: "Kilo calorías objetivo",
-				data: [3097, 3097, 3097, 3097, 3097, 3097, 3097],
+				data: [3097, 3097, 3097, 3097, 3097, 3097, 3097, 3042, 3498,3034],
 				color: 'var(--chart-color03)'
 			}, {
 				name: "Kilo calorías consumidas",
-				data: [2800, 3200, 2959, 3097, 2500, 3097, 3000],
+				data: [1000, 1500, 2959, 980, 2500, 2125, 3000,2980, 3450, 3000],
 				color: 'var(--chart-color01)'
 			}
 			],
@@ -93,13 +108,15 @@ export class BasicLineChartComponent implements OnInit {
 			responsive: {
 				rules: [{
 					condition: {
-						maxWidth: 2000
+						maxWidth: 1000
 					},
 					chartOptions: {
 						legend: {
+							x: 0,
+							y: 0,
 							layout: "horizontal",
-							align: "center",
-							verticalAlign: "bottom"
+							align: "right",
+							verticalAlign: "right"
 						}
 					}
 				}]

@@ -206,3 +206,23 @@ ul{
     }
     
 }
+
+@media screen and (min-width: 1024px) {
+    ul {
+        display: grid;
+        gap: 1rem; 
+        justify-items: flex-start;
+        align-items: flex-start;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+}
+
+@media screen and (min-width: 1400px) {
+    ul {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+}

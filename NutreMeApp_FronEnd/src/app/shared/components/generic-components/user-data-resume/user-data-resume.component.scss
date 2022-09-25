@@ -7,7 +7,13 @@
 }
 
 :host(.on-dashboard-data){
-    @media screen and (min-width: 576px) and (max-width: 767px) {
+    @media screen and (min-width: 576px)  {
+        .data-container{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media screen and (min-width: 1200px)  {
         .data-container{
             grid-template-columns: 1fr;
         }

@@ -1,14 +1,15 @@
 import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { typeModalSpecialization} from '@shared/enums';
+import { DeviceMode, typeModalSpecialization} from '@shared/enums';
 import { Aliment, createNewMealInSectionModalData, deleteModalData, ModalData, SectionMeal, updateMealInSectionModalData } from '@shared/models';
 import { sharedFacadeService } from '@ngrx/ngrx-shared';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { StoreRoomService } from '../../services/store-room.service';
 
 import { getMealTag} from '@shared/enums';
 import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
+import { UserInterfaceService } from '@core/services';
 @Component({
   selector: 'app-list-meals',
   templateUrl: './list-meals.component.html',
@@ -64,6 +65,7 @@ export class ListMealsComponent implements OnInit, OnDestroy {
     }
     this.clickInside = false; 
   }
+  showExpanded = false; 
 
   getMealTag = getMealTag; 
   animationExpanded: string = 'no-status'; 
@@ -77,7 +79,8 @@ export class ListMealsComponent implements OnInit, OnDestroy {
     private sharedFacade: sharedFacadeService,
     private sectionMealsFacade: MealSectionsFacade
      ,private route: ActivatedRoute,
-        private storeRoomService: StoreRoomService) { }
+        private storeRoomService: StoreRoomService,
+        private userInterfaceService: UserInterfaceService) { }
 
   ngOnInit(): void {
     this.storeRoomService.setClickedCreate(false); 
@@ -89,6 +92,14 @@ export class ListMealsComponent implements OnInit, OnDestroy {
         this.aliments = sectionMeal.meals; 
       }
     });
+
+    this.userInterfaceService.deviceMode$.pipe(takeUntil(this.destroySucriptions$)).subscribe( deviceMode => {
+      if(deviceMode === DeviceMode.BigLaptop || deviceMode === DeviceMode.Laptop){
+        this.showExpanded = true; 
+      }else{
+        this.showExpanded = false; 
+      }
+    })
 
     this.storeRoomService.createItemClicked$.pipe(takeUntil(this.destroySucriptions$)).subscribe( (createMode) => {
       if(createMode){

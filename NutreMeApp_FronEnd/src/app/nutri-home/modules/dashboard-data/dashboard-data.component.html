@@ -1,9 +1,9 @@
 <div class="dashboard-container">
 
-    <div class="user-box" *ngIf="deviceMode ===  DEVICE_MODE.Tablet">
+    <div class="user-box" *ngIf="deviceMode !==  DEVICE_MODE.Small && deviceMode !==  DEVICE_MODE.ExtraSmall ">
         <user-resume class="on-dashboard-data"></user-resume>
     </div>
-    <div class="data-user-box" *ngIf="deviceMode ===  DEVICE_MODE.Tablet">
+    <div class="data-user-box" *ngIf="deviceMode !==  DEVICE_MODE.Small && deviceMode !==  DEVICE_MODE.ExtraSmall ">
         <user-data-resume class="on-dashboard-data">
         </user-data-resume>
     </div>
@@ -31,7 +31,7 @@
                 water_drop
             </span>
             <span>
-                {{fisiologicData.diaryWater | number:'1.2-2'}} Litros/Día 
+                0 de {{fisiologicData.diaryWater | number:'1.2-2'}} <span class="units">Litros/Día</span> 
             </span>
         </div>
     </div>

@@ -5,7 +5,7 @@
         <ng-container *ngFor="let aliment of aliments; let i = index">
             <li 
                 class="list-item"
-                [ngClass]="{'item-list-expanded': activeListItem === i}" 
+                [ngClass]="{'item-list-expanded': activeListItem === i || showExpanded}" 
                 (click)="conmuteListItemStatus( i)"
                 [@list-item-animation]="(activeListItem === i) ? 'to-expanded': 'no-status'"
                 (click)="clickInside =true"
@@ -14,7 +14,7 @@
                 <div 
                     class="list-item__img"
                     [style]="'background-image: url(' + aliment.srcImg +')'">
-                    <div class="list-item-actions" *ngIf="activeListItem === i">
+                    <div class="list-item-actions" *ngIf="activeListItem === i || showExpanded">
                         <h2 class="list-item__name">
                             {{ aliment.name }} 
                         </h2>
@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="list-item__tags" *ngIf="activeListItem === i">
+                    <div class="list-item__tags" *ngIf="activeListItem === i || showExpanded">
                         <ng-container *ngFor="let mealTag of aliment.tags">
                             <span class="list-item__tag" >
                                 <span> {{ mealTag}}</span>
@@ -40,7 +40,7 @@
                         <h3 class="section-title">Descripción</h3>
                         <p class="description">{{ aliment.description}}</p>
                     </section>
-                    <span class="list-item__name" *ngIf="activeListItem !== i">
+                    <span class="list-item__name" *ngIf="activeListItem !== i  && !showExpanded ">
                         {{ aliment.name }}
                     </span>
                     <div class="list-properties">
@@ -69,11 +69,11 @@
                         </div>
                     </div>
                     <section class="meal-section">
-                        <h3 class="section-title" *ngIf="activeListItem === i">Macronutrientes</h3>
-                        <div class="macronutriens" *ngIf="activeListItem === i">
-                           <radial-chart [value]="aliment.carboHydrates" label="Hidratos" firstColor="var(--c5)" secondColor="var(--c7)"></radial-chart>
-                           <radial-chart [value]="aliment.proteins" label="Proteinas"></radial-chart>
-                           <radial-chart [value]="aliment.fats" label="Grasas" firstColor="var(--c6)" secondColor="var(--c10)"></radial-chart>
+                        <h3 class="section-title" *ngIf="activeListItem === i || showExpanded ">Macronutrientes</h3>
+                        <div class="macronutriens" *ngIf="activeListItem === i || showExpanded">
+                           <radial-chart [value]="aliment.carboHydrates" [limit]="60" label="Hidratos" firstColor="var(--c5)" secondColor="var(--c7)"></radial-chart>
+                           <radial-chart [value]="aliment.proteins" [limit]="60"label="Proteinas"></radial-chart>
+                           <radial-chart [value]="aliment.fats" [limit]="60" label="Grasas" firstColor="var(--c6)" secondColor="var(--c10)"></radial-chart>
                         </div>
                     </section>
 
