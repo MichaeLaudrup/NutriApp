@@ -1,0 +1,37 @@
+:host {
+    padding: 1rem; 
+    display: block;
+    width: 100%;
+}
+
+.data-container{
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem; 
+    justify-content: center;
+    justify-items: center;
+    .data-item-box {
+        padding: .5rem; 
+        width: 100%;
+        display: flex; 
+        gap: .75rem; 
+        align-items: center;
+        background-color: var(--elements-bg-secondary);
+        border-radius: var(--global-border-radius);
+        box-shadow: var(--generic-shadow);
+    }
+}
+
+.doble-icons{
+    position: relative; 
+    .supper-possed {
+        position: absolute;
+        left: 50%; 
+        top: 50%; 
+
+        &.center{
+            transform: translate(-50%, -50%);
+        }
+    }
+}

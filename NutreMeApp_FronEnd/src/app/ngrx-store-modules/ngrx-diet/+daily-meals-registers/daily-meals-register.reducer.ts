@@ -11,10 +11,10 @@ export interface DailyMealRegisterState {
     totalKcal: number
 }
 const initialState : DailyMealRegisterState = {
-    _id: undefined,
-    date: undefined,
+    _id: 'none',
+    date: new Date(),
     scheduledMeals: [],
-    totalMacro: undefined,
+    totalMacro: {carbohydrates: 0, fats: 0, proteins: 0},
     totalKcal: 0
 
 
@@ -24,7 +24,10 @@ export const dailyMealsRegisterReducer = createReducer<DailyMealRegisterState, A
     on(DailyMealsRegisterActions.requestDailyMealsRegister, (state) => ({...state})),
     on(DailyMealsRegisterActions.requestDailyMealsRegisterSuccess, (state, {dailyMealsRegister}) => ({...state, ...dailyMealsRegister })),
     on(DailyMealsRegisterActions.setDailyMealsRegister, (state, {dailyMealsRegister}) => {
-        const dailyMealsRegisterToClass = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
-        return dailyMealsRegisterToClass
+        let dailyMealsRegisterToClass; 
+        if(dailyMealsRegister){
+            dailyMealsRegisterToClass = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
+        }
+        return dailyMealsRegisterToClass; 
     })
     ); 

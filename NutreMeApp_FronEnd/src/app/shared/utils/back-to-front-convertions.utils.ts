@@ -13,7 +13,7 @@ export const userDataFromBackToFront = (userDataFromBackEnd: any): UserData => {
             mba: userDataFromBackEnd.mba,
             imc: userDataFromBackEnd.imc,
             diaryWater: userDataFromBackEnd.diaryWater,
-            mbaWithActivity: userDataFromBackEnd.mbaWithActivity,
+            mbaWithObjective: userDataFromBackEnd.mbaWithObjetive,
             mbaWithActivityAndObjetive: userDataFromBackEnd.mbaWithActivityAndObjetive,
             macrosInRepose: userDataFromBackEnd.macrosInRepose,
             macrosWithActivity: userDataFromBackEnd.macrosWithActivity

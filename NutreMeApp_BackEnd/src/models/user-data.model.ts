@@ -79,16 +79,13 @@ UserDataSchema.virtual('diaryWater').get( function() {
     return NutritionCalculatorService.calcDiaryWater(this.weight); 
 });
 
-UserDataSchema.virtual('mbaWithActivity').get( function(){
-    const mbaBase = NutritionCalculatorService.calcMBA(this.height, this.weight, this.age, this.gender); 
-    return mbaBase * this.activityIntesity; 
+UserDataSchema.virtual('mbaWithObjetive').get( function(this:any){
+    return NutritionCalculatorService.calcMBAWithObjective(this['mba'], this['nutritionalTarget']); 
 })
 
 
-UserDataSchema.virtual('mbaWithActivityAndObjetive').get( function() {
-    const mbaBase = NutritionCalculatorService.calcMBA(this.height, this.weight, this.age, this.gender); 
-    const mbaWithActivity = mbaBase * this.activityIntesity; 
-    return NutritionCalculatorService.calcMBAWithActivityAndObjective(this.nutritionalTarget, mbaWithActivity); 
+UserDataSchema.virtual('mbaWithActivityAndObjetive').get( function(this:any) {
+    return this['mbaWithObjetive'] * this.activityIntesity; ; 
 });
 
 UserDataSchema.virtual('rulesEngineLastResult', function() {
@@ -101,7 +98,7 @@ UserDataSchema.virtual('macrosInRepose').get(function(this:any){
 })
 
 UserDataSchema.virtual('macrosWithActivity').get(function(this:any){
-    return NutritionCalculatorService.calcMacroNutriensDistribution( this['mbaWithActivity'] ,this['nutritionalTarget'])
+    return NutritionCalculatorService.calcMacroNutriensDistribution( this['mbaWithActivityAndObjetive'] ,this['nutritionalTarget'])
 })
 
 export const UserDataModel = mongoose.model('UserData', UserDataSchema, 'usersData')

@@ -21,6 +21,7 @@ import { ChangeCssVariableValueDirective } from '../../directives/change-css-var
 import { DialyMacroChartComponent } from './charts/dialy-macro-chart/dialy-macro-chart.component';
 import { InputFileComponent } from './forms/input-file/input-file.component';
 import { UserResumeComponent } from './user-resume/user-resume.component';
+import { UserDataResumeComponent } from './user-data-resume/user-data-resume.component';
 
 const components = [
   DinamicSvgIconComponent,
@@ -42,7 +43,8 @@ const components = [
   ChangeCssVariableValueDirective,
   DialyMacroChartComponent,
   InputFileComponent, 
-  UserResumeComponent
+  UserResumeComponent,
+  UserDataResumeComponent
 ]
 @NgModule({
   declarations: [...components],

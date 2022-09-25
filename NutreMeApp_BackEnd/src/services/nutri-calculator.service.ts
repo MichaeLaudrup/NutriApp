@@ -48,3 +48,18 @@ export const calcMacroNutriensDistribution = (mba: number, nutritionTarget: stri
         proteins: +((mba * .20) / 4).toFixed(2)
     }; 
 }
+
+export function calcMBAWithObjective(mba: number, nutritionalTarget: any): any {
+    switch(nutritionalTarget){
+        case "BAJAR_PESO": 
+            return mba * 0.8;
+        case "SUBIR_PESO":
+            return mba * 1.20; 
+        case "DEFINIR": 
+            return mba * 0.9;
+        case "GANAR_MASA_MUSCULAR": 
+            return mba * 1.10; 
+        default: 
+            return mba;  
+    }
+}

@@ -12,31 +12,27 @@ export const newUserData = async(req: Request, res:Response, next: NextFunction)
             const userDataFromFront = req.body.userData; 
             console.log(userDataFromFront)
             const userDataExistOnMongo = await UserDataModel.findOne({ userProfile: userId})
+            let userDataParsed = {
+                nutritionalTarget: userDataFromFront.nutritionalTarget,
+                age: userDataFromFront.fisiologicData.age,
+                weight: userDataFromFront.fisiologicData.weight,
+                height: userDataFromFront.fisiologicData.height,
+                feedingType: userDataFromFront.feedingType,
+                gender: userDataFromFront.fisiologicData.gender, 
+                activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
+                allergens: userDataFromFront.allergens,
+                forbiddenAliments: userDataFromFront.forbiddenAliments
+            }; 
             let userData; 
+
             if(!userDataExistOnMongo){
                 userData = await UserDataModel.create({
                     userProfile: userId,
-                    nutritionalTarget: userDataFromFront.nutritionalTarget,
-                    age: userDataFromFront.fisiologicData.age,
-                    weight: userDataFromFront.fisiologicData.weight,
-                    height: userDataFromFront.fisiologicData.height,
-                    feedingType: userDataFromFront.feedingType,
-                    gender: userDataFromFront.fisiologicData.gender, 
-                    activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
-                    allergens: userDataFromFront.allergens,
-                    forbiddenAliments: userDataFromFront.forbiddenAliments
+                    ...userDataParsed
                 });
             }else{
                 userData = await UserDataModel.findByIdAndUpdate(userDataExistOnMongo._id, {
-                    nutritionalTarget: userDataFromFront.nutritionalTarget,
-                    age: userDataFromFront.fisiologicData.age,
-                    weight: userDataFromFront.fisiologicData.weight,
-                    height: userDataFromFront.fisiologicData.height,
-                    feedingType: userDataFromFront.feedingType,
-                    gender: userDataFromFront.fisiologicData.gender, 
-                    activityIntesity: userDataFromFront.fisiologicData.activityIntesity,
-                    allergens: userDataFromFront.allergens,
-                    forbiddenAliments: userDataFromFront.forbiddenAliments
+                    ...userDataParsed
                 },{ 
                     new: true, //return de "new" document
                     runValidators: true,

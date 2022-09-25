@@ -28,7 +28,7 @@ export class UserDataService {
                         height: data.height,
                         gender: data.gender,
                         mba: data.mba,
-                        mbaWithActivity: data.mbaWithActivity,
+                        mbaWithObjective: data.mbaWithObjective,
                         mbaWithActivityAndObjetive: data.mbaWithActivityAndObjetive,
                         diaryWater: data.diaryWater,
                         imc: data.imc,

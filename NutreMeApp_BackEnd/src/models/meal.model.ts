@@ -47,7 +47,7 @@ const mealSchema: mongoose.Schema = new mongoose.Schema({
     recomendedMeals: {
       type: [String],
       enum : {
-        values: ['DESAYUNO','MEDIO_DIA', 'ALMUERZO', 'MERIENDA', 'PRE_ENTRENO', 'POST_ENTRENO','CENA', 'GENERICO']
+        values: ['DESAYUNO','MEDIO_DIA', 'ALMUERZO', 'MERIENDA', 'PRE_ENTRENO', 'POST_ENTRENO','CENA', 'APERITIVOS','GENERICO']
       }
     },
     srcImg: String,

@@ -1,22 +1,24 @@
 const {Engine} = require('json-rules-engine'); 
-import { rules } from "./rules/feedingType-rules";
+import FeedingTypeRules from "./rules/feedingType-rules";
+import AllergensRules from './rules/allergens-rules'; 
+import MealTypeRules from './rules/mealType-rules'; 
 export class RulesEngine {
     engine = new Engine(); 
-
-    engineResult: {
-        not_equal: {}[]
-    } = {
-        not_equal: []
-    }
-
-    not_equal: string [] = []
     constructor(){ 
-        rules.forEach( rule => {
-            this.engine.addRule(rule); 
-        })
+        FeedingTypeRules.forEach( feedingTyperule => {
+            this.engine.addRule(feedingTyperule); 
+        });
+
+        AllergensRules.forEach( allergenRule => {
+            this.engine.addRule(allergenRule)
+        });
+        MealTypeRules.forEach( mealTypeRule => {
+            this.engine.addRule(mealTypeRule); 
+        }) 
     }
 
     async probeFact( fact: any): Promise<any>{
+        console.log(fact)
         const {events} =await this.engine.run(fact);
         let complexQuery: {$and: any[]} = { $and: []}
         events.forEach( (event: any) => {

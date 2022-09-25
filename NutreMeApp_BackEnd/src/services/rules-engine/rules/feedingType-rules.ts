@@ -42,13 +42,11 @@ const isVegan = {
     priority: 9
 }
 
-
-
-
-
 export const rules  = [
     isVegan,
     isVegetarian
 ]
+
+export default rules; 
 
 

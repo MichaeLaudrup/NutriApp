@@ -1,9 +1,9 @@
-import { Component,  HostBinding,  OnDestroy,  OnInit } from '@angular/core';
+import { Component,  OnDestroy,  OnInit } from '@angular/core';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { imcInfoData, kcalHistoryInfoData, mbaInfoData } from '@shared/data';
 import {  Subject, takeUntil} from 'rxjs';
 import { NutritionTarget } from 'src/app/shared/enums/nutrition-target.enum';
-import { FisiologicData, UserData} from 'src/app/shared/models/fisiologicData.model';
+import { FisiologicData} from 'src/app/shared/models/fisiologicData.model';
 
 
 

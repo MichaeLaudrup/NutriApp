@@ -10,7 +10,7 @@ export interface FisiologicData {
     gender: string, 
     activityIntesity: number,
     mba?: number,          
-    mbaWithActivity?:number,
+    mbaWithObjective?:number,
     imc?: number,
     mbaWithActivityAndObjetive?: number,           
     diaryWater?: number,

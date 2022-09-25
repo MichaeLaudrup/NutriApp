@@ -27,7 +27,7 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
   totalKcal: number = 0; 
   doneKcal: number = 0; 
   @Input() bindedToNgrx = true;
-  @Input() dailyMealsRegister: DailyMealsRegister; 
+  @Input() dailyMealsRegister: DailyMealsRegister = new DailyMealsRegister('none', new Date(), []); 
   constructor( 
     private userDataFacadeService: UserDataFacadeService,
     private dailyMealsRegisterFacade: DailyMealsRegisterFacade) { }
@@ -43,16 +43,20 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
     })
     if(this.bindedToNgrx){
       this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(takeUntil(this.destroySuscriptions$)).subscribe((dailyMealsRegister: DailyMealsRegister) => {
-        this.dailyMealsRegister = dailyMealsRegister; 
-        if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
-            this.dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
-            this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
-            this.doneKcal = this.dailyMealsRegister.totalKcal
+        if(dailyMealsRegister){
+          this.dailyMealsRegister = dailyMealsRegister; 
+          if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
+              this.dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
+              this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
+              this.doneKcal = this.dailyMealsRegister.totalKcal
+          }
         }
       })
     }else{
-      this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
-      this.doneKcal = this.dailyMealsRegister.totalKcal
+      if(this.dailyMealsRegister && this.dailyMealsRegister.totalMacro){
+        this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro; 
+      }
+      this.doneKcal = this.dailyMealsRegister.totalKcal ?? 0; 
     }
   }
 
@@ -64,5 +68,4 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
   ngOnChanges(): void {
     console.log('algo ha cambiado')
   }
-
 }
