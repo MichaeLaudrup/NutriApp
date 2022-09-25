@@ -43,3 +43,7 @@ export const setForbiddenAliments = createAction(
   '[User-data] Establecer alimentos prohibidos',
   props<{forbiddenAliments: string[]}>()
 )
+
+export const resetAll = createAction(
+  '[User-data] Restablecer a valor inicial datos de usuario',
+)

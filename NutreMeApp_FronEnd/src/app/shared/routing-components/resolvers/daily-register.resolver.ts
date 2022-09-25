@@ -20,7 +20,7 @@ export class  dailyMealsRegisterResolver implements Resolve<DailyMealsRegister>{
 
         resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): DailyMealsRegister | Observable<DailyMealsRegister> | Promise<DailyMealsRegister> {
             return this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(take(1), concatMap( dailyMealRegister => {
-                if(dailyMealRegister && dailyMealRegister.date && dailyMealRegister.scheduledMeals){
+                if(dailyMealRegister && dailyMealRegister._id !== 'none' && dailyMealRegister.date && dailyMealRegister.scheduledMeals){
                     return of(dailyMealRegister);
                 }else{
                     return this.dailyMealsRegisterService.getMyDailyRegisterMeals(new Date()).pipe( map(dailyMealRegister => {

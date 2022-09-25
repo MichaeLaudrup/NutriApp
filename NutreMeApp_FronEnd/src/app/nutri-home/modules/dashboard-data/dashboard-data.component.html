@@ -1,4 +1,8 @@
 <div class="dashboard-container">
+
+    <div class="user-box" *ngIf="deviceMode ===  DEVICE_MODE.Tablet">
+        <user-resume></user-resume>
+    </div>
     <div class="dashboard__box box__daily-macro" >
         <div class="box__header">
             <div class="box__header-title">

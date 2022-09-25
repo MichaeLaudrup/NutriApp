@@ -12,7 +12,7 @@ import { MbaChartComponent } from './components/mba-chart/mba-chart.component';
 import { ImcChartComponent } from './components/imc-chart/imc-chart.component';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { UserDataResolver } from 'src/app/shared/routing-components/resolvers/user-data.resolver';
-import { dailyMealsRegisterResolver } from 'src/app/shared/routing-components/resolvers/daily-register-resolver';
+import { dailyMealsRegisterResolver } from 'src/app/shared/routing-components/resolvers/daily-register.resolver';
 import { NgrxDietModule } from '@ngrx/ngrx-diet';
 
 const components = [DashboardDataComponent,  MacronutrientsChartComponent, BasicLineChartComponent, MbaChartComponent, ImcChartComponent,]

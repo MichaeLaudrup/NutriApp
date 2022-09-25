@@ -10,6 +10,9 @@ import { Macronutrients } from "src/app/shared/models/macronutrients.model";
 import { Allergens } from "src/app/shared/enums/allergens.enum";
 @Injectable()
 export class UserDataFacadeService {
+    resetAll() {
+        this.store.dispatch( USER_DATA_ACTIONS.resetAll())
+    }
     constructor( private store: Store<UserDataState>) {
     }
 

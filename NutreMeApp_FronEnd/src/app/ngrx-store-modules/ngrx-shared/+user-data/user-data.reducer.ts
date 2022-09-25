@@ -40,5 +40,6 @@ export const userDataReducer = createReducer(initialState,
     })),
     on(userDataActions.setAllergens, (state, {allergens}) => ({...state, userData: { ...state.userData, allergens} })),
     on(userDataActions.setForbiddenAliments, (state, {forbiddenAliments}) => ({...state, userData: {...state.userData, forbiddenAliments: [...forbiddenAliments]}})),
-    on(userDataActions.uploadUserDataToServerFailure, (state, { errorPayload}) => ({...state}))
+    on(userDataActions.uploadUserDataToServerFailure, (state, { errorPayload}) => ({...state})),
+    on(userDataActions.resetAll, (state) => ({ ...initialState}))
 );

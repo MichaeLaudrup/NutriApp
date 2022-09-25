@@ -34,4 +34,8 @@ export class usersFacade {
     public resetIsLoaded() {
         this.store.dispatch(UserActions.resetLoaded())
     }
+
+    public logout() {
+        this.store.dispatch(UserActions.logout()); 
+    }
 }

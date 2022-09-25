@@ -15,3 +15,9 @@ export const logInSuccess = createAction('[Shared/users] login User success', pr
 export const logInFailure= createAction('[Shared/users] login User failure');
 
 export const resetLoaded = createAction('[Shared/users] Reset user loaded'); 
+
+export const logout = createAction('[Shared/users] Logout'); 
+
+
+
+
