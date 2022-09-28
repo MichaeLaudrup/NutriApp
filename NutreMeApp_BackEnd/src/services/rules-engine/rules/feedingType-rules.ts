@@ -1,4 +1,3 @@
-/* Si el usuario es vegetariano o vegano no se muestran alimentos que sean de origen de carne o pescado */
 const isVegetarian = {
     conditions: {
         any: [{
@@ -20,7 +19,7 @@ const isVegetarian = {
     },
     priority: 10
 }
-/* Si el usuario es vegano no se muestran alimentos que contengan lactosa */
+
 const isVegan = {
     conditions: {
         any: [{

@@ -48,11 +48,9 @@ export const logIn = async(req: Request, res:Response, next: NextFunction) => {
         //2) check if email and password exist in Data base
         const user: any = await UserModel.findOne({email}).select('+password');
         const correct = await user?.correctPassword(password, user.password); 
-
         if(!user || !correct){
             throw new OperationalError('Email o contraseñas incorrectos', 401); 
         }
-        
         const token = signToken(user._id); 
         res.status(200).json({
             status: 'success',
@@ -65,8 +63,7 @@ export const logIn = async(req: Request, res:Response, next: NextFunction) => {
                 token
             }
         })
-       }
-       
+       }  
 
     }catch (err) {
         next(err); 

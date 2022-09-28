@@ -8,10 +8,10 @@ export const accessRouteProtector = async (req: Request, res: Response, next: Ne
         if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
             const token = req.headers.authorization.split(' ')[1]; 
             const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET); 
-            const user: any = await UserModel.findById(decoded.id); 
+            const user: any = await UserModel.findById(decoded.id).select('+role'); 
             if(user){
                 if(user.passwordChangedAt && user.changedPasswordAfter(decoded.iat)){
-                    throw new OperationalError('Vueva a iniciar sesión o llamamos a la policia.')
+                    throw new OperationalError('La contraseña ha sido cambiada después de la generación de este token, vuelva a iniciar sesión.')
                 }else{
                     req.body.user = user; 
                     next(); 
@@ -21,7 +21,7 @@ export const accessRouteProtector = async (req: Request, res: Response, next: Ne
 
             }
         }else{
-            throw new OperationalError('Brecha de seguridad! Estamos enviando los datos de su dirección IP a la polícia Nacional', 401); 
+            throw new OperationalError('Error en la obtención del token', 401); 
         }
     }catch(err){
         next(err)

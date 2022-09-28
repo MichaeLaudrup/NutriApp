@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {inputImgPaths } from '@shared/constants'; 
 import { Subject, takeUntil, timeout } from 'rxjs';
 import { SectionMeal } from '@shared/models';
 import { ModalService } from '../../modal.service';
@@ -12,7 +11,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./section-meal-form.component.scss']
 })
 export class CreationOfSectionMealComponent implements OnInit {
-  inputImgOptions = inputImgPaths; 
   sectionMealForm: FormGroup; 
   basicStaticRoute = environment.staticSectionsImagesURL;
   @Input() editMode: boolean = false;

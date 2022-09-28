@@ -88,7 +88,10 @@ const isAllergicToGluten = {
         type: 'not_gluten',
         params: {
             filters: [
-                {tags:{$ne: 'GLUTEN'}},
+                {tags:{$ne: 'GLUTEN'}}, 
+            ],
+            mostPreferency: [
+                {tags: {$eq: 'GLUTEN-FREE'}}
             ]
         }
     },
