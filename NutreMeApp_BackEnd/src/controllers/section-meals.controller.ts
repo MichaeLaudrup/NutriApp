@@ -64,8 +64,10 @@ export const deleteSectionMeal = async(req: Request, res:Response, next: NextFun
                     status: 'success',
                 })
             }else{
-              return new OperationalError('La seccion de alimentos especificada no existe', 404)  
+              throw new OperationalError('La seccion de alimentos especificada no existe', 404)  
             }
+        }else{
+            throw new OperationalError('Errores en los datos de usuario')
         }
     }catch (err) {
         next(err)
@@ -76,6 +78,9 @@ export const updateSecionMeal = async(req: Request, res:Response, next: NextFunc
     try{
         const section = await SectionMealModel.findOneAndUpdate({_id: req.params['id'], userId: req.body.user._id}, {
             name: req.body.name
+        },{ 
+            new: true, //return de "new" document
+            runValidators: true,
         }); 
         return res.status(201).json({
             status: 'success',

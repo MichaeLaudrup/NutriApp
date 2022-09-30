@@ -66,6 +66,5 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
   }
 
   ngOnChanges(): void {
-    console.log('algo ha cambiado')
   }
 }

@@ -66,7 +66,7 @@ export const getMealById = async (req: Request, res: Response, next: NextFunctio
 export const addNewMeal = async (req: Request, res:Response, next: NextFunction) => {
     try{
         const meal = await MealModel.find({name: req.body.name}); 
-        if(meal){
+        if(meal.length > 0){
             throw new OperationalError('No puede haber nombres de alimentos duplicados', 400)
         }
         const newMeal = await MealModel.create({

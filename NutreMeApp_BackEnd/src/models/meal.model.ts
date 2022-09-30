@@ -33,14 +33,44 @@ const mealSchema: mongoose.Schema = new mongoose.Schema({
       type: Number,
       require: [true, 'A meal must have carbohydrates quantitie']
     },
+    carboWithSugars: {
+      type: Number,
+    },
     fats: {
       type: Number,
       require: [true, 'A meal must have fats quantitie']
     },
+    saturatedFats: {
+      type: Number,
+    },
+
+    fiber: {
+      type: Number,
+    },
+    satl: {
+      type: Number
+    },
     tags: {
       type: [String],
       enum: {
-        values: ['CARNE', 'VERDURA', 'GLUTEN', 'VEGANO', 'LACTEO', 'CEREALES', 'FRUTA', 'FRUTOSSECOS', 'LEGUMBRES', 'VEGETALES', 'MARISCO', 'PESCADO', 'ORIGEN_ANIMAL'],
+        values: [
+          'CARNE',
+          'VERDURA',
+          'GLUTEN',
+          'VEGANO',
+          'LACTEO',
+          'CEREALES',
+          'FRUTA',
+          'FRUTOS_SECOS',
+          'LEGUMBRES',
+          'VEGETALES',
+          'MARISCO',
+          'PESCADO',
+          'ORIGEN_ANIMAL',
+          'SEMILLAS',
+          'HUEVO',
+
+        ],
         message: '{VALUE} is a Tag not supported'
       }
     },

@@ -8,13 +8,13 @@ const recommendedMealBreakfast = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'DESAYUNO'}}
             ]
         }
     },
-    priority: 10
 }
 
 const recommendedMidday = {
@@ -27,13 +27,13 @@ const recommendedMidday = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'MEDIODIA'}}
             ]
         }
     },
-    priority: 10
 }
 
 const recommendedMealLunch = {
@@ -46,13 +46,13 @@ const recommendedMealLunch = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'ALMUERZO'}}
             ]
         }
     },
-    priority: 10
 }
 
 
@@ -66,13 +66,13 @@ const recommendedAfternoonSnack = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'MERIENDA'}}
             ]
         }
     },
-    priority: 10
 }
 
 export const recommendedDinner = {
@@ -85,13 +85,13 @@ export const recommendedDinner = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'CENA'}}
             ]
         }
     },
-    priority: 10
 }
 
 export const recommendedPreTraining = {
@@ -104,13 +104,13 @@ export const recommendedPreTraining = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'PRE_ENTRENO'}}
             ]
         }
     },
-    priority: 10
 }
 
 export const recommendedPostTraining = {
@@ -123,13 +123,13 @@ export const recommendedPostTraining = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'POST_ENTRENO'}}
             ]
         }
     },
-    priority: 10
 }
 
 const recommendedAppetizers = {
@@ -142,13 +142,13 @@ const recommendedAppetizers = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'APERITIVOS'}}
             ]
         }
     },
-    priority: 10
 }
 
 export const recommendedGeneric = {
@@ -161,13 +161,13 @@ export const recommendedGeneric = {
         ]   
     },
     event: {
+        type:"mealTypeFiltering",
         params: {
             filters: [
                 {recomendedMeals:{$eq: 'GENERICO'}}
             ]
         }
     },
-    priority: 10
 }
 
 export const rules  = [

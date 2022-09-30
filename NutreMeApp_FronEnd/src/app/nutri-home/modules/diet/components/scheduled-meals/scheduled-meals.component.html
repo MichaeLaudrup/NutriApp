@@ -25,9 +25,9 @@
     <div class="list-header">
         <h3 class="list-header-title">Recomendaciones</h3>
         <div class="list-header-actions">
-            <span class="material-icons-outlined small-btn">
+            <span class="material-icons-outlined small-btn" (click)="requestRecommendation(mealName.toUpperCase())">
                 restart_alt
-                </span>
+            </span>
         </div>
     </div>
     <ul class="schedule-meals-list">

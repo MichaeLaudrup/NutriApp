@@ -11,12 +11,15 @@ export const runEngine = async(req: Request, res:Response, next: NextFunction) =
         const userData = await UserDataModel.findOne({userId: req.body.user._id}); 
         if(userData){
             const complexQuery = await engine.probeFact({feedingType: userData.feedingType, allergens: userData.allergens, recommendedMeal});
-            console.log(JSON.stringify(complexQuery))
             const aliments = await MealModel.find({...complexQuery})
             res.status(200).json({
                 status: 'success',
-                longitud: aliments.length,
-                aliments
+                length: aliments.length,
+                data: {
+                    name: recommendedMeal,
+                    aliments
+                }
+                    
             })
         }else{
             throw new OperationalError('Este usuario no tienes datos asociados'); 

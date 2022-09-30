@@ -11,10 +11,10 @@ import { dailyMealsRegisterReducer } from './+daily-meals-registers/daily-meals-
   imports: [
     CommonModule,
     EffectsModule.forFeature([
-        DailyMealsRegisterEffects
+        DailyMealsRegisterEffects,
     ]),
     StoreModule.forFeature('diet', {
-      dailyMealsRegister: dailyMealsRegisterReducer
+      dailyMealsRegister: dailyMealsRegisterReducer,
     })],    
 providers: [] 
 })

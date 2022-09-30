@@ -14,18 +14,16 @@ export class RulesEngine {
         });
         MealTypeRules.forEach( mealTypeRule => {
             this.engine.addRule(mealTypeRule); 
-        }) 
+        })  
     }
 
     async probeFact( fact: any): Promise<any>{
-        console.log(fact)
         const {events} =await this.engine.run(fact);
         let complexQuery: {$and: any[]} = { $and: []}
         events.forEach( (event: any) => {
             event.params.filters.forEach( (filter: any) => {
                 complexQuery.$and.push(filter)
             })
-            console.log(JSON.stringify(complexQuery))
         }); 
         if(complexQuery.$and.length > 0){
             return complexQuery; 

@@ -22,6 +22,7 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dailyMealsRegisterFacade.DailyMealsRegister$.pipe(takeUntil(this.destroySuscriptions$)).subscribe( dailyMealsRegister => {
+      
       this.dailyMealsRegister = dailyMealsRegister; 
       if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
         this. dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals)
