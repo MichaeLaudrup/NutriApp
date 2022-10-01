@@ -4,22 +4,42 @@ import { dailyMealsRegisterModel } from "../models/daily-meals-register.model"
 
 export const addNewDailyMealsRegister = async(req: Request, res:Response, next: NextFunction) => {
     try{
-        const newDailyMealsRegister = await dailyMealsRegisterModel.create({
-            date: req.body.date,
-            scheduledMeals: [...req.body.scheduledMeals],
-            userId: req.body.user._id
-        })
+        let newDailyMealsRegister
+        if(req.body._id === 'none'){
+            newDailyMealsRegister = await dailyMealsRegisterModel.create({
+                date: req.body.date,
+                scheduledMeals: [...req.body.scheduledMeals],
+                userId: req.body.user._id
+            }); 
+        }else{
+            newDailyMealsRegister = await dailyMealsRegisterModel.findByIdAndUpdate(req.body._id,{
+                date: req.body.date,
+                scheduledMeals: [...req.body.scheduledMeals],
+                userId: req.body.user._id
+            }, {
+                new: true, //return de "new" document
+                runValidators: true,
+            }); 
+        }
+        newDailyMealsRegister = await newDailyMealsRegister.populate('scheduledMeals.aliments')
         res.status(201).json({
-            dailyMealsRegister: newDailyMealsRegister
+            status: 'sucess',
+            data:{
+                dailyMealsRegister: newDailyMealsRegister
+            }
         })
     }catch (err) {
         next(err)
     }
 }
 
+
+
+
 export const getAllMyDailyMealsRegister = async(req: Request, res: Response, next: NextFunction) => {
     try{
-        const MyDailyRegisters = await dailyMealsRegisterModel.findOne({date:req.query.date}).populate('scheduledMeals.aliments');
+        const regExpresion = new RegExp(`^${req.query.date}`); 
+        const MyDailyRegisters = await dailyMealsRegisterModel.findOne({date: new Date(<string>req.query.date).toISOString()}).populate('scheduledMeals.aliments');
         res.status(201).json({
             status: 'success',
             data:{

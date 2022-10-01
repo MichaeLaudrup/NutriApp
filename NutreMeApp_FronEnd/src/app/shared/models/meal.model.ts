@@ -9,6 +9,10 @@ export interface Aliment {
     kcal: number, 
     proteins: number,
     carboHydrates: number,
+    carboWithSugars?: number,
     fats: number,
+    saturatedFats?: number, 
+    fiber?:number,
+    recomendedMeals?: string[],
     srcImg?: string,
 }; 

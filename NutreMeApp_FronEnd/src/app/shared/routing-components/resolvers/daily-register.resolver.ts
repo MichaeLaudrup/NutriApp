@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from "@a
 import { DailyMealsRegisterService } from "@core/services";
 import { DailyMealsRegisterFacade } from "@ngrx/ngrx-diet";
 import { UserDataFacadeService, usersFacade } from "@ngrx/ngrx-shared";
-import { concatMap, Observable, take, of, map, mergeMap } from "rxjs";
+import { concatMap, Observable, take, of, map, mergeMap, EMPTY } from "rxjs";
 import { UserDataService } from "src/app/core/services/user-data.service";
 import { DailyMealsRegister } from "../../models/daily-meals-register.model";
 
@@ -23,10 +23,8 @@ export class  dailyMealsRegisterResolver implements Resolve<DailyMealsRegister>{
                 if(dailyMealRegister && dailyMealRegister._id !== 'none' && dailyMealRegister.date && dailyMealRegister.scheduledMeals){
                     return of(dailyMealRegister);
                 }else{
-                    return this.dailyMealsRegisterService.getMyDailyRegisterMeals(new Date()).pipe( map(dailyMealRegister => {
-                        this.dailyMealsRegisterFacade.setDailyMealsRegister(dailyMealRegister); 
-                        return dailyMealRegister; 
-                    })) 
+                    this.dailyMealsRegisterFacade.requestDailyMealsRegister(new Date()); 
+                    return of(new DailyMealsRegister('none', new Date(), []))
                 }  
             }))
         }

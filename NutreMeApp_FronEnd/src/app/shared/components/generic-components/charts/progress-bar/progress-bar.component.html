@@ -1,7 +1,7 @@
 <div class="container"> 
     <div class="progress-label" *ngIf="withLabel">
       <span>{{ label}}</span>
-      <span>{{progressValue}}<span class="units"> {{ units }}</span>  </span>
+      <span>{{progressValue | number:'1.2-2'}}<span class="units"> {{ units }}</span>  </span>
     </div>
     <div class="progress2 progress-moved">
       <div class="progress-bar2" >

@@ -33,4 +33,9 @@ export class ScheduledMeals {
         this.aliments =<Aliment[]>[ ...this.aliments.slice(0, alimentIndex), ...this.aliments.slice(alimentIndex +1)]; 
         this.calculateMacronutrients(); 
     }
+
+    public addOneAliment(aliment: Aliment){
+        this.aliments = <Aliment[]>[...this.aliments, aliment]; 
+        this.calculateMacronutrients(); 
+    }
 }

@@ -1,6 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { DailyMealsRegister, ScheduledMeals } from "@shared/models";
-import { Macronutrients } from "src/app/shared/models/macronutrients.model";
+import { ScheduledMeals } from "@shared/models";
 import * as RecommendationActions from './recommendations.actions';
 
 export interface RecommendationState {

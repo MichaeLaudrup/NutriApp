@@ -21,10 +21,7 @@ export class DailyMealsRegisterFacade {
         this.store.dispatch(DailyMealsRegisterActions.setDailyMealsRegister({dailyMealsRegister})); 
     }
 
-    /* public get meals$ (): Observable<Aliment[]>{
-        /* return this.store.pipe( select( MealsSelectors.getListMeals)); 
-    } */
-
-    
-
+    public createOrUploadDailyMealsRegister(dailyMealsRegister: DailyMealsRegister){
+        this.store.dispatch(DailyMealsRegisterActions.addOrUpdateDailyMealsRegister({dailyMealsRegister})); 
+    }
 }

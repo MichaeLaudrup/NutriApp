@@ -15,5 +15,7 @@
             (alimentFromUndoneToDone)="moveFoodToDone($event, i)">
         </scheduled-meals>
     </div>
-
+    <div class="upload-button" *ngIf="isSomethingChanged">
+        <button class="btn" type="buttom" (click)="uploadToServer()">Actualizar registro</button>
+    </div>
 </div>

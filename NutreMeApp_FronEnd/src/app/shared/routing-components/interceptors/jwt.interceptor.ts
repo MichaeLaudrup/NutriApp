@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 
@@ -22,6 +22,8 @@ export class JWTInterceptor implements HttpInterceptor {
                         sessionStorage.setItem('JWTtoken', evt.body.data['token'])
                     }
                 }
+            }else if(evt instanceof HttpErrorResponse){
+                console.log(evt)
             }
         })); 
     }

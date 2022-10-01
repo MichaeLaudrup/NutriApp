@@ -20,8 +20,13 @@ export class ScheduledMealsComponent implements OnInit {
   @Input() totalKcal : number; 
   @Output() alimentFromDoneToUndone: EventEmitter<{ meal: Aliment, numPosition: number}> = new EventEmitter(); 
   @Output() alimentFromUndoneToDone: EventEmitter<{ meal: Aliment, numPosition: number}> = new EventEmitter(); 
-  recomendations: Aliment[] = []
-  private destroySuscriptions$: Subject<any> = new Subject()
+  scheduledRecommended: ScheduledMeals; 
+  existRecommendations = false; 
+  waitingForARecommendation = false;
+  recommendationsFromServer : Aliment[] = [];  
+  lastIndexRecommended = -1; 
+  private destroySuscriptions$: Subject<any> = new Subject();
+
 
   constructor(
     private recommendationsFacade: RecommendationsFacade
@@ -30,6 +35,18 @@ export class ScheduledMealsComponent implements OnInit {
   ngOnInit(): void {
     this.nutriAccounts = this.mealsScheduled.totalMacronutrients;
     this.totalKcal = this.mealsScheduled.totalKcal; 
+    this.scheduledRecommended = new ScheduledMeals(this.mealName, []); 
+    this.recommendationsFacade.getRecommendationsOfMeal(this.mealName.toLowerCase()).pipe(takeUntil(this.destroySuscriptions$)).subscribe( (meals: ScheduledMeals) => {
+      if(meals?.aliments?.length > 0){
+        this.recommendationsFromServer = meals.aliments
+        this.existRecommendations = true; 
+        if(this.waitingForARecommendation){
+          this.waitingForARecommendation = false; 
+          this.lastIndexRecommended++; 
+          this.addRecommendation(); 
+        }
+        }
+    }) 
   }
 
   ngOnDestroy(): void {
@@ -38,18 +55,30 @@ export class ScheduledMealsComponent implements OnInit {
 }
 
   processMarkedAsDone(meal: Aliment, numPosition: number){
-    this.recomendations.splice(numPosition, 1)
+    this.scheduledRecommended.deleteOneAliment(numPosition)
     this.alimentFromUndoneToDone.emit({meal, numPosition})
   }
 
   processMarkedAsUndone(meal: Aliment, numPosition: number){
-    this.recomendations.push(meal)
+    this.scheduledRecommended.addOneAliment(meal)
     this.alimentFromDoneToUndone.emit({meal, numPosition })
   }
   
   requestRecommendation(typeOfRecommendation : string){
-    this.recommendationsFacade.requestRecomendation(typeOfRecommendation); 
+    if(this.recommendationsFromServer.length === 0){
+      this.recommendationsFacade.requestRecomendation(typeOfRecommendation); 
+      this.waitingForARecommendation = true; 
+    }else{
+      this.addRecommendation(); 
+    }
   }
+
+  addRecommendation() {
+    const randomIndex = Math.floor(Math.random() * 1000) % this.recommendationsFromServer.length;
+    this.scheduledRecommended.addOneAliment(this.recommendationsFromServer[randomIndex]);
+  }
+
+
 
 
   

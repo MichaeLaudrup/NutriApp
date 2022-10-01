@@ -17,6 +17,7 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
   scheduledMeals : string[] = ['Desayuno', 'Almuerzo']
   private destroySuscriptions$: Subject<any> = new Subject()
   dailyMealsRegister: DailyMealsRegister; 
+  isSomethingChanged = false; 
 
   constructor(private dailyMealsRegisterFacade: DailyMealsRegisterFacade) { }
 
@@ -41,15 +42,47 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
   }
 
   moveFoodToDone($event: {meal: Aliment, numPosition: number}, scheduledPos: number){
-    this.dailyMealsRegister.scheduledMeals[scheduledPos].aliments.push($event.meal);
-    this.dailyMealsRegister.scheduledMeals[scheduledPos].calculateMacronutrients(); 
+    this.isSomethingChanged = true; 
+    let mealRecieved = $event.meal
+    const newMeal: Aliment = {
+      _id: $event.meal._id,
+      name: mealRecieved.name,
+      carboHydrates: mealRecieved.carboHydrates,
+      tags: mealRecieved.tags,
+      description: mealRecieved.description,
+      weight: mealRecieved.weight,
+      kcal: mealRecieved.kcal,
+      proteins: mealRecieved.proteins,
+      carboWithSugars: mealRecieved.carboWithSugars,
+      fats: mealRecieved.fats,
+      saturatedFats: mealRecieved.saturatedFats,
+      fiber: mealRecieved.fiber,
+      recomendedMeals:mealRecieved.recomendedMeals,
+      srcImg: mealRecieved.srcImg 
+    }
+    this.dailyMealsRegister.scheduledMeals[scheduledPos].addOneAliment(newMeal);
     this.dailyMealsRegister.calculateTotalMacroAndKcal(); 
   }
 
 
   modeFoodToRecomendations($event: { meal: Aliment, numPosition: number}, scheduledPos: number){
+    this.isSomethingChanged = true; 
     this.dailyMealsRegister.scheduledMeals[scheduledPos].deleteOneAliment($event.numPosition); 
     this.dailyMealsRegister.calculateTotalMacroAndKcal(); 
+  }
+
+  uploadToServer(){
+    let oneScheduleWithAliments = false; 
+    this.dailyMealsRegister.scheduledMeals.forEach( meal => {
+      if(meal.aliments.length > 0) oneScheduleWithAliments = true; 
+    })
+    if(oneScheduleWithAliments){
+      this.dailyMealsRegisterFacade.createOrUploadDailyMealsRegister(this.dailyMealsRegister); 
+    }else{
+
+    }
+
+
   }
 
 }
