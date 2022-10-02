@@ -27,14 +27,14 @@ export class LoginRegisterComponent implements OnInit {
 
   constructor( private enrutador: Router,private uiService: UserInterfaceService, private userFacade: usersFacade) {
     this.signUpForm = new FormGroup({
-      name: new FormControl('Michael', Validators.required),
-      email: new FormControl('maikelaudrupluisgonzalez@gmail.com', Validators.required),
-      password: new FormControl('12345678', Validators.required),
-      passwordConfirm: new FormControl('12345678', Validators.required),
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      passwordConfirm: new FormControl('', Validators.required),
     })
     this.logInForm = new FormGroup({
-      email : new FormControl('maikelaudrupluisgonzalez@gmail.com', Validators.required),
-      password: new FormControl('12345678', Validators.required)
+      email : new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     })
 
   }
