@@ -19,7 +19,8 @@ const SectionMealSchema = new mongoose.Schema({
     },
     meals: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Meal'
+        ref: 'Meal',
+        unique: true,
     },
     imgPath: {
         type: String,

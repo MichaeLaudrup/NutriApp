@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DailyMealsRegisterFacade } from '@ngrx/ngrx-diet';
 import { UserDataFacadeService } from '@ngrx/ngrx-shared';
 import { DailyMealsRegister, FisiologicData } from '@shared/models';
@@ -12,14 +12,9 @@ import { Macronutrients } from 'src/app/shared/models/macronutrients.model';
   styleUrls: ['./dialy-macro-chart.component.scss'],
   animations: [expandedAnimation]
 })
-export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
+export class DialyMacroChartComponent implements OnInit, OnDestroy{
   private repose: boolean = false; 
   public macroNutrientsLimits : Macronutrients = {
-    carbohydrates: 0,
-    proteins: 0,
-    fats: 0
-  }; 
-  public macroNutrientsFacts: Macronutrients = {
     carbohydrates: 0,
     proteins: 0,
     fats: 0
@@ -47,24 +42,15 @@ export class DialyMacroChartComponent implements OnInit, OnDestroy, OnChanges{
           this.dailyMealsRegister = dailyMealsRegister; 
           if(this.dailyMealsRegister?.scheduledMeals?.length > 0){
               this.dailyMealsRegister = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
-              this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro;
               this.doneKcal = this.dailyMealsRegister.totalKcal
           }
         }
       })
-    }else{
-      if(this.dailyMealsRegister && this.dailyMealsRegister.totalMacro){
-        this.macroNutrientsFacts = this.dailyMealsRegister.totalMacro; 
-      }
-      this.doneKcal = this.dailyMealsRegister.totalKcal ?? 0; 
     }
   }
 
   ngOnDestroy(): void {
     this.destroySuscriptions$.next({})
      this.destroySuscriptions$.unsubscribe()
-  }
-
-  ngOnChanges(): void {
   }
 }

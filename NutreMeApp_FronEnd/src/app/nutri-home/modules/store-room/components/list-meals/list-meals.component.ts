@@ -10,6 +10,7 @@ import { StoreRoomService } from '../../services/store-room.service';
 import { getMealTag} from '@shared/enums';
 import { MealSectionsFacade } from '@ngrx/ngrx-section-meals';
 import { UserInterfaceService } from '@core/services';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-list-meals',
   templateUrl: './list-meals.component.html',
@@ -66,7 +67,7 @@ export class ListMealsComponent implements OnInit, OnDestroy {
     this.clickInside = false; 
   }
   showExpanded = false; 
-
+  foodImagesURL = environment.staticMealsImagesURL; 
   getMealTag = getMealTag; 
   animationExpanded: string = 'no-status'; 
   destroySucriptions$: Subject<boolean> = new Subject<boolean>(); 

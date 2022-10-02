@@ -47,7 +47,7 @@ const mealSchema: mongoose.Schema = new mongoose.Schema({
     fiber: {
       type: Number,
     },
-    satl: {
+    salt: {
       type: Number
     },
     tags: {

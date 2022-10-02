@@ -87,4 +87,8 @@ export class MealFormComponent implements OnInit, OnDestroy {
     this.sectionMealsFacade.editMealInSection(this.sectionId, mealUpdated); 
   }
 
+  addGroupOfAliments(aliments: Aliment[]){
+    this.sectionMealsFacade.addGroupOfAliments(this.sectionId, aliments)
+  }
+
 }

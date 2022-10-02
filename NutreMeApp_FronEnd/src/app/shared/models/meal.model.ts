@@ -14,5 +14,6 @@ export interface Aliment {
     saturatedFats?: number, 
     fiber?:number,
     recomendedMeals?: string[],
+    salt?:number, 
     srcImg?: string,
 }; 

@@ -61,6 +61,7 @@ export class DietLayoutComponent implements OnInit, OnDestroy {
       srcImg: mealRecieved.srcImg 
     }
     this.dailyMealsRegister.scheduledMeals[scheduledPos].addOneAliment(newMeal);
+    this.dailyMealsRegister.scheduledMeals[scheduledPos].calculateMacronutrients(); 
     this.dailyMealsRegister.calculateTotalMacroAndKcal(); 
   }
 

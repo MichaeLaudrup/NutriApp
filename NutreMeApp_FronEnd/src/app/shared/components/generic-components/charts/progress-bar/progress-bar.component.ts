@@ -17,18 +17,20 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    this.progressValue = Math.trunc(this.progressValue); 
-    this.actualValue = Math.trunc(((this.progressValue) * 100 / this.maxValue)) + '%'
+    this.updateValue(); 
   }
 
   ngOnChanges( changes: SimpleChanges): void {
-    if(this.progressValue > this.maxValue){
-      this.progressValue = this.progressValue; 
-      this.actualValue = Math.trunc(((this.maxValue) * 100 / this.maxValue)) + '%'
-    }else{
-      this.progressValue = Math.trunc(this.progressValue); 
-      this.actualValue = Math.trunc(((this.progressValue) * 100 / this.maxValue)) + '%'
+    this.updateValue()
+  }
+
+  updateValue() {
+    this.progressValue = Math.trunc(this.progressValue);
+    let actualValuePercent = Math.trunc((this.progressValue) * 100 / this.maxValue); 
+    if( actualValuePercent > 100){
+      actualValuePercent = 100; 
     }
+    this.actualValue = actualValuePercent + '%'
   }
 
 }

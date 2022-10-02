@@ -1,12 +1,17 @@
 export enum mealTag {
-    Vegetarian = "Vegetariano",
+    Vegetarian = "VEGETARIANO",
+    Vegan = "VEGANO",
+    Nuts = "FRUTOS_SECOS",
     GlutenFree ="Gluten Free", 
     Eco = "Eco", 
-    Meat = "Carne",
+    Meat = "CARNE",
     Vegetable ="Verdura", 
     Fruit = "Fruta",
-    Lactose = "Lactosa",
-    FreeLactose = "Libre Lactosa"
+    Lactose = "LACTEO",
+    FreeLactose = "Libre Lactosa",
+    AnimalOrigin = "ORIGEN_ANIMAL",
+    Fish = 'PESCADO',
+    Beans = 'LEGUMBRES'
 }
 
 

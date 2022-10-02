@@ -32,7 +32,7 @@ export class DailyMealsRegisterService{
             }))
         }
         return this.http.post<{status:string, data: { dailyMealsRegister: DailyMealsRegister}}>(`${environment.apiUrlBase}/daily-meals-registers`, {...dailyMealRegisterSimplified})
-            .pipe( map( jsend => { debugger; return jsend.data.dailyMealsRegister}), catchError( err => { console.log(err); return of()}))
+            .pipe( map( jsend => jsend.data.dailyMealsRegister), catchError( err => { console.log(err); return of()}))
 
 
     }

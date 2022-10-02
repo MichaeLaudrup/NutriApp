@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import mongoose from "mongoose"
 import { SectionMealModel } from "../models/section-meal.model"
 import { OperationalError } from "../shared/classes/error.interface"
 
@@ -90,6 +91,37 @@ export const updateSecionMeal = async(req: Request, res:Response, next: NextFunc
         })
             
         
+    }catch (err) {
+        next(err)
+    }
+}
+
+export const addFoodToSection = async(req: Request, res:Response, next: NextFunction) => {
+    try{
+        let sectionMeal = await SectionMealModel.findByIdAndUpdate(req.params['id'], {
+            $push: {"meals": [...req.body.newMeals]}
+        },{new: true, upsert:true}); 
+        return res.status(201).json({
+            status: 'success',
+            data: {
+                section: sectionMeal
+            }
+        }); 
+    }catch (err) {
+        next(err)
+    }
+}
+
+export const deleteFoodInSection = async(req: Request, res:Response, next: NextFunction) => {
+    try{
+        let sectionMeal = await SectionMealModel.findByIdAndUpdate(req.params['id'], {
+            $pullAll: {'meals':[ ...req.body.deletedMeals]}
+        }, { new: true, upsert: true});
+
+        res.status(204).json({
+            status: 'success',
+            section: sectionMeal
+        })
     }catch (err) {
         next(err)
     }

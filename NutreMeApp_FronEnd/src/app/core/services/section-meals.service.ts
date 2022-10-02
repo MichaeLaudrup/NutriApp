@@ -1,13 +1,15 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Aliment, SectionMeal } from "@shared/models";
-import { delay, EmptyError, map, Observable, of } from "rxjs";
+import { concatMap, delay, EmptyError, map, Observable, of } from "rxjs";
 import { deepCopiesUtils } from "src/app/shared/utils/deep-copies.utils";
 import { environment } from "src/environments/environment";
 @Injectable({
         providedIn:'root'
 })
 export class sectionMealsService {
+
+
     attachPhotoToSection(sectionId: string, photo: FormData) {
         return this.http.post<{status: string, data: {section: SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${sectionId}`, photo)
     }
@@ -33,29 +35,16 @@ export class sectionMealsService {
         return this.http.delete(`${environment.apiUrlBase}/section-meals/${id}`)
     }
 
-    public addMealToServer(sectionId: string, newMeal: Aliment): Observable<Aliment> {
-
-        const indexOfSection = this.sectionMeals.findIndex( (section) => section.id === sectionId); 
-        const newMealWithId = {
-            ...newMeal,
-            id:  Math.ceil(Math.random() * 1000) + ''
-        }
-        if(indexOfSection === 0 || !!indexOfSection){
-            const newSectionMeal: SectionMeal = {
-                id: sectionId, 
-                ...this.sectionMeals[indexOfSection],
-                meals: [
-                    ...this.sectionMeals[indexOfSection].meals,
-                    newMealWithId
-                ]
-            }
-            this.sectionMeals = [
-                ...this.sectionMeals.slice(0,indexOfSection),
-                newSectionMeal,
-                ...this.sectionMeals.slice(indexOfSection+1, this.sectionMeals.length
-            )];
-        }
-        return of(newMealWithId).pipe(delay(1000)); 
+    public addMealToSection(sectionId: string, newMeal: Aliment): Observable<SectionMeal> {
+        debugger; 
+        return this.http.post<{status:string, data: {newMeal:Aliment}}>(`${environment.apiUrlBase}/meals`, {...newMeal}).pipe( concatMap( jsend => {
+            debugger; 
+            return this.http.post<{status:string, data: {section:SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${sectionId}/add-aliments`, { newMeals:[ jsend.data.newMeal._id]})
+                .pipe( map(jsend => {
+                    debugger; 
+                    return jsend.data.section
+                }))
+        }))
     } 
 
     public editMealInSection(idSection: string, mealUpdated: Aliment): Observable<{idSec: string, mealUpd: Aliment}> {
@@ -67,5 +56,12 @@ export class sectionMealsService {
         this.sectionMeals = deepCopiesUtils.copySectionsWithOneMealDeleted(this.sectionMeals, idSection, idMeal); 
         return of({secId: idSection, melId: idMeal}).pipe(delay(1000)); 
         
+    }
+
+    addGroupOfAliments(sectionId: string, aliments: Aliment[]) {
+        return this.http.post<{status:string, data: {section:SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${sectionId}/add-aliments`, { newMeals:aliments.map(aliment => aliment._id)})
+                .pipe( map(jsend => {
+                    return jsend.data.section
+                }))
     }
 }

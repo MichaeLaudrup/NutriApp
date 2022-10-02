@@ -162,5 +162,6 @@ export const sectionMealsReducer = createReducer<SectionMealState, Action> (init
     on(MealSectionsActions.resetLoaded, (state) => ({
         ...state, 
         loaded: false
-    }))
+    })),
+    on(MealSectionsActions.addGroupOfAliments, (state) => ({...state}))
 );

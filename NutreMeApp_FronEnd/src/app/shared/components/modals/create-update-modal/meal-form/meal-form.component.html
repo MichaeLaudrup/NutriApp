@@ -15,6 +15,6 @@
     </button>
 </form>
 
-<meals-result-list *ngIf="searchMode">
+<meals-result-list *ngIf="searchMode" (selectedMealsUpdated)="addGroupOfAliments($event)">
 
 </meals-result-list>

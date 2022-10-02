@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActionsBarComponent } from './components/actions-bar/actions-bar.component';
 import { ModalsModule } from './components/modals/modal.module';
 import { ShortStringWithPipe } from './pipes/short-string-with.pipe';
-import { toTagSvgIconPipe } from './pipes/tagsPipe.pipe';
+import { fromTagToText, toTagSvgIconPipe } from './pipes/tagsPipe.pipe';
 import { AsideBarMenuComponent } from './layout/asidebar-menu/asidebar-menu.component';
 import { RouterModule } from '@angular/router';
 import { GetRoutePipe } from './pipes/get-route.pipe';
@@ -29,7 +29,8 @@ const components = [
   GetRoutePipe,
   LoginRegisterComponent,
   ShortStringWithPipe,
-  toSvgAlergenIcon
+  toSvgAlergenIcon,
+  fromTagToText
 ]
 
 @NgModule({

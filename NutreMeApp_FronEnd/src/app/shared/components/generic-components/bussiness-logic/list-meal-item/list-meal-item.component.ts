@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Aliment } from '@shared/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'list-meal-item',
@@ -10,6 +11,7 @@ export class ListMealItemComponent implements OnInit {
   @Input() meal : Aliment; 
   @Input() index: number; 
   @Output() listItemClicked: EventEmitter<number> = new EventEmitter(); 
+  foodImagesURL  = environment.staticMealsImagesURL; 
   constructor() { }
 
   ngOnInit(): void {

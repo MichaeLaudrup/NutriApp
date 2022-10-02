@@ -5,5 +5,8 @@ import { routerProtectionByRole } from '../middleware/protection-by-role.middelw
 
 const router = express.Router(); 
 router.route('/').get(accessRouteProtector, MealsController.getAllMeals).post( MealsController.addNewMeal);
-router.route('/:id').get(MealsController.getMealById).patch(MealsController.updateMeal).delete(accessRouteProtector, routerProtectionByRole('superadmin', 'admin') ,MealsController.deleteMeal); 
+router.route('/:id')
+    .get(MealsController.getMealById)
+    .patch(MealsController.updateMeal)
+    .delete(accessRouteProtector, routerProtectionByRole('superadmin', 'admin') ,MealsController.deleteMeal)
 export default router; 

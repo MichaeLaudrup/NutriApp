@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Aliment} from "@shared/models"; 
-import { Observable, map } from "rxjs";
+import { Observable, map, of } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn:'root'
@@ -28,7 +29,12 @@ export class mealsService {
       queryString += `${fields[0]}=${values[0]}`
     }
     return this.hhtpClientService
-      .get<{status:string, data: {meals:Aliment[]}}>(`http://192.168.0.18:8000/api/v1/meals${queryString}`)
+      .get<{status:string, data: {meals:Aliment[]}}>(`${environment.apiUrlBase}/meals${queryString}`)
       .pipe( map( jsend => jsend?.data.meals)); 
+  }
+
+  public addNewMeal( newMeal: Aliment): Observable<Aliment> {
+    return this.hhtpClientService.post<{status: string, data: { newMeal: Aliment}} >(`${environment.apiUrlBase}/meals`,newMeal)
+    .pipe( map( jsend => (jsend.data.newMeal)))
   }
 }

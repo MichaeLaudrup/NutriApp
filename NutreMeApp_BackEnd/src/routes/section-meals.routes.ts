@@ -12,5 +12,12 @@ router.route('/')
 router.route('/:id')
     .post( accessByLogginProtection,uploadUserPhotoMiddleware, SectionMealController.attachPhotoToSection)
     .delete(accessByLogginProtection, SectionMealController.deleteSectionMeal)
-    .patch(accessByLogginProtection, SectionMealController.updateSecionMeal); 
+    .patch(accessByLogginProtection, SectionMealController.updateSecionMeal)
+
+router.route('/:id/add-aliments')
+    .post( accessByLogginProtection, SectionMealController.addFoodToSection)
+
+router.route('/:id/delete-aliments')
+    .post( accessByLogginProtection, SectionMealController.deleteFoodInSection)
+
 export default router; 

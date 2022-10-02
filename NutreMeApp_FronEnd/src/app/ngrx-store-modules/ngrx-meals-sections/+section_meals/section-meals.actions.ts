@@ -24,7 +24,7 @@ export const deleteSectionFailure = createAction('[Section Meals] Delete secion 
 
 /*=========== MEALS =================*/
 /* CREATE */
-export const addMealToSection = createAction('[Section Meals] Add  meal in a section', props<{idSection:string, newMeal:Aliment}>());
+export const addMealToSection = createAction('[Section Meals] Add  meal in a section', props<{idSection:string, newMeal:Aliment | Aliment[]}>());
 export const addMealToSectionSuccess = createAction('[Section Meals] Add  meal in a section success', props<{idSection: string, newMealWithId:Aliment}>());
 export const addMealToSectionError = createAction('[Section Meals] Add  meal in a section failure', props<{idSection:string, newMeal:Aliment}>());
 
@@ -42,3 +42,7 @@ export const deleteMealInSectionError = createAction('[Section Meals] delete new
 export const resetFeedback = createAction('[Section Meal] Reset FeedBack'); 
 export const resetLoaded = createAction('[Section Meal] Reset loaded'); 
 
+export const addGroupOfAliments = createAction(
+    '[Section Meal] Add a group of aliments',
+    props<{sectionId: string, aliments: Aliment[]}>()
+)

@@ -23,7 +23,7 @@ export class DailyMealsRegisterEffects {
         () => this.actions$.pipe(
                 ofType( DailyMealsRegisterActions.addOrUpdateDailyMealsRegister.type),
                 concatMap( ({dailyMealsRegister}) => this.dailyMealsRegisterService.addOrUpdateDaily(dailyMealsRegister).pipe(
-                    map( dailyMealsRegister => { debugger;  return( { type: DailyMealsRegisterActions.addOrUpdateDailyMealsRegisterSuccess.type, dailyMealsRegister})}),
+                    map( dailyMealsRegister => ( { type: DailyMealsRegisterActions.addOrUpdateDailyMealsRegisterSuccess.type, dailyMealsRegister})),
                     catchError( () => EMPTY)))
                 )) 
     

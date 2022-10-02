@@ -28,7 +28,6 @@ export const dailyMealsRegisterReducer = createReducer<DailyMealRegisterState, A
     on(DailyMealsRegisterActions.requestDailyMealsRegisterSuccess, (state, {dailyMealsRegister}) => ( dailyMealsRegister ? new DailyMealsRegister(dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals):{...state})),
     on(DailyMealsRegisterActions.setDailyMealsRegister, (state, {dailyMealsRegister}) => {
         let dailyMealsRegisterToClass;
-        debugger;  
         if(dailyMealsRegister){
             dailyMealsRegisterToClass = new DailyMealsRegister( dailyMealsRegister._id, dailyMealsRegister.date, dailyMealsRegister.scheduledMeals);
         }

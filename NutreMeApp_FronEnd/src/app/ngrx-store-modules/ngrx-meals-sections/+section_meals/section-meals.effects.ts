@@ -68,7 +68,7 @@ export class SectionMealsEffects {
     putMealInSection$ = createEffect(
         () => this.actions$.pipe(
             ofType(SectionMealsActions.addMealToSection.type),
-            concatMap(({idSection, newMeal}) => this.sectionMealsService.addMealToServer(idSection, newMeal).pipe(
+            concatMap(({idSection, newMeal}) => this.sectionMealsService.addMealToSection(idSection, newMeal).pipe(
                 concatMap((newMealWithId) => [
                     { type: SectionMealsActions.addMealToSectionSuccess.type, newMealWithId, idSection},
                     { type: SectionMealsActions.getMeals.type}
@@ -94,6 +94,15 @@ export class SectionMealsEffects {
             ofType(SectionMealsActions.deleteMealInSection.type),
             mergeMap(({sectionId, mealId}) => this.sectionMealsService.deleteMealInSection(sectionId,mealId).pipe(
                 map( ({secId, melId}) => ({type: SectionMealsActions.deleteMealInSectionSuccess.type, mealId: melId, sectionId: secId })))
+            ),
+        )
+    )
+
+    addGroupOfMeals$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(SectionMealsActions.addGroupOfAliments.type),
+            mergeMap(({sectionId, aliments}) => this.sectionMealsService.addGroupOfAliments(sectionId,aliments).pipe(
+                map( ( section) => ({type: SectionMealsActions.getMeals.type})))
             ),
         )
     )

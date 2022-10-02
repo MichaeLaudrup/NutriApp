@@ -8,6 +8,7 @@ import { Aliment, SectionMeal } from "@shared/models";
 @Injectable()
 export class MealSectionsFacade {
 
+
     constructor( private store: Store<SectionMealState>){}
     
     get sectionMeals$(): Observable<{sections: SectionMeal[], loaded: boolean}> {
@@ -67,5 +68,9 @@ export class MealSectionsFacade {
     }
     public resetLoaded() : void {
         this.store.dispatch(SectionMealsActions.resetLoaded())
+    }
+
+    addGroupOfAliments(sectionId: string, aliments: Aliment[]) {
+        this.store.dispatch(SectionMealsActions.addGroupOfAliments({sectionId,aliments}))
     }
 }
