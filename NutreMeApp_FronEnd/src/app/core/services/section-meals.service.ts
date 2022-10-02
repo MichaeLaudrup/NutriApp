@@ -36,14 +36,9 @@ export class sectionMealsService {
     }
 
     public addMealToSection(sectionId: string, newMeal: Aliment): Observable<SectionMeal> {
-        debugger; 
         return this.http.post<{status:string, data: {newMeal:Aliment}}>(`${environment.apiUrlBase}/meals`, {...newMeal}).pipe( concatMap( jsend => {
-            debugger; 
             return this.http.post<{status:string, data: {section:SectionMeal}}>(`${environment.apiUrlBase}/section-meals/${sectionId}/add-aliments`, { newMeals:[ jsend.data.newMeal._id]})
-                .pipe( map(jsend => {
-                    debugger; 
-                    return jsend.data.section
-                }))
+                .pipe( map(jsend => jsend.data.section))
         }))
     } 
 
@@ -53,9 +48,7 @@ export class sectionMealsService {
     }
 
     public deleteMealInSection(idSection: string, idMeal: string): Observable<{secId:string, melId:string}>{
-        this.sectionMeals = deepCopiesUtils.copySectionsWithOneMealDeleted(this.sectionMeals, idSection, idMeal); 
-        return of({secId: idSection, melId: idMeal}).pipe(delay(1000)); 
-        
+        return this.http.post(`${environment.apiUrlBase}/section-meals/${idSection}/delete-aliments`, { deletedMeals: [idMeal]}).pipe( map( () => ({ secId: idSection, melId: idMeal})))  
     }
 
     addGroupOfAliments(sectionId: string, aliments: Aliment[]) {

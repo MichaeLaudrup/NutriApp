@@ -3,7 +3,6 @@ import { mealTag } from "../enums/tag.enum";
 
 
 const getSvgIconName = ( mealTagType:mealTag) => {
-    debugger; 
     switch(mealTagType){
         case mealTag.Vegetarian: 
             return 'vegan'; 
@@ -14,7 +13,7 @@ const getSvgIconName = ( mealTagType:mealTag) => {
         case mealTag.GlutenFree: 
             return 'gluten_free'; 
         case mealTag.Meat: 
-            return 'meat'; 
+            return 'meat2'; 
         case mealTag.AnimalOrigin:
             return 'animal_origin';
         case mealTag.Fish: 
@@ -22,7 +21,15 @@ const getSvgIconName = ( mealTagType:mealTag) => {
         case mealTag.Nuts: 
             return 'nuts'
         case mealTag.Vegan: 
-            return 'vegan'
+            return 'vegan2';
+        case mealTag.Beans:
+            return 'beans'; 
+        case mealTag.Cereal:
+            return 'cereal';
+        case mealTag.Gluten: 
+            return 'gluten'
+        case mealTag.Vegetable: 
+            return 'vegetables'
         default: 
             return 'generic_icon';  
     }
@@ -63,7 +70,13 @@ export class fromTagToText implements PipeTransform {
             case mealTag.Vegan:
                 return 'Vegano'
             case mealTag.Beans:
-                return 'Legumbres'
+                return 'Legumbres';
+            case mealTag.Cereal: 
+                return 'Cereales';
+            case mealTag.Gluten: 
+                return 'Gluten';  
+            case mealTag.Vegetable: 
+                return 'Vegetales'
             default: 
                 return tag;  
         } 

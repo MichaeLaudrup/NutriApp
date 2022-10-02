@@ -5,13 +5,15 @@ export enum mealTag {
     GlutenFree ="Gluten Free", 
     Eco = "Eco", 
     Meat = "CARNE",
-    Vegetable ="Verdura", 
+    Vegetable ="VEGETALES", 
     Fruit = "Fruta",
     Lactose = "LACTEO",
     FreeLactose = "Libre Lactosa",
     AnimalOrigin = "ORIGEN_ANIMAL",
     Fish = 'PESCADO',
-    Beans = 'LEGUMBRES'
+    Beans = 'LEGUMBRES',
+    Cereal = 'CEREALES',
+    Gluten = 'GLUTEN',
 }
 
 
@@ -27,6 +29,8 @@ export const getMealTag = function( mealTagType: mealTag) : string {
             return 'gluten_free'; 
         case mealTag.Meat: 
             return 'meat';  
+        case mealTag.Cereal: 
+            return 'cereal'; 
         default: 
             return 'generic_icon';  
     }
