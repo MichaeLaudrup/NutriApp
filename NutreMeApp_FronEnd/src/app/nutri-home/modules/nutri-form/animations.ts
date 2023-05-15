@@ -2,7 +2,8 @@ import { query, transition, trigger, style, animate, group} from "@angular/anima
 
 export const  sliderAnimations = [trigger('carrouselAnimation', [
     transition('none => select-objective , none => fisiologic-data,select-objective => fisiologic-data, fisiologic-data => feeding-type, feeding-type => select-allergens,  select-allergens => select-forbidden-food', [
-        group([
+
+        ,group([
             query(':enter', [
                 style({
                     left: '150%',
